@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build New · 57Blocks</title>
+<meta name="description" content="Build a new product with 57Blocks — go from concept to a production MVP with a small senior team and AI-native delivery from day one." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css" />
+<style>
+.bn-circuit{position:absolute;inset:0;width:100%;height:100%;
+  -webkit-mask-image:radial-gradient(92% 86% at 50% 44%,#000 46%,transparent 94%);
+  mask-image:radial-gradient(92% 86% at 50% 44%,#000 46%,transparent 94%)}
+.bn-circuit .tr{fill:none;stroke:rgba(106,77,255,.16);stroke-width:1}
+.bn-circuit .nodes circle{fill:#fff}
+.bn-circuit .plus{stroke:rgba(106,77,255,.6);stroke-width:1.4;stroke-linecap:round}
+@media(max-width:700px){.bn-circuit{opacity:.7}}
+.subhero .sh-bloom{opacity:.22;filter:blur(52px)}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="index.html#industries">Financial services</a>
+              <a href="index.html#industries">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="index.html#industries">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="index.html#engine">Blockchain</a>
+              <a href="index.html#engine">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="index.html#work">Rebuild</a>
+              <a href="index.html#work">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>How we deliver</h6>
+              <a href="blueprint.html">Blueprint</a>
+              <a href="index.html#engine">Agentic Builder</a>
+              <a href="index.html#engine">Compass</a>
+              <a href="index.html#engine">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="work.html">Work <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Work</h6>
+              <a href="work.html">Case studies</a>
+              <a href="work.html">Clients</a>
+              <a href="index.html#industries">Industries</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Thinking</h6>
+              <a href="index.html#research">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Company</h6>
+              <a href="index.html#operator">About</a>
+              <a href="index.html#operator">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <svg class="bn-circuit" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <filter id="bnSoft" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="6" />
+        </filter>
+        <filter id="bnHalo" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="4" result="b" />
+          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <linearGradient id="trA" gradientUnits="userSpaceOnUse" x1="300" y1="470" x2="760" y2="470">
+          <stop offset="0" stop-color="#c2b8ff" stop-opacity="0" />
+          <stop offset="1" stop-color="#c2b8ff" stop-opacity="0.34" />
+        </linearGradient>
+        <linearGradient id="trB" gradientUnits="userSpaceOnUse" x1="240" y1="170" x2="240" y2="440">
+          <stop offset="0" stop-color="#c2b8ff" stop-opacity="0.34" />
+          <stop offset="1" stop-color="#c2b8ff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="trC" gradientUnits="userSpaceOnUse" x1="1340" y1="300" x2="980" y2="300">
+          <stop offset="0" stop-color="#c2b8ff" stop-opacity="0" />
+          <stop offset="1" stop-color="#c2b8ff" stop-opacity="0.3" />
+        </linearGradient>
+      </defs>
+      <g>
+        <path class="tr" d="M512 0 V64 H300 V470 H760" />
+        <path class="tr" d="M240 110 V690 H600" />
+        <path class="tr" d="M1440 300 H980 V720" />
+        <path class="tr" d="M980 470 H1440" />
+      </g>
+      <g filter="url(#bnSoft)" stroke-linecap="round" fill="none">
+        <path style="stroke:url(#trA)" stroke-width="9" d="M300 470 H760" />
+        <path style="stroke:url(#trB)" stroke-width="9" d="M240 430 V170" />
+        <path style="stroke:url(#trC)" stroke-width="8" d="M1340 300 H980" />
+      </g>
+      <g class="nodes" filter="url(#bnHalo)">
+        <circle cx="760" cy="470" r="3.2" /><circle cx="240" cy="170" r="3.2" /><circle cx="980" cy="300" r="3.2" />
+      </g>
+      <path class="plus" d="M1130 555 h12 M1136 549 v12" />
+    </svg>
+    <div class="sh-bloom"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="index.html#work">How we engage</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Build new</span></div>
+    <h1 class="rv rv-d1">Ship a production MVP you can trust, with a small senior team.</h1>
+    <p class="lead rv rv-d2">We build new products as AI-native MVPs. A smaller, more senior team delivers through the harness, with the client reviewing and approving the specification before any code is written — so what ships meets the bar from the first iteration.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#engine"><s>How we deliver</s></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHAT CHANGES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> What changes</div>
+        <h2 class="rv" style="max-width:16ch">A higher bar, held by a <span style="color:var(--accent)">senior</span> team.</h2>
+      </div>
+      <p class="meta rv rv-d1">AI-native delivery lets a small senior team hold a higher quality bar than a larger team could, because review and proven domain patterns are built into every step rather than bolted on at the end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> How it works</div>
+        <h2 class="rv" style="max-width:15ch">Specification first, gated throughout.</h2>
+      </div>
+      <p class="meta rv rv-d1">Every build runs the same way: scoped, approved, then executed in gated steps with vertical skill carried in from past work.</p>
+    </div>
+    <div class="feat-grid rv">
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h18"/><path d="M9 21V9"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        <h4>Blueprint</h4>
+        <p>You review and approve the specification before any code is generated, so the build starts from an agreed bar.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M6.5 10v4M10 17.5h4"/></svg></div>
+        <h4>Agentic Builder</h4>
+        <p>The harness runs the build in modular executions with review gates between them, so quality is checked as it is produced.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></div>
+        <h4>Compass</h4>
+        <p>Accumulated vertical skill informs the build rather than being regenerated per project, so each MVP starts ahead.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE ENGAGE ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="engage-panel rv">
+      <div class="sec-head">
+        <div class="t">
+          <div class="lbl"><span class="dot">✸</span> How we engage</div>
+          <h2 style="max-width:15ch">Start new, or come in where it counts.</h2>
+        </div>
+        <p class="meta">Build new is one of three ways we engage. We build new products as production MVPs, rebuild partial-fit systems into tailored ones, and embed senior teams alongside yours.</p>
+      </div>
+      <div class="engage-row">
+        <span class="engage-tag">Build new</span>
+        <span class="engage-tag">Rebuild</span>
+        <span class="engage-tag">Embedded teams</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Let's scope<br />your MVP.</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">We start with a conversation about scope — then tell you what it takes to ship.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#work"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></div>
+        <p>AI-native engineering delivery. Operator first, vendor second.</p>
+      </div>
+      <div class="foot-col"><h5>Solutions</h5><a href="index.html#industries">Financial services</a><a href="index.html#industries">Consumer</a><a href="legaltech.html">LegalTech</a><a href="index.html#industries">HealthTech</a><a href="ai.html">AI</a><a href="index.html#engine">Blockchain</a><a href="index.html#engine">Robotics</a></div>
+      <div class="foot-col"><h5>How we engage</h5><a href="build-new.html">Build new</a><a href="index.html#work">Rebuild</a><a href="index.html#work">Embedded teams</a><a href="blueprint.html">Blueprint</a><a href="index.html#engine">Agentic Builder</a><a href="index.html#engine">Compass</a><a href="index.html#engine">Excavator</a></div>
+      <div class="foot-col"><h5>Thinking</h5><a href="index.html#research">Research</a><a href="blog.html">Blog</a><a href="index.html#work">Work</a><a href="index.html#work">Clients</a><a href="index.html#work">Industries</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="index.html#operator">About</a><a href="index.html#operator">Ventures</a><a href="index.html#operator">Careers</a><a href="index.html#contact">Contact</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <div class="soc"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">X</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js"></script>
+<script src="assets/hero-fx.js"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>

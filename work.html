@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work · 57Blocks</title>
+<meta name="description" content="Selected work from 57Blocks — production systems shipped across legal AI, consumer data, AI infrastructure, and the on-chain money-movement stack." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css" />
+<style>
+.work-grid{margin-top:8px}
+.work-grid .case{min-height:248px}
+/* cards without a cover image keep their content on hover */
+.case.no-cover{cursor:pointer}
+.case.no-cover:hover .cmeta,.case.no-cover:hover .ctop{opacity:1;transform:none}
+.case.no-cover:hover .peek{opacity:1;background:var(--accent);border-color:var(--accent);color:#fff}
+.case.no-cover:hover .peek svg{transform:translate(1px,-1px)}
+.case .peek svg{transition:transform .3s var(--ease)}
+.work-filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}
+.work-chip{font-family:var(--font-m);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 17px;background:var(--glass);
+  cursor:pointer;transition:color .25s,border-color .25s,background .25s}
+.work-chip:hover{color:var(--ink);border-color:var(--line-2)}
+.work-chip.active{color:#fff;background:var(--accent);border-color:var(--accent)}
+.case.is-hidden{display:none}
+.case .ctag.research{color:#1F8A5B;border-color:rgba(31,138,91,.34)}
+.case.no-cover:hover .ctag.research{color:#1F8A5B}
+/* centered logo (Supio test) */
+.case .clogo{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+  pointer-events:none;transition:opacity .4s var(--ease),transform .45s var(--ease)}
+.case .clogo img{width:100%;height:100%;object-fit:cover;display:block}
+.case:hover .clogo{opacity:0;transform:translateY(-8px)}
+/* colored logo used in place of the card title */
+.case .cname-logo{display:block;height:60px;width:auto;margin-bottom:2px}
+.work-grid .cdesc{min-height:2.9em}
+/* ---- editorial left-aligned hero (matches blog) ---- */
+.work-hero{padding:128px 0 64px;position:relative}
+/* distinct background: soft color mesh + faint column lines (no dots, no rings) */
+.work-hero .sh-dots,.work-hero .sh-ring,.work-hero .sh-bloom{display:none}
+.work-hero .subhero-bg{
+  background:
+    radial-gradient(95% 120% at 88% 18%, rgba(118,92,255,.20), transparent 56%),
+    radial-gradient(80% 110% at 12% 108%, rgba(46,196,182,.16), transparent 58%);
+  -webkit-mask-image:linear-gradient(180deg,#000 48%,transparent 96%);
+  mask-image:linear-gradient(180deg,#000 48%,transparent 96%);}
+.work-hero .subhero-bg::before{content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg, rgba(20,16,44,.05) 0 1px, transparent 1px 120px);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 70%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 22%,#000 70%,transparent)}
+.work-hero .wrap{text-align:left}
+.work-hero .crumb{margin-bottom:clamp(22px,3vw,36px)}
+.work-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
+.work-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
+  font-size:clamp(40px,5vw,68px);max-width:none;margin:0}
+.work-hero-aside{align-self:end;max-width:400px;padding-bottom:8px;transform:translateY(34px)}
+.work-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
+.work-hero-aside .hero-cta{justify-content:flex-start;margin:0}
+.work-hero-link{color:var(--accent);font-weight:500}
+@media(max-width:820px){
+  .work-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
+  .work-hero h1{font-size:clamp(36px,9vw,54px)}
+  .work-hero-aside{max-width:none;padding-bottom:0;transform:none}
+}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="index.html#industries">Financial services</a>
+              <a href="index.html#industries">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="index.html#industries">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="index.html#engine">Blockchain</a>
+              <a href="index.html#engine">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="index.html#work">Rebuild</a>
+              <a href="index.html#work">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>How we deliver</h6>
+              <a href="blueprint.html">Blueprint</a>
+              <a href="index.html#engine">Agentic Builder</a>
+              <a href="index.html#engine">Compass</a>
+              <a href="index.html#engine">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="work.html">Work <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Work</h6>
+              <a href="work.html">Case studies</a>
+              <a href="work.html">Clients</a>
+              <a href="index.html#industries">Industries</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Thinking</h6>
+              <a href="index.html#research">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Company</h6>
+              <a href="index.html#operator">About</a>
+              <a href="index.html#operator">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero work-hero" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="sh-ring"></div>
+    <div class="sh-bloom"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="index.html#work">Work</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Case studies</span></div>
+    <div class="work-hero-row">
+      <h1 class="rv rv-d1">Production systems, not prototypes.</h1>
+      <div class="work-hero-aside rv rv-d2">
+        <p class="lead">A selection of what we have shipped across verticals — from legal AI and consumer data to the on-chain money-movement stack.</p>
+        <div class="hero-cta">
+          <a class="arrow-link work-hero-link" href="index.html#contact">Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CASE GRID ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="work-filters rv">
+      <button class="work-chip active" data-filter="all">All</button>
+      <button class="work-chip" data-filter="legaltech">LegalTech</button>
+      <button class="work-chip" data-filter="consumer">Consumer</button>
+      <button class="work-chip" data-filter="ai-infra">AI Infra</button>
+      <button class="work-chip" data-filter="fintech">FinTech</button>
+      <button class="work-chip" data-filter="web3">Web3</button>
+      <button class="work-chip" data-filter="research">Research</button>
+    </div>
+    <div class="case-grid work-grid rv">
+      <a class="case" href="#" data-cat="legaltech"><span class="cover"><img src="assets/cases/supio.png" alt="Supio" /></span><span class="ctop"><span class="ctag">LegalTech</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/supio-wordmark.png" alt="Supio" /><span class="cdesc">Legal AI platform for case intelligence.</span></span></a>
+      <a class="case" href="#" data-cat="consumer"><span class="cover"><img src="assets/cases/fanatics.png" alt="Fanatics" /></span><span class="ctop"><span class="ctag">Consumer</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/fanatics-wordmark.png" alt="Fanatics" /><span class="cdesc">Data labeling at scale.</span></span></a>
+      <a class="case" href="#" data-cat="ai-infra"><span class="cover"><img src="assets/cases/gmi.png" alt="GMI Cloud" /></span><span class="ctop"><span class="ctag">AI infra</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/gmi-wordmark.png" alt="GMI Cloud" /><span class="cdesc">AI inference infrastructure.</span></span></a>
+      <a class="case" href="#" data-cat="fintech web3"><span class="cover"><img src="assets/cases/rain.png" alt="Rain" /></span><span class="ctop"><span class="ctag">FinTech · Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/rain.png" alt="Rain" /><span class="cdesc">Scaled 118K → 1M events per hour.</span></span></a>
+      <a class="case" href="#" data-cat="web3"><span class="cover"><img src="assets/cases/huma.png" alt="Huma" /></span><span class="ctop"><span class="ctag">Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/huma-wordmark.png" alt="Huma" /><span class="cdesc">PayFi infrastructure on-chain.</span></span></a>
+      <a class="case" href="#" data-cat="web3"><span class="cover"><img src="assets/cases/lifi.png" alt="LI.FI" /></span><span class="ctop"><span class="ctag">Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/lifi-wordmark.png" alt="LI.FI" /><span class="cdesc">Swap router across 30+ DEXs.</span></span></a>
+      <a class="case" href="#" data-cat="web3"><span class="cover"><img src="assets/cases/stellar.png" alt="Stellar" /></span><span class="ctop"><span class="ctag">Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/stellar-wordmark.png" alt="Stellar" /><span class="cdesc">Ecosystem engineering and migrations on Soroban.</span></span></a>
+      <a class="case" href="#" data-cat="web3"><span class="cover"><img src="assets/cases/story.png" alt="Story Protocol" /></span><span class="ctop"><span class="ctag">Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/story-wordmark.png" alt="Story Protocol" /><span class="cdesc">On-chain IP infrastructure.</span></span></a>
+      <a class="case" href="#" data-cat="web3"><span class="cover"><img src="assets/cases/cipherowl.png" alt="CipherOwl" /></span><span class="ctop"><span class="ctag">Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/cipherowl-wordmark.png" alt="CipherOwl" /><span class="cdesc">Compliance screening and monitoring.</span></span></a>
+      <a class="case" href="#" data-cat="fintech web3"><span class="cover"><img src="assets/cases/solv.png" alt="Solv" /></span><span class="ctop"><span class="ctag">FinTech · Web3</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/solv-wordmark.png" alt="Solv" /><span class="cdesc">BTC yield and tokenized credit.</span></span></a>
+      <a class="case" href="#" data-cat="research"><span class="cover"><img src="assets/cases/stanford.png" alt="Stanford" /></span><span class="ctop"><span class="ctag research">Research</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/stanford-wordmark.png" alt="Stanford" /><span class="cdesc">Peer-reviewed applied AI research.</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Want the<br />deeper roster?</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">The financial-infrastructure work goes deep on the on-chain money-movement stack.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#research"><s>Read our research</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></div>
+        <p>AI-native engineering delivery. Operator first, vendor second.</p>
+      </div>
+      <div class="foot-col"><h5>Solutions</h5><a href="index.html#industries">Financial services</a><a href="index.html#industries">Consumer</a><a href="legaltech.html">LegalTech</a><a href="index.html#industries">HealthTech</a><a href="ai.html">AI</a><a href="index.html#engine">Blockchain</a><a href="index.html#engine">Robotics</a></div>
+      <div class="foot-col"><h5>How we engage</h5><a href="build-new.html">Build new</a><a href="index.html#work">Rebuild</a><a href="index.html#work">Embedded teams</a><a href="blueprint.html">Blueprint</a><a href="index.html#engine">Agentic Builder</a><a href="index.html#engine">Compass</a><a href="index.html#engine">Excavator</a></div>
+      <div class="foot-col"><h5>Thinking</h5><a href="index.html#research">Research</a><a href="blog.html">Blog</a><a href="work.html">Work</a><a href="work.html">Clients</a><a href="index.html#industries">Industries</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="index.html#operator">About</a><a href="index.html#operator">Ventures</a><a href="index.html#operator">Careers</a><a href="index.html#contact">Contact</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <div class="soc"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">X</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js"></script>
+<script src="assets/hero-fx.js"></script>
+<script>
+(function(){
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  }
+  var chips=document.querySelectorAll('.work-chip');
+  var cases=document.querySelectorAll('.work-grid .case');
+  chips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      chips.forEach(function(c){c.classList.remove('active');});
+      chip.classList.add('active');
+      var f=chip.getAttribute('data-filter');
+      cases.forEach(function(card){
+        var cats=(card.getAttribute('data-cat')||'').split(' ');
+        card.classList.toggle('is-hidden', f!=='all' && cats.indexOf(f)===-1);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog · 57Blocks</title>
+<meta name="description" content="The 57Blocks blog — engineering essays, delivery lessons and notes on building production AI-native software." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css" />
+<style>
+.blog-group{margin-top:clamp(44px,5vw,76px)}
+.blog-group:first-of-type{margin-top:0}
+.blog-ghead{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:16px;border-bottom:1.5px solid var(--ink);margin-bottom:6px}
+.blog-glabel{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.blog-gcount{font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.blog-list{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.blog-row{display:flex;align-items:center;gap:18px;min-height:96px;padding:18px 0;border-bottom:1px solid var(--line);color:var(--ink);transition:padding-left .22s var(--ease),color .18s var(--ease)}
+.blog-row::after{display:none}
+.blog-thumb{flex:0 0 auto;width:96px;height:60px;border-radius:9px;overflow:hidden;position:relative;
+  background:var(--paper-2);box-shadow:0 1px 0 rgba(12,12,18,.05);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.blog-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease)}
+.blog-thumb--ph{background:
+  repeating-linear-gradient(135deg,rgba(106,77,255,.07) 0 7px,transparent 7px 14px),
+  linear-gradient(150deg,rgba(106,77,255,.10),var(--paper-2));
+  border:1px solid rgba(12,12,18,.08)}
+.blog-thumb--ph::after{content:"";position:absolute;top:50%;left:50%;width:18px;height:18px;
+  transform:translate(-50%,-50%);border:1.5px solid rgba(106,77,255,.4);border-radius:5px;
+  background:radial-gradient(circle at 64% 38%,rgba(106,77,255,.5) 2.6px,transparent 3px)}
+.blog-row:hover .blog-thumb{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(24,18,60,.4)}
+.blog-row:hover .blog-thumb img{transform:scale(1.06)}
+.blog-row .t{flex:1;font-family:var(--font-d);font-weight:500;font-size:16.5px;letter-spacing:-.01em;line-height:1.32;text-wrap:pretty}
+.blog-row .blog-read{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);opacity:0;transform:translateX(-6px);transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.blog-row .blog-read svg{width:15px;height:15px}
+.blog-row:hover{padding-left:10px;color:var(--accent)}
+.blog-new{display:inline-block;vertical-align:middle;margin-left:8px;background:var(--accent);color:#fff;
+  font-family:var(--font-m);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 7px;border-radius:5px;line-height:1;translate:0 -1px}
+.blog-row:hover .blog-read{opacity:1;transform:none;color:var(--accent)}
+
+/* ---- featured (first) row: big image + copy, spans two rows ---- */
+.blog-row--feat{align-items:center;gap:28px}
+.blog-group:first-of-type .blog-row--feat{grid-row:span 2}
+.blog-row--feat:hover{padding-left:0;color:var(--ink)}
+.blog-row--feat:hover .blog-feat-body{transform:translateX(10px)}
+.blog-row--feat:hover .t{color:var(--accent)}
+.blog-row--feat .blog-thumb{flex:0 0 auto;width:250px;height:134px;border-radius:14px}
+.blog-feat-body{flex:1;display:flex;flex-direction:column;align-items:flex-start;transition:transform .22s var(--ease)}
+.blog-row--feat .t{flex:none;font-size:16.5px;line-height:1.32;letter-spacing:-.01em}
+.blog-feat-desc{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.blog-feat-foot{display:flex;align-items:center;width:100%;margin-top:16px}
+.blog-feat-body .blog-new{margin-left:0;margin-top:0;translate:0}
+.blog-feat-foot .blog-read{margin-left:auto}
+
+@media(max-width:820px){.blog-list{grid-template-columns:1fr;gap:0}.blog-row .blog-read{display:none}.blog-thumb{width:78px;height:50px}
+  .blog-row--feat{gap:18px}.blog-row--feat .blog-thumb{width:150px;height:92px}.blog-row--feat .t{font-size:16px}}
+
+/* ---- blog hero: editorial left-aligned ---- */
+.blog-hero{padding:128px 0 64px}
+.blog-hero .sh-ring{display:none}
+.blog-hero .sh-bloom{top:50%;width:min(760px,82%);height:420px}
+.blog-hero .wrap{text-align:left}
+.blog-hero .lbl{display:inline-flex;align-items:center;gap:9px;margin-bottom:clamp(22px,3vw,36px)}
+.blog-hero .lbl .dot{color:var(--accent);font-size:10px;line-height:1}
+.blog-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
+.blog-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
+  font-size:clamp(40px,5vw,68px);max-width:none;margin:0}
+.blog-hero-aside{align-self:end;max-width:400px;padding-bottom:8px;transform:translateY(34px)}
+.blog-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
+.blog-hero-aside .hero-cta{justify-content:flex-start;margin:0}
+.blog-hero-link{color:var(--accent);font-weight:500}
+@media(max-width:820px){
+  .blog-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
+  .blog-hero h1{font-size:clamp(36px,9vw,54px)}
+  .blog-hero-aside{max-width:none;padding-bottom:0}
+}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="index.html#industries">Financial services</a>
+              <a href="index.html#industries">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="index.html#industries">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="index.html#engine">Blockchain</a>
+              <a href="index.html#engine">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="index.html#work">Rebuild</a>
+              <a href="index.html#work">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>How we deliver</h6>
+              <a href="blueprint.html">Blueprint</a>
+              <a href="index.html#engine">Agentic Builder</a>
+              <a href="index.html#engine">Compass</a>
+              <a href="index.html#engine">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="work.html">Work <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Work</h6>
+              <a href="work.html">Case studies</a>
+              <a href="work.html">Clients</a>
+              <a href="index.html#industries">Industries</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Thinking</h6>
+              <a href="index.html#research">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Company</h6>
+              <a href="index.html#operator">About</a>
+              <a href="index.html#operator">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero blog-hero" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="sh-ring"></div>
+    <div class="sh-bloom"></div>
+  </div>
+  <div class="wrap">
+    <div class="lbl rv"><span class="dot">●</span> Thinking · Blog</div>
+    <div class="blog-hero-row">
+      <h1 class="rv rv-d1">Twenty-nine pieces, organized by lens.</h1>
+      <div class="blog-hero-aside rv rv-d2">
+        <p class="lead">Our engineering and strategy writing — deep-dives on the systems we build, organized so you can find the relevant ones fast.</p>
+        <div class="hero-cta">
+          <a class="arrow-link blog-hero-link" href="index.html#research">Back to research <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ POSTS ============ -->
+<section class="sec">
+  <div class="wrap">
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Engineering · Web3 and on-chain</span>
+          <span class="blog-gcount">10</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="https://57blocks.com/blog" data-img="assets/blog/how-to-migrate-preamble.png">
+          <span class="blog-thumb"><img src="assets/blog/how-to-migrate-preamble.png" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t">How to Migrate an Ethereum Protocol to Solana — Preamble</span>
+            <span class="blog-feat-desc">A systematic introduction to the fundamental differences between Ethereum and Solana…</span>
+            <span class="blog-feat-foot">
+              <span class="blog-new">New</span>
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/how-to-migrate-contracts-1.jpg" alt="" loading="lazy" /></span>
+          <span class="t">How to Migrate an Ethereum Protocol to Solana — Contracts (Part 1)</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/soroban-integration-testing.png" alt="" loading="lazy" /></span>
+          <span class="t">Soroban Integration Testing Best Practices (JS)</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/mastering-layer1-testing.png" alt="" loading="lazy" /></span>
+          <span class="t">Mastering Layer 1 Blockchain Testing: A Comprehensive Guide</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/deep-dive-resource-limitations.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Deep Dive into Resource Limitations in Solana Development — CU Edition</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/account-abstraction-ethereum.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Exploring Account Abstraction in Ethereum: Building and Optimizing Smart Wallets</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/blockchain-encryption.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Blockchain Encryption Technology: A Critical Defense for Protecting Digital Assets</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/web3-intents-lifi.png" alt="" loading="lazy" /></span>
+          <span class="t">Web3 Intents-Based Systems and How LI.FI is Pushing Cross-Chain Swaps Evolution</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/guide-web3-dapp-infra.png" alt="" loading="lazy" /></span>
+          <span class="t">Guide to Web3 and dApp Infrastructure</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/qa-smart-contracts.png" alt="" loading="lazy" /></span>
+          <span class="t">How to QA Smart Contracts on Blockchain</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Engineering · AI and data</span>
+          <span class="blog-gcount">04</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/llms-extract-document-info.jpg" alt="" loading="lazy" /></span>
+          <span class="t">How to Use LLMs to Extract Document Information</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/vector-database-pinecone-lancedb.jpg" alt="" loading="lazy" /></span>
+          <span class="t">What Makes a Good Vector Database? Comparing Pinecone and LanceDB</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/image-search-ai-models.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Image Search with AI Models</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/image-quality-assessment-ml.png" alt="" loading="lazy" /></span>
+          <span class="t">Image Quality Assessment Using Machine Learning</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Engineering · craft and delivery</span>
+          <span class="blog-gcount">08</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/inside-story-qa.png" alt="" loading="lazy" /></span>
+          <span class="t">Inside Story: How We Approach QA</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/shipping-as-small-as-possible.png" alt="" loading="lazy" /></span>
+          <span class="t">Make Releases Manageable with “Shipping As Small As Possible”</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/modern-frontend-build-pipelines.png" alt="" loading="lazy" /></span>
+          <span class="t">Our Guide to Modern Front-End Build Pipelines</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/frontend-performance-optimization.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Frontend Performance Optimization</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/gradle-android-development.png" alt="" loading="lazy" /></span>
+          <span class="t">How to Use Gradle to Optimize Android Development</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/reactive-programming-getting-started.png" alt="" loading="lazy" /></span>
+          <span class="t">Getting Started with Reactive Programming</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/reactive-programming-tokenpad-part2.png" alt="" loading="lazy" /></span>
+          <span class="t">Reactive Programming in Tokenpad (Part 2)</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/threejs-custom-meshes-buffergeometry.png" alt="" loading="lazy" /></span>
+          <span class="t">Improve Performance on Three.js Scenes Using Custom Meshes and BufferGeometry</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Engineering · payments</span>
+          <span class="blog-gcount">01</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/payments-integration-key-components.jpg" alt="" loading="lazy" /></span>
+          <span class="t">What It Takes to Build a Payments Integration: Key Components and Considerations</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Strategy</span>
+          <span class="blog-gcount">03</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="https://57blocks.com/blog" data-img="assets/blog/creative-digital-advertising.jpg">
+          <span class="blog-thumb"><img src="assets/blog/creative-digital-advertising.jpg" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t">The Rising Strategic Value of Creative in Digital Advertising</span>
+            <span class="blog-feat-desc">Why creative quality — not just targeting — is becoming the decisive lever for performance in digital advertising.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-new">New</span>
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row blog-row--feat" href="https://57blocks.com/blog" data-img="assets/blog/startup-distributed-teams.png">
+          <span class="blog-thumb"><img src="assets/blog/startup-distributed-teams.png" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t">The Architecture of Startup Distributed Teams</span>
+            <span class="blog-feat-desc">How early-stage teams structure people, ownership and communication to ship quickly across time zones.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-new">New</span>
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/code-to-cash-payments-landscape.png" alt="" loading="lazy" /></span>
+          <span class="t">Code to Cash: The Evolving Landscape of Payments</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Product and growth</span>
+          <span class="blog-gcount">03</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/drive-app-downloads-clip.png" alt="" loading="lazy" /></span>
+          <span class="t">Drive App Downloads with Clip</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/print-quote-in-seconds.jpg" alt="" loading="lazy" /></span>
+          <span class="t">Get a Print Quote in Seconds — Not Weeks</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="https://57blocks.com/blog">
+          <span class="blog-thumb"><img src="assets/blog/programmatic-seo.png" alt="" loading="lazy" /></span>
+          <span class="t">Boost Traffic and Leads with Programmatic SEO</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Building<br />something hard?</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">Tell us the problem and we will point you to the relevant writing.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#work"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></div>
+        <p>AI-native engineering delivery. Operator first, vendor second.</p>
+      </div>
+      <div class="foot-col"><h5>Solutions</h5><a href="index.html#industries">Financial services</a><a href="index.html#industries">Consumer</a><a href="legaltech.html">LegalTech</a><a href="index.html#industries">HealthTech</a><a href="ai.html">AI</a><a href="index.html#engine">Blockchain</a><a href="index.html#engine">Robotics</a></div>
+      <div class="foot-col"><h5>How we engage</h5><a href="build-new.html">Build new</a><a href="index.html#work">Rebuild</a><a href="index.html#work">Embedded teams</a><a href="blueprint.html">Blueprint</a><a href="index.html#engine">Agentic Builder</a><a href="index.html#engine">Compass</a><a href="index.html#engine">Excavator</a></div>
+      <div class="foot-col"><h5>Thinking</h5><a href="index.html#research">Research</a><a href="blog.html">Blog</a><a href="index.html#work">Work</a><a href="index.html#work">Clients</a><a href="index.html#work">Industries</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="index.html#operator">About</a><a href="index.html#operator">Ventures</a><a href="index.html#operator">Careers</a><a href="index.html#contact">Contact</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <div class="soc"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">X</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js"></script>
+<script src="assets/hero-fx.js"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>

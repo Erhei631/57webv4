@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blueprint · 57Blocks</title>
+<meta name="description" content="Blueprint is the 57Blocks specification method — turn discovery into a reviewable, approved build plan before any code is generated." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css" />
+<style>
+.bp-why{display:grid;grid-template-columns:minmax(0,670px) 1fr;gap:clamp(36px,4.5vw,72px);align-items:start}
+.bp-why .lbl{margin-bottom:22px}
+.bp-why h2{font-size:clamp(30px,5vw,58px);line-height:1.02;letter-spacing:-.03em;font-weight:600}
+.bp-copy{margin-top:30px;max-width:670px}
+.bp-copy p{color:var(--muted);font-size:17px;line-height:1.6}
+.bp-copy p+p{margin-top:18px}
+/* vertical step-flow illustration */
+.bp-illu{margin-top:0}
+.bp-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--glass);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
+  box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -40px rgba(22,16,52,.5);
+  padding:clamp(24px,2.6vw,34px)}
+.bp-flow{list-style:none;display:flex;flex-direction:column;position:relative}
+.bp-step{position:relative;display:flex;align-items:center;gap:16px;
+  background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 20px}
+.bp-step+.bp-step{margin-top:26px}
+.bp-step:not(:last-child)::after{content:"";position:absolute;left:41px;bottom:-27px;height:28px;
+  border-left:2px dashed var(--line)}
+.bp-ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.32);color:var(--accent)}
+.bp-ic svg{width:22px;height:22px}
+.bp-step-n{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink);line-height:1.1}
+.bp-step-sub{margin-left:auto;padding-left:20px;text-align:right;font-size:13px;line-height:1.35;color:var(--muted);text-wrap:pretty}
+.bp-harness{display:flex;align-items:center;gap:9px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);
+  font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--ink-soft)}
+.bp-harness .dot{color:var(--accent)}
+/* interactions */
+.bp-step{transition:border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease)}
+.bp-step:hover{border-color:rgba(124,92,255,.4);transform:translateX(3px);box-shadow:0 14px 32px -22px rgba(124,92,255,.55)}
+.bp-ic{transition:transform .25s var(--ease)}
+.bp-step:hover .bp-ic{transform:scale(1.08) rotate(-3deg)}
+@media(prefers-reduced-motion:no-preference){
+  .bp-illu .bp-step{opacity:0;transform:translateX(-14px)}
+  .bp-illu.in .bp-step{animation:bpStepIn .6s var(--ease) forwards}
+  .bp-illu.in .bp-step:nth-child(1){animation-delay:.05s}
+  .bp-illu.in .bp-step:nth-child(2){animation-delay:.18s}
+  .bp-illu.in .bp-step:nth-child(3){animation-delay:.31s}
+  .bp-illu.in .bp-step:nth-child(4){animation-delay:.44s}
+  .bp-illu.in .bp-step:nth-child(5){animation-delay:.57s}
+  .bp-illu.in .bp-step:not(:last-child)::before{content:"";position:absolute;left:41px;top:100%;width:7px;height:7px;
+    border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(124,92,255,.14);z-index:3;
+    animation:bpFlow 2.6s cubic-bezier(.55,0,.25,1) infinite both}
+  .bp-illu.in .bp-step:nth-child(1)::before{animation-delay:.8s}
+  .bp-illu.in .bp-step:nth-child(2)::before{animation-delay:1.1s}
+  .bp-illu.in .bp-step:nth-child(3)::before{animation-delay:1.4s}
+  .bp-illu.in .bp-step:nth-child(4)::before{animation-delay:1.7s}
+}
+@keyframes bpStepIn{to{opacity:1;transform:none}}
+@keyframes bpFlow{0%{transform:translate(-3px,-2px) scale(.3);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translate(-3px,24px) scale(1);opacity:0}}
+@media(max-width:860px){.bp-why{grid-template-columns:1fr}.bp-copy{max-width:none}}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="index.html#industries">Financial services</a>
+              <a href="index.html#industries">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="index.html#industries">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="index.html#engine">Blockchain</a>
+              <a href="index.html#engine">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="index.html#work">Rebuild</a>
+              <a href="index.html#work">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>How we deliver</h6>
+              <a href="blueprint.html">Blueprint</a>
+              <a href="index.html#engine">Agentic Builder</a>
+              <a href="index.html#engine">Compass</a>
+              <a href="index.html#engine">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="work.html">Work <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Work</h6>
+              <a href="work.html">Case studies</a>
+              <a href="work.html">Clients</a>
+              <a href="index.html#industries">Industries</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Thinking</h6>
+              <a href="index.html#research">Research</a>
+              <a href="index.html#research">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <h6>Company</h6>
+              <a href="index.html#operator">About</a>
+              <a href="index.html#operator">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero split" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="sh-ring"></div>
+    <div class="sh-bloom"></div>
+  </div>
+  <div class="wrap">
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#engine">How we deliver</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Blueprint</span></div>
+      <h1 class="rv rv-d1">Specification as a contract, not a developer's scratchpad.</h1>
+      <p class="lead rv rv-d2">Blueprint is a collaborative application that produces an engagement's specification artifacts before any code is generated. Clients are first-class collaborators, so review happens where the artifacts live.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="index.html#research"><s>Read the harness paper</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="dlv-doc">
+        <div class="dlv-doc-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><b>Specification</b></div>
+        <div class="dlv-lines">
+          <span class="a" style="width:88%"></span>
+          <span style="width:64%"></span>
+          <span style="width:96%"></span>
+          <span class="a" style="width:52%"></span>
+          <span style="width:78%"></span>
+          <span style="width:42%"></span>
+        </div>
+      </div>
+      <div class="dlv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Approved</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY IT MATTERS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="bp-why">
+      <div class="bp-why-text">
+        <div class="lbl rv"><span class="dot">✸</span> Why it matters</div>
+        <h2 class="rv" style="max-width:560px">The spec is the artifact the client <span style="color:var(--accent)">approves</span>.</h2>
+        <div class="bp-copy rv rv-d1">
+          <p>In a developer tool, a specification helps one engineer organize their own work. In a services engagement, the specification is the artifact the client reviews and approves, and it functions as the contractual basis for the work.</p>
+          <p>Blueprint produces a versioned chain of artifacts: a product requirements document, a design system, technical requirements, a test plan, and test cases. After the primary specification is generated, the pipeline pauses for review. A stakeholder can refine it, regenerate it, or approve it before downstream work proceeds.</p>
+          <p>On approval, Blueprint extracts a structured specification that the downstream quality gates check against. The dominant constraint on output quality turns out to be the depth of this specification, not the capability of the model.</p>
+        </div>
+      </div>
+      <div class="bp-illu rv rv-d2">
+        <div class="bp-card">
+          <ol class="bp-flow">
+            <li class="bp-step">
+              <span class="bp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg></span>
+              <span class="bp-step-n">1. Spec</span><span class="bp-step-sub">Specification artifacts</span>
+            </li>
+            <li class="bp-step">
+              <span class="bp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.6"/></svg></span>
+              <span class="bp-step-n">2. Review</span><span class="bp-step-sub">Stakeholder approval</span>
+            </li>
+            <li class="bp-step">
+              <span class="bp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M6.5 10v4M10 17.5h4"/></svg></span>
+              <span class="bp-step-n">3. Build</span><span class="bp-step-sub">Modular execution</span>
+            </li>
+            <li class="bp-step">
+              <span class="bp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+              <span class="bp-step-n">4. Test</span><span class="bp-step-sub">Quality gates</span>
+            </li>
+            <li class="bp-step">
+              <span class="bp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 8-10c2.5 0 4 1.5 4 4a22 22 0 0 1-10 8z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/></svg></span>
+              <span class="bp-step-n">5. Ship</span><span class="bp-step-sub">Production release</span>
+            </li>
+          </ol>
+          <div class="bp-harness"><span class="dot">✸</span> Senior check · AI harness on every gated step</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IT DOES ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> In practice</div>
+        <h2 class="rv" style="max-width:12ch">What it does.</h2>
+      </div>
+    </div>
+    <div class="feat-grid rv">
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg></div>
+        <h4>Reviewable artifacts</h4>
+        <p>Structured for non-developer review by founders, product managers, and business stakeholders — not just engineers.</p>
+      </article>
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h4>Explicit approvals</h4>
+        <p>Versioned, with a recorded provenance of who approved what and when, so the contract is never ambiguous.</p>
+      </article>
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18l5-5 4 4 8-8"/><path d="M14 9h6v6"/></svg></div>
+        <h4>Tier-calibrated</h4>
+        <p>Decomposed into coding tasks calibrated to the project's complexity tier, so effort matches what the work needs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE DELIVER ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="engage-panel rv">
+      <div class="sec-head">
+        <div class="t">
+          <div class="lbl"><span class="dot">✸</span> How we deliver</div>
+          <h2 style="max-width:15ch">One stage of the harness.</h2>
+        </div>
+        <p class="meta">Blueprint sets the specification. The rest of the harness builds against it — modular execution with gates, accumulated vertical skill, and recovery of legacy context.</p>
+      </div>
+      <div class="engage-row">
+        <a class="engage-tag" href="blueprint.html">Blueprint</a>
+        <a class="engage-tag" href="index.html#engine">Agentic Builder</a>
+        <a class="engage-tag" href="index.html#engine">Compass</a>
+        <a class="engage-tag" href="index.html#engine">Excavator</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED READING ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Related reading</div>
+      </div>
+    </div>
+    <div class="papers papers-3 rv">
+      <a class="paper" href="index.html#research">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Inside Story: how we approach QA engineering.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="index.html#research">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Make releases manageable with "ship as small as possible".</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="index.html#research">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Our guide to modern front-end build pipelines.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Want the<br />detail?</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">The harness paper documents the full architecture, end to end.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#work"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></div>
+        <p>AI-native engineering delivery. Operator first, vendor second.</p>
+      </div>
+      <div class="foot-col"><h5>Solutions</h5><a href="index.html#industries">Financial services</a><a href="index.html#industries">Consumer</a><a href="legaltech.html">LegalTech</a><a href="index.html#industries">HealthTech</a><a href="ai.html">AI</a><a href="index.html#engine">Blockchain</a><a href="index.html#engine">Robotics</a></div>
+      <div class="foot-col"><h5>How we engage</h5><a href="build-new.html">Build new</a><a href="index.html#work">Rebuild</a><a href="index.html#work">Embedded teams</a><a href="blueprint.html">Blueprint</a><a href="index.html#engine">Agentic Builder</a><a href="index.html#engine">Compass</a><a href="index.html#engine">Excavator</a></div>
+      <div class="foot-col"><h5>Thinking</h5><a href="index.html#research">Research</a><a href="index.html#research">Blog</a><a href="index.html#work">Work</a><a href="index.html#work">Clients</a><a href="index.html#work">Industries</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="index.html#operator">About</a><a href="index.html#operator">Ventures</a><a href="index.html#operator">Careers</a><a href="index.html#contact">Contact</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <div class="soc"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">X</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js"></script>
+<script src="assets/hero-fx.js"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>
