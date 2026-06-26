@@ -106,7 +106,7 @@ img{max-width:100%;display:block}
 .nav-right{display:flex;align-items:center;gap:14px}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:172px 0 70px;overflow:hidden}
+.hero{position:relative;padding:172px 0 124px;overflow:hidden}
 .hero .orbs{position:absolute;inset:0;z-index:0;pointer-events:none}
 .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
 .orb.o1{width:46vw;height:46vw;right:-12vw;top:-14vw;

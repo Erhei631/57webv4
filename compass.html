@@ -62,6 +62,33 @@
 }
 @keyframes cpChipIn{to{opacity:1;transform:none}}
 @media(max-width:860px){.cp-why{grid-template-columns:1fr}.cp-copy{max-width:none}}
+/* ----- hero art: proven-pattern catalog ----- */
+.cpx-doc{position:relative;background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.55);border-radius:20px;
+  -webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 44px 84px -46px rgba(22,16,52,.5);
+  padding:22px;animation:dlvFloat 7s ease-in-out infinite}
+.cpx-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.cpx-h .ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.3);color:var(--accent)}
+.cpx-h .ic svg{width:19px;height:19px}
+.cpx-h b{font-family:var(--font-m);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-right:auto}
+.cpx-h .cpx-count{font-family:var(--font-m);font-size:10px;letter-spacing:.04em;color:var(--ink-soft,#6b6680)}
+.cpx-list{display:flex;flex-direction:column}
+.cpx-row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid rgba(12,12,18,.07)}
+.cpx-row:last-child{border-bottom:0}
+.cpx-ic{flex:0 0 auto;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  background:rgba(12,12,18,.05);border:1px solid var(--line);color:var(--ink)}
+.cpx-ic svg{width:16px;height:16px}
+.cpx-t{display:flex;flex-direction:column;gap:3px;margin-right:auto;min-width:0}
+.cpx-n{font-family:var(--font-d);font-size:13.5px;font-weight:600;letter-spacing:-.01em;color:var(--ink);line-height:1}
+.cpx-k{font-family:var(--font-m);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.cpx-tag{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;
+  font-family:var(--font-m);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;
+  padding:5px 9px;border-radius:999px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.3);color:var(--accent)}
+.cpx-tag svg{width:12px;height:12px}
+.cpx-tag.warn{background:rgba(176,120,20,.1);border-color:rgba(176,120,20,.32);color:#9a6a13}
+.dlv-art .dlv-badge{right:18px;bottom:-19px;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.cpx-doc{animation:none}}
 </style>
 </head>
 <body class="subpage">
@@ -133,14 +160,13 @@
               <a href="about.html">About</a>
               <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
               <a href="index.html#operator">Careers</a>
-              <a href="index.html#contact">Contact</a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="nav-right">
-      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
     </div>
   </div>
 </nav>
@@ -157,20 +183,38 @@
       <h1 class="rv rv-d1">Proven patterns, brought to your build.</h1>
       <p class="lead rv rv-d2">Compass is the engineering knowledge our teams bring to your project: the patterns, reference implementations, and known failure modes we have proven across our own work, applied through Blueprint and the build harness from the first day. What it means for you is simple — your build starts ahead.</p>
       <div class="hero-cta rv rv-d2">
-        <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-        <a class="btn" href="index.html#research"><s>Read the harness paper</s></a>
+        <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="harness-mediated-delivery.html"><s>Read the harness paper</s></a>
       </div>
     </div>
     <div class="dlv-art rv rv-d3" aria-hidden="true">
-      <div class="dlv-doc">
-        <div class="dlv-doc-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></span><b>Compass</b></div>
-        <div class="dlv-lines">
-          <span class="a" style="width:84%"></span>
-          <span style="width:62%"></span>
-          <span style="width:90%"></span>
-          <span class="a" style="width:50%"></span>
-          <span style="width:76%"></span>
-          <span style="width:40%"></span>
+      <div class="cpx-doc">
+        <div class="cpx-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></span>
+          <b>Compass</b>
+          <span class="cpx-count">proven library</span>
+        </div>
+        <div class="cpx-list">
+          <div class="cpx-row">
+            <span class="cpx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/></svg></span>
+            <span class="cpx-t"><span class="cpx-n">Auth &amp; sessions</span><span class="cpx-k">pattern</span></span>
+            <span class="cpx-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Proven</span>
+          </div>
+          <div class="cpx-row">
+            <span class="cpx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h11M4 7l3-3M4 7l3 3M20 17H9M20 17l-3-3M20 17l-3 3"/></svg></span>
+            <span class="cpx-t"><span class="cpx-n">Event ingestion</span><span class="cpx-k">reference impl</span></span>
+            <span class="cpx-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Proven</span>
+          </div>
+          <div class="cpx-row">
+            <span class="cpx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span>
+            <span class="cpx-t"><span class="cpx-n">Idempotent retries</span><span class="cpx-k">pattern</span></span>
+            <span class="cpx-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Proven</span>
+          </div>
+          <div class="cpx-row">
+            <span class="cpx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+            <span class="cpx-t"><span class="cpx-n">Dual-write sync</span><span class="cpx-k">failure mode</span></span>
+            <span class="cpx-tag warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg> Avoid</span>
+          </div>
         </div>
       </div>
       <div class="dlv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg> Day one</div>
@@ -286,7 +330,7 @@
     <h2 class="rv" style="font-size:90px">Want the<br />detail?</h2>
     <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">The harness paper documents the full architecture, end to end.</p>
     <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
       <a class="btn" href="work.html"><s>See our work</s></a>
     </div>
   </div>
@@ -348,7 +392,6 @@
             <a href="about.html">About</a>
             <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
             <a href="index.html#operator">Careers</a>
-            <a href="index.html#contact">Contact</a>
           </div>
         </div>
       </div>
@@ -356,7 +399,7 @@
     <div class="foot-bottom">
       <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
       <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
-      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://twitter.com/57blocks" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://x.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
     </div>
   </div>
 </footer>
