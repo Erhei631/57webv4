@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blockchain Engineering · 57Blocks</title>
+<meta name="description" content="Blockchain and onchain engineering by 57Blocks — protocol work, wallets, custody and consumer crypto delivered to production." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- blockchain hero — cool indigo→cyan ledger aurora ----- */
+.subhero.bc .bchero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  background:linear-gradient(168deg,#eef1ff 0%,#e7f2ff 44%,#e6fbfb 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.bc-neon{position:absolute;inset:-15%;pointer-events:none;
+  background:
+    radial-gradient(28% 30% at 20% 18%, rgba(54,170,230,.40), transparent 66%),
+    radial-gradient(30% 32% at 80% 14%, rgba(96,120,255,.34), transparent 66%),
+    radial-gradient(30% 32% at 58% 40%, rgba(64,210,196,.34), transparent 68%),
+    radial-gradient(26% 30% at 36% 44%, rgba(108,96,255,.30), transparent 68%);
+  filter:blur(58px);transform-origin:center;
+  animation:bcNeon 19s ease-in-out infinite alternate}
+.bc-grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(64,110,200,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(64,110,200,.10) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(60% 60% at 56% 34%, #000 0%, transparent 72%);
+  mask-image:radial-gradient(60% 60% at 56% 34%, #000 0%, transparent 72%)}
+.bc-bloom{position:absolute;left:50%;top:34%;width:64vw;height:42vh;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(48% 52% at 50% 50%, rgba(255,255,255,.82), rgba(255,255,255,0) 72%);
+  filter:blur(8px)}
+@keyframes bcNeon{0%{transform:translate(-2%,-1%) scale(1)}50%{transform:translate(2%,1.5%) scale(1.08)}100%{transform:translate(-1%,2%) scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.bc-neon{animation:none}}
+/* protocol marquee — match financial-services client band */
+.subhero.bc + .sec .marquee .it{font-size:24px}
+/* chains logo row */
+.chains-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin-top:30px}
+.chains-row img{height:32px;width:32px;display:block;opacity:.78}
+.chains-row .chains-lbl{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chains-row .chains-more{font-size:16px;color:var(--muted)}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Case studies</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero bc" id="top">
+  <div class="bchero-bg">
+    <div class="sh-dots"></div>
+    <div class="bc-grid"></div>
+    <div class="bc-neon"></div>
+    <div class="bc-bloom"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="index.html#industries">Capabilities</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Blockchain</span></div>
+    <h1 class="rv rv-d1">dApp development and blockchain infrastructure engineering.</h1>
+    <p class="lead rv rv-d2">Deep blockchain expertise, having built and invested across many DeFi categories. Experience on every major Layer 1 and Layer 2, and a long history of contributing critical on-chain utilities and infrastructure.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="financial-services.html"><s>See financial services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#contact"><s>Talk to our team</s></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Services</div>
+        <h2 class="rv" style="max-width:12ch">Four capability lines.</h2>
+      </div>
+      <p class="meta rv rv-d1">From the chains and contracts underneath to the protocols, agents, and apps on top — the full onchain stack, delivered by one team.</p>
+    </div>
+    <div class="svc-tabs rv">
+      <div class="svc-list">
+        <button class="svc-row is-active" type="button">
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
+          <span class="svc-tx"><span class="svc-k">Infrastructure</span><span class="svc-ti">On-chain infrastructure</span></span>
+          <svg class="svc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="svc-row" type="button">
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M7 11 17 6.8M7 13l10 4.2"/></svg></span>
+          <span class="svc-tx"><span class="svc-k">Protocols</span><span class="svc-ti">DeFi protocols</span></span>
+          <svg class="svc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="svc-row" type="button">
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1.4"/><path d="M9 13h.01M15 13h.01"/><path d="M2 14v3M22 14v3"/></svg></span>
+          <span class="svc-tx"><span class="svc-k">Agents</span><span class="svc-ti">AI agents</span></span>
+          <svg class="svc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="svc-row" type="button">
+          <span class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2.4"/><path d="M11 18h2"/></svg></span>
+          <span class="svc-tx"><span class="svc-k">Apps</span><span class="svc-ti">dApps</span></span>
+          <svg class="svc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="svc-cards">
+        <article class="svc-card has-illu is-active">
+          <div class="svc-illu if-illu" aria-hidden="true">
+            <span class="if-node">Chain testing</span>
+            <span class="if-arrow">↓</span>
+            <span class="if-node">Contract migration</span>
+            <span class="if-arrow">↓</span>
+            <span class="if-node">Developer tooling</span>
+            <span class="if-arrow">↓</span>
+            <span class="if-node">10+ chain compatibility</span>
+          </div>
+          <div class="svc-meta">
+            <h3>On-chain infrastructure</h3>
+            <p>Chain testing, contract migration, developer tools, and ecosystem compatibility across more than ten chains.</p>
+          </div>
+        </article>
+        <article class="svc-card has-illu">
+          <div class="svc-illu mc-illu" aria-hidden="true">
+            <svg class="mc-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 50 L18 28"/><path d="M50 50 L82 28"/><path d="M50 50 L13 62"/><path d="M50 50 L87 62"/><path d="M50 50 L50 90"/></svg>
+            <span class="mc-node mc-core">Protocol</span>
+            <span class="mc-node mc-i mc-i1">DEX</span>
+            <span class="mc-node mc-i mc-i2">Account abstraction</span>
+            <span class="mc-node mc-i mc-i3">Stablecoins</span>
+            <span class="mc-node mc-i mc-i4">RWA</span>
+            <span class="mc-node mc-i mc-i5">Lending</span>
+          </div>
+          <div class="svc-meta">
+            <h3>DeFi protocols</h3>
+            <p>DEX, account abstraction, stablecoins, and RWA and lending, on EVM, Solana, and Soroban.</p>
+          </div>
+        </article>
+        <article class="svc-card has-illu">
+          <div class="svc-illu" aria-hidden="true">
+            <svg class="ag-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 10 V48"/><path d="M50 48 L14 88"/><path d="M50 48 L38 88"/><path d="M50 48 L63 88"/><path d="M50 48 L88 88"/></svg>
+            <span class="ag-node ag-user">AgentSmith SDK</span>
+            <span class="ag-node ag-hub">On-chain agent</span>
+            <span class="ag-node ag-leaf l1">Trading</span>
+            <span class="ag-node ag-leaf l2">Yield</span>
+            <span class="ag-node ag-leaf l3">Compliance</span>
+            <span class="ag-node ag-leaf l4">Audit</span>
+          </div>
+          <div class="svc-meta">
+            <h3>AI agents</h3>
+            <p>On-chain agents for trading, yield and liquidity, compliance, and contract auditing, built on the AgentSmith SDK.</p>
+          </div>
+        </article>
+        <article class="svc-card has-illu">
+          <div class="svc-illu de-illu" aria-hidden="true">
+            <span class="de-node">Design</span>
+            <span class="de-arrow"></span>
+            <span class="de-node">Build</span>
+            <span class="de-arrow"></span>
+            <span class="de-node">Wallet</span>
+            <span class="de-arrow"></span>
+            <span class="de-node">Optimize</span>
+            <span class="de-arrow"></span>
+            <span class="de-node de-end">Ship</span>
+          </div>
+          <div class="svc-meta">
+            <h3>dApps</h3>
+            <p>dApp and wallet development, mobile-first, with performance optimization for production traffic.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Clients</div>
+        <h2 class="rv" style="max-width:14ch">Protocols, tools, and chains.</h2>
+      </div>
+    </div>
+    <div class="marquee-band rv" style="margin-top:8px">
+      <div class="marquee">
+        <span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/cobo.png" alt="Cobo" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span><span class="it"><img src="assets/logos/crossmint.png" alt="Crossmint" /></span><span class="it"><img src="assets/logos/fs-lifi.png" alt="LI.FI" /></span><span class="it"><img src="assets/logos/story-wordmark.png" alt="Story" /></span><span class="it"><img src="assets/logos/tokenpad.png" alt="Tokenpad" /></span><span class="it"><img src="assets/logos/capstack.png" alt="Capstack" /></span>
+        <span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/cobo.png" alt="Cobo" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span><span class="it"><img src="assets/logos/crossmint.png" alt="Crossmint" /></span><span class="it"><img src="assets/logos/fs-lifi.png" alt="LI.FI" /></span><span class="it"><img src="assets/logos/story-wordmark.png" alt="Story" /></span><span class="it"><img src="assets/logos/tokenpad.png" alt="Tokenpad" /></span><span class="it"><img src="assets/logos/capstack.png" alt="Capstack" /></span>
+      </div>
+    </div>
+    <div class="chains-row rv rv-d1">
+      <span class="chains-lbl">Chains</span>
+      <img src="assets/logos/chain-ethereum.png" alt="Ethereum" />
+      <img src="assets/logos/chain-stellar.png" alt="Stellar" />
+      <img src="assets/logos/chain-solana.png" alt="Solana" />
+      <img src="assets/logos/chain-bitcoin.png" alt="Bitcoin" />
+      <img src="assets/logos/chain-story.png" alt="Story" />
+      <span class="chains-more">and more</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED READING ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Related reading</div>
+      </div>
+    </div>
+    <div class="papers papers-3 rv">
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>How to migrate an Ethereum protocol to Solana — contracts (Part 1).</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Soroban integration testing best practices (JS).</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Deep dive into resource limitations in Solana development — CU edition.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>Account abstraction in Ethereum: building and optimizing smart wallets.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>How to QA smart contracts on blockchain.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>A guide to Web3 and dApp infrastructure.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv">Building<br />on-chain?</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">Tell us the chain and the protocol, and we will scope it.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#work"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5>How we deliver</h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Case studies</h5>
+            <a href="work.html">Case studies</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://twitter.com/57blocks" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+<script>
+(function(){
+  var wrap=document.querySelector('.svc-tabs'); if(!wrap)return;
+  var rows=[].slice.call(wrap.querySelectorAll('.svc-row'));
+  var cards=[].slice.call(wrap.querySelectorAll('.svc-card'));
+  function act(i){rows.forEach(function(r,j){r.classList.toggle('is-active',j===i);});cards.forEach(function(c,j){c.classList.toggle('is-active',j===i);});}
+  rows.forEach(function(r,i){['mouseenter','click','focus'].forEach(function(ev){r.addEventListener(ev,function(){act(i);});});});
+})();
+</script>
+</body>
+</html>

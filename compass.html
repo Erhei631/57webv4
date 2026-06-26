@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compass · 57Blocks</title>
+<meta name="description" content="Compass is the engineering knowledge 57Blocks brings to your build — proven patterns, reference implementations, and known failure modes applied from day one." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- soft teal hero ----- */
+.subhero.split.cp .subhero-bg{background:linear-gradient(100deg,#c9ebec 0%,#d2e6f0 38%,#dce3f3 70%,#e7e0f4 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.cp-clouds{position:absolute;left:54%;top:30%;width:70vw;height:48vh;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(46% 50% at 50% 50%, rgba(255,255,255,.72), rgba(255,255,255,0) 70%);
+  filter:blur(36px);transform-origin:center;
+  animation:cpDrift 18s ease-in-out infinite alternate}
+@keyframes cpDrift{from{transform:translate(-52%,-50%) scale(1)}to{transform:translate(-48%,-50%) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.cp-clouds{animation:none}}
+.cp-why{display:grid;grid-template-columns:minmax(0,670px) 1fr;gap:clamp(36px,4.5vw,72px);align-items:start}
+.cp-why .lbl{margin-bottom:22px}
+.cp-why h2{font-size:clamp(30px,5vw,58px);line-height:1.02;letter-spacing:-.03em;font-weight:600}
+.cp-copy{margin-top:30px;max-width:670px}
+.cp-copy p{color:var(--muted);font-size:17px;line-height:1.6}
+.cp-copy p+p{margin-top:18px}
+/* knowledge-stack illustration */
+.cp-illu{margin-top:0}
+.cp-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--glass);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
+  box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -40px rgba(22,16,52,.5);
+  padding:clamp(24px,2.6vw,34px)}
+.cp-grp+.cp-grp{margin-top:24px}
+.cp-grp-h{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cp-grp-h .cp-ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.32);color:var(--accent)}
+.cp-grp-h .cp-ic svg{width:18px;height:18px}
+.cp-grp-h b{font-family:var(--font-d);font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+.cp-grp-h span{margin-left:auto;font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cp-chips{display:flex;flex-wrap:wrap;gap:9px}
+.cp-chip{font-family:var(--font-d);font-size:14px;font-weight:500;color:var(--ink-soft);
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;
+  transition:border-color .22s var(--ease),transform .22s var(--ease),color .22s var(--ease)}
+.cp-chip:hover{border-color:rgba(124,92,255,.45);color:var(--accent);transform:translateY(-2px)}
+.cp-harness{display:flex;align-items:center;gap:9px;margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);
+  font-family:var(--font-m);font-size:12px;letter-spacing:.04em;color:var(--ink-soft)}
+.cp-harness .dot{color:var(--accent)}
+@media(prefers-reduced-motion:no-preference){
+  .cp-illu .cp-chip{opacity:0;transform:translateY(8px)}
+  .cp-illu.in .cp-chip{animation:cpChipIn .5s var(--ease) forwards}
+  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(1){animation-delay:.05s}
+  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(2){animation-delay:.11s}
+  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(3){animation-delay:.17s}
+  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(4){animation-delay:.23s}
+  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(5){animation-delay:.29s}
+  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(1){animation-delay:.36s}
+  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(2){animation-delay:.42s}
+  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(3){animation-delay:.48s}
+  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(4){animation-delay:.54s}
+}
+@keyframes cpChipIn{to{opacity:1;transform:none}}
+@media(max-width:860px){.cp-why{grid-template-columns:1fr}.cp-copy{max-width:none}}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Case studies</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero split cp" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="cp-clouds"></div>
+  </div>
+  <div class="wrap">
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#engine">How we deliver</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Compass</span></div>
+      <h1 class="rv rv-d1">Proven patterns, brought to your build.</h1>
+      <p class="lead rv rv-d2">Compass is the engineering knowledge our teams bring to your project: the patterns, reference implementations, and known failure modes we have proven across our own work, applied through Blueprint and the build harness from the first day. What it means for you is simple — your build starts ahead.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="index.html#research"><s>Read the harness paper</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="dlv-doc">
+        <div class="dlv-doc-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></span><b>Compass</b></div>
+        <div class="dlv-lines">
+          <span class="a" style="width:84%"></span>
+          <span style="width:62%"></span>
+          <span style="width:90%"></span>
+          <span class="a" style="width:50%"></span>
+          <span style="width:76%"></span>
+          <span style="width:40%"></span>
+        </div>
+      </div>
+      <div class="dlv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg> Day one</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="cp-why">
+      <div class="cp-why-text">
+        <div class="lbl rv"><span class="dot">✸</span> Why it matters</div>
+        <h2 class="rv" style="max-width:560px">The benefit of work that is already solved.</h2>
+        <div class="cp-copy rv rv-d1">
+          <p>Instead of a team discovering the right architecture on your time and your budget, the approaches that have worked — and the mistakes that have not — are applied from the start. Your project ramps faster and ships at a higher quality bar.</p>
+          <p>Compass spans two kinds of knowledge: horizontal engineering practice across frontend, backend, mobile, testing, and product, and vertical best practices for your domain in financial services, healthtech, legaltech, and consumer. Both set the depth of your specification and guide the build, so the decisions that are expensive to get wrong are made well, and made early.</p>
+          <p>Your intellectual property stays yours. Compass is built from our own engineering craft, not from client code or data. What your team builds with us belongs to you — what we bring is the reusable patterns and hard-won lessons that make a senior team senior.</p>
+        </div>
+      </div>
+      <div class="cp-illu rv rv-d2">
+        <div class="cp-card">
+          <div class="cp-grp">
+            <div class="cp-grp-h">
+              <span class="cp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span>
+              <b>Horizontal practice</b><span>Engineering</span>
+            </div>
+            <div class="cp-chips">
+              <span class="cp-chip">Frontend</span>
+              <span class="cp-chip">Backend</span>
+              <span class="cp-chip">Mobile</span>
+              <span class="cp-chip">Testing</span>
+              <span class="cp-chip">Product</span>
+            </div>
+          </div>
+          <div class="cp-grp">
+            <div class="cp-grp-h">
+              <span class="cp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></span>
+              <b>Vertical domains</b><span>Best practice</span>
+            </div>
+            <div class="cp-chips">
+              <span class="cp-chip">Financial services</span>
+              <span class="cp-chip">HealthTech</span>
+              <span class="cp-chip">LegalTech</span>
+              <span class="cp-chip">Consumer</span>
+            </div>
+          </div>
+          <div class="cp-harness"><span class="dot">✸</span> Applied through Blueprint &amp; the build harness</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT IT DOES ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> In practice</div>
+        <h2 class="rv" style="max-width:12ch">What it does.</h2>
+      </div>
+    </div>
+    <div class="feat-grid rv">
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18l5-5 4 4 8-8"/><path d="M14 9h6v6"/></svg></div>
+        <h4>You start ahead</h4>
+        <p>Tested approaches and known pitfalls applied from the first day, so ramp-up is shorter and quality is higher.</p>
+      </article>
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></div>
+        <h4>The right call, early</h4>
+        <p>Domain and engineering patterns shape the specification, so the costly decisions are made well before code is written.</p>
+      </article>
+      <article class="feat">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h4>Your IP stays yours</h4>
+        <p>Compass is our own engineering knowledge, not client data. Whatever we build with you belongs to you.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED READING ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Related reading</div>
+      </div>
+    </div>
+    <div class="papers rv">
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>What makes a good vector database? Comparing Pinecone and LanceDB.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="paper" href="blog.html">
+        <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
+        <h3>How to use LLMs to extract document information.</h3>
+        <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Want the<br />detail?</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">The harness paper documents the full architecture, end to end.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="work.html"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5>How we deliver</h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Case studies</h5>
+            <a href="work.html">Case studies</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://twitter.com/57blocks" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .cp-illu, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>

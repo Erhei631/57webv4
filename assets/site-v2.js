@@ -12,19 +12,27 @@
     document.body.classList.remove('locked');
   }
   if(loader && lc){
-    document.body.classList.add('locked');
-    if(reduce){
-      lc.textContent='100';
-      setTimeout(function(){loader.classList.add('done');go();},300);
+    var seen;
+    try{ seen = sessionStorage.getItem('57b_loader_seen'); }catch(e){ seen = null; }
+    if(seen){
+      loader.classList.add('done');
+      go();
     }else{
-      var n=0;
-      var iv=setInterval(function(){
-        n += Math.max(1, Math.round((100-n)/7));
-        if(n>=100){n=100;clearInterval(iv);
-          setTimeout(function(){loader.classList.add('done');go();},480);
-        }
-        lc.textContent = n<10 ? '0'+n : ''+n;
-      },42);
+      try{ sessionStorage.setItem('57b_loader_seen','1'); }catch(e){}
+      document.body.classList.add('locked');
+      if(reduce){
+        lc.textContent='100';
+        setTimeout(function(){loader.classList.add('done');go();},300);
+      }else{
+        var n=0;
+        var iv=setInterval(function(){
+          n += Math.max(1, Math.round((100-n)/7));
+          if(n>=100){n=100;clearInterval(iv);
+            setTimeout(function(){loader.classList.add('done');go();},480);
+          }
+          lc.textContent = n<10 ? '0'+n : ''+n;
+        },42);
+      }
     }
   }else{ go(); }
 
@@ -76,6 +84,24 @@
     head.addEventListener('click',function(){ set(!item.classList.contains('open')); });
     if(i===0) requestAnimationFrame(function(){set(true);});
     window.addEventListener('resize',function(){ if(item.classList.contains('open')) body.style.maxHeight=body.scrollHeight+'px'; });
+  });
+
+  /* ---------- dropdown parents are triggers, not links ---------- */
+  var menuItems=[].slice.call(document.querySelectorAll('.nav-item.has-menu'));
+  menuItems.forEach(function(item){
+    var link=item.querySelector(':scope > a');
+    if(!link) return;
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var wasOpen=item.classList.contains('open');
+      menuItems.forEach(function(o){o.classList.remove('open');});
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(e.target.closest && e.target.closest('.nav-item.has-menu')) return;
+    menuItems.forEach(function(o){o.classList.remove('open');});
   });
 
   /* ---------- smooth anchor scroll ---------- */

@@ -9,6 +9,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- soft-purple aurora hero (light from top-right) ----- */
+.subhero.lt .subhero-bg{background:linear-gradient(196deg,#faf7ff 0%,#f0eaff 40%,#e6dcff 74%,#dccfff 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.subhero.lt .lt-streaks{position:absolute;inset:-25%;pointer-events:none;
+  background:
+    linear-gradient(62deg, transparent 16%, rgba(255,255,255,.7) 21%, transparent 29%),
+    linear-gradient(62deg, transparent 40%, rgba(255,255,255,.52) 46%, transparent 55%),
+    linear-gradient(62deg, transparent 66%, rgba(255,255,255,.4) 72%, transparent 81%);
+  filter:blur(22px);transform-origin:center;
+  animation:ltDrift 16s ease-in-out infinite alternate}
+.subhero.lt .lt-bloom{position:absolute;left:62%;top:30%;width:70vw;height:50vh;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(46% 50% at 50% 50%, rgba(255,255,255,.88), rgba(255,255,255,0) 72%);
+  filter:blur(10px)}
+@keyframes ltDrift{from{transform:translateX(3%) translateY(-1%)}to{transform:translateX(-3%) translateY(2%)}}
+@media(prefers-reduced-motion:reduce){.subhero.lt .lt-streaks{animation:none}}
+</style>
 </head>
 <body class="subpage">
 
@@ -16,7 +34,7 @@
 <nav class="nav">
   <div class="nav-bg"></div>
   <div class="nav-in">
-    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></a>
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
     <div class="nav-links">
       <div class="nav-item has-menu">
         <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
@@ -24,22 +42,22 @@
           <div class="nav-pop mega">
             <div class="mega-col">
               <h6>Industries</h6>
-              <a href="index.html#industries">Financial services</a>
-              <a href="index.html#industries">Consumer</a>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
               <a href="legaltech.html">LegalTech</a>
-              <a href="index.html#industries">HealthTech</a>
+              <a href="healthtech.html">HealthTech</a>
             </div>
             <div class="mega-col">
               <h6>Capabilities</h6>
               <a href="ai.html">AI</a>
-              <a href="index.html#engine">Blockchain</a>
-              <a href="index.html#engine">Robotics</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
             </div>
             <div class="mega-col">
               <h6>How we engage</h6>
               <a href="build-new.html">Build new</a>
-              <a href="index.html#work">Rebuild</a>
-              <a href="index.html#work">Embedded teams</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
             </div>
           </div>
         </div>
@@ -49,35 +67,23 @@
         <div class="nav-menu">
           <div class="nav-pop mega solo">
             <div class="mega-col">
-              <h6>How we deliver</h6>
               <a href="blueprint.html">Blueprint</a>
-              <a href="index.html#engine">Agentic Builder</a>
-              <a href="index.html#engine">Compass</a>
-              <a href="index.html#engine">Excavator</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="nav-item has-menu">
-        <a href="work.html">Work <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
-        <div class="nav-menu">
-          <div class="nav-pop mega solo">
-            <div class="mega-col">
-              <h6>Work</h6>
-              <a href="work.html">Case studies</a>
-              <a href="work.html">Clients</a>
-              <a href="index.html#industries">Industries</a>
-            </div>
-          </div>
-        </div>
+      <div class="nav-item">
+        <a href="work.html">Case studies</a>
       </div>
       <div class="nav-item has-menu">
         <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
         <div class="nav-menu">
           <div class="nav-pop mega solo">
             <div class="mega-col">
-              <h6>Thinking</h6>
-              <a href="index.html#research">Research</a>
+              <a href="research.html">Research</a>
               <a href="blog.html">Blog</a>
             </div>
           </div>
@@ -88,9 +94,8 @@
         <div class="nav-menu">
           <div class="nav-pop mega solo">
             <div class="mega-col">
-              <h6>Company</h6>
-              <a href="index.html#operator">About</a>
-              <a href="index.html#operator">Ventures</a>
+              <a href="about.html">About</a>
+              <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
               <a href="index.html#operator">Careers</a>
               <a href="index.html#contact">Contact</a>
             </div>
@@ -105,11 +110,11 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero" id="top">
+<header class="subhero lt" id="top">
   <div class="subhero-bg">
     <div class="sh-dots"></div>
-    <div class="sh-ring"></div>
-    <div class="sh-bloom"></div>
+    <div class="lt-streaks"></div>
+    <div class="lt-bloom"></div>
   </div>
   <div class="wrap">
     <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>LegalTech</span></div>
@@ -246,18 +251,67 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="foot-brand">
-        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.svg" alt="57Blocks" /></div>
-        <p>AI-native engineering delivery. Operator first, vendor second.</p>
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="foot-col"><h5>Solutions</h5><a href="index.html#industries">Financial services</a><a href="index.html#industries">Consumer</a><a href="legaltech.html">LegalTech</a><a href="index.html#industries">HealthTech</a><a href="ai.html">AI</a><a href="index.html#engine">Blockchain</a><a href="index.html#engine">Robotics</a></div>
-      <div class="foot-col"><h5>How we engage</h5><a href="build-new.html">Build new</a><a href="index.html#work">Rebuild</a><a href="index.html#work">Embedded teams</a><a href="blueprint.html">Blueprint</a><a href="index.html#engine">Agentic Builder</a><a href="index.html#engine">Compass</a><a href="index.html#engine">Excavator</a></div>
-      <div class="foot-col"><h5>Thinking</h5><a href="index.html#research">Research</a><a href="blog.html">Blog</a><a href="index.html#work">Work</a><a href="index.html#work">Clients</a><a href="index.html#work">Industries</a></div>
-      <div class="foot-col"><h5>Company</h5><a href="index.html#operator">About</a><a href="index.html#operator">Ventures</a><a href="index.html#operator">Careers</a><a href="index.html#contact">Contact</a></div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5>How we deliver</h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Case studies</h5>
+            <a href="work.html">Case studies</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
-      <div class="soc"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">X</a></div>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://twitter.com/57blocks" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
     </div>
   </div>
 </footer>

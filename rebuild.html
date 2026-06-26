@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rebuild · 57Blocks</title>
+<meta name="description" content="Rebuild legacy software with 57Blocks — modernise architectures and reclaim velocity using our AI-native engineering methods." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- excavation / strata hero ----- */
+.subhero.rb .subhero-bg{background:linear-gradient(196deg,#f7f5ff 0%,#ece6ff 40%,#ddd2ff 74%,#ccbcff 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.rb-strata{position:absolute;inset:-20%;pointer-events:none;
+  background:repeating-linear-gradient(0deg, transparent 0 38px, rgba(255,255,255,.5) 38px 39px);
+  -webkit-mask-image:radial-gradient(70% 60% at 30% 18%, #000 0%, transparent 75%);
+  mask-image:radial-gradient(70% 60% at 30% 18%, #000 0%, transparent 75%);
+  transform-origin:center;animation:rbSettle 20s ease-in-out infinite alternate}
+.rb-core{position:absolute;left:18%;top:14%;width:54vw;height:46vh;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(48% 52% at 50% 50%, rgba(255,255,255,.92), rgba(255,255,255,0) 70%);
+  filter:blur(14px)}
+.rb-beam{position:absolute;left:-8%;top:-28%;width:46%;height:172%;transform:rotate(24deg);transform-origin:top left;pointer-events:none;
+  background:linear-gradient(90deg, transparent 0%, rgba(150,130,220,.24) 30%, rgba(255,255,255,.55) 48%, rgba(170,150,225,.2) 66%, transparent 100%);
+  filter:blur(36px);mix-blend-mode:screen}
+@keyframes rbSettle{from{transform:translateY(-1.5%)}to{transform:translateY(1.5%)}}
+@media(prefers-reduced-motion:reduce){.rb-strata{animation:none}}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#engine">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Case studies</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#operator">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+              <a href="index.html#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="index.html#contact"><s>Talk to us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero rb" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="rb-strata"></div>
+    <div class="rb-beam"></div>
+    <div class="rb-core"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="index.html#work">How we engage</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Rebuild</span></div>
+    <h1 class="rv rv-d1">Replace legacy systems and partial-fit SaaS.</h1>
+    <p class="lead rv rv-d2">We rebuild bloated, business-critical custom systems and the partial-fit SaaS that companies have outgrown. This is also our enterprise motion: the system nobody fully understands, built by many hands who have moved on, too risky to rebuild by hand, and still running the business every day. Excavator recovers what it actually does, then the same machinery rebuilds it tailored.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="index.html#engine"><s>How we deliver</s></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE SHIFT ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> The shift</div>
+        <h2 class="rv" style="max-width:18ch">When rebuilding becomes viable, <span style="color:var(--accent)">tailored</span> beats partial-fit.</h2>
+      </div>
+      <p class="meta rv rv-d1">Work that was previously too risky and too slow to touch becomes practical: tailored systems for businesses that had settled for partial-fit SaaS, and ground-up rebuilds of legacy enterprise systems, held to the same quality bar as a new build.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> How it works</div>
+        <h2 class="rv" style="max-width:15ch">Recover, rebuild, migrate.</h2>
+      </div>
+      <p class="meta rv rv-d1">The same machinery that recovers what the old system actually does then rebuilds it tailored — and migrates your data into it.</p>
+    </div>
+    <div class="feat-grid rv">
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+        <h4>Excavator</h4>
+        <p>Recovers requirements, behaviors, and the data model from the running system — surfacing what it actually does before anything is rebuilt.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></div>
+        <h4>Users as oracle</h4>
+        <p>Day-to-day users decide which behaviors matter and which are vestigial, so the rebuild keeps what the business relies on and drops the rest.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="index.html#engine">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="6" cy="6" rx="3.4" ry="2"/><path d="M2.6 6v6c0 1.1 1.5 2 3.4 2"/><path d="M11 12h7m0 0-3-3m3 3-3 3"/><ellipse cx="20" cy="18" rx="1.6" ry="1"/></svg></div>
+        <h4>Data migration</h4>
+        <p>A migration context maps the old data into the rebuilt system, applied after the build — so you switch over to a tailored system, not a blank one.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE ENGAGE ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="engage-panel rv">
+      <div class="sec-head">
+        <div class="t">
+          <div class="lbl"><span class="dot">✸</span> How we engage</div>
+          <h2 style="max-width:15ch">Come in where it counts.</h2>
+        </div>
+        <p class="meta">Rebuild is one of three ways we engage. We build new products as production MVPs, rebuild partial-fit systems into tailored ones, and embed senior teams alongside yours.</p>
+      </div>
+      <div class="engage-row">
+        <span class="engage-tag">Build new</span>
+        <span class="engage-tag">Rebuild</span>
+        <span class="engage-tag">Embedded teams</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px">Let's scope<br />your rebuild.</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">We start with a conversation about scope — then tell you what it takes to replace it.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="index.html#contact"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="work.html"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legaltech.html">LegalTech</a>
+              <a href="healthtech.html">HealthTech</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">How we engage</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="embedded-teams.html">Embedded teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5>How we deliver</h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Case studies</h5>
+            <a href="work.html">Case studies</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="https://57blocks.capital/" target="_blank" rel="noopener">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc. · 伍柒必乐科技（成都）有限公司 版权所有</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://twitter.com/57blocks" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>
