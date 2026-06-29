@@ -92,6 +92,9 @@
     var link=item.querySelector(':scope > a');
     if(!link) return;
     link.addEventListener('click',function(e){
+      var href=link.getAttribute('href')||'';
+      /* real page links navigate; in-page anchors just toggle the menu */
+      if(href && href.indexOf('#')===-1) return;
       e.preventDefault();
       e.stopImmediatePropagation();
       var wasOpen=item.classList.contains('open');

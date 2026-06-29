@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI for your business · 57Blocks</title>
+<meta name="description" content="You do not need a tech team to get the benefits of AI. A four-stage engagement model that starts with your real problem, proves value early, and delivers production software you own." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- soft aurora hero ----- */
+.subhero.ea .subhero-bg{background:linear-gradient(160deg,#ece6ff 0%,#dee2ff 36%,#cfe7f6 70%,#c4eef0 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.ea-aurora{position:absolute;left:-10%;top:-40%;width:60%;height:180%;transform:rotate(22deg);transform-origin:top left;pointer-events:none;
+  background:linear-gradient(90deg, transparent 0%, rgba(140,120,255,.26) 30%, rgba(255,255,255,.55) 48%, rgba(110,210,235,.24) 66%, transparent 100%);
+  filter:blur(40px);mix-blend-mode:screen;animation:eaDrift 20s ease-in-out infinite alternate}
+.ea-wave{position:absolute;inset:-20%;pointer-events:none;
+  background:
+    radial-gradient(40% 60% at 22% 18%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(48% 54% at 80% 30%, rgba(170,150,255,.3), transparent 64%),
+    radial-gradient(50% 50% at 60% 8%, rgba(120,205,230,.26), transparent 62%);
+  -webkit-mask-image:radial-gradient(70% 60% at 35% 14%, #000 0%, transparent 76%);
+  mask-image:radial-gradient(70% 60% at 35% 14%, #000 0%, transparent 76%)}
+@keyframes eaDrift{from{transform:rotate(22deg) translate(-2%,-1%)}to{transform:rotate(22deg) translate(2%,1%)}}
+@media(prefers-reduced-motion:reduce){.ea-aurora{animation:none}}
+/* ----- linear stage stack ----- */
+.stage-stack{margin-top:10px;border-top:1px solid var(--line)}
+.stage-stack .srow{position:relative;display:grid;grid-template-columns:74px 1fr auto;gap:30px;align-items:center;
+  padding:32px 8px;border-bottom:1px solid var(--line);transition:background .3s}
+.stage-stack .srow:hover{background:var(--glass)}
+.stage-lead{align-self:stretch;display:flex;flex-direction:column;align-items:center;padding:2px 0}
+.stage-lead .snum{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--glass);
+  display:grid;place-items:center;font-family:var(--font-m);font-size:13px;letter-spacing:.04em;color:var(--accent)}
+.stage-lead .sconn{flex:1;width:1.5px;min-height:18px;margin:9px 0 3px;
+  background:linear-gradient(180deg,rgba(124,92,255,.65),rgba(124,92,255,.12))}
+.stage-lead .sarrow{flex:none;color:var(--accent);opacity:.75;line-height:0}
+.stage-lead .sarrow svg{width:16px;height:16px;display:block}
+.stage-stack .srow:last-child .sconn,.stage-stack .srow:last-child .sarrow{display:none}
+.stage-stack .scell h4{font-family:var(--font-d);font-weight:600;font-size:clamp(21px,2.4vw,28px);letter-spacing:-.02em;margin:0 0 10px}
+.stage-stack .scell p{color:var(--ink-soft);font-size:16px;line-height:1.56;max-width:60ch;margin:0}
+.stage-stack .sbadge{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);background:rgba(124,92,255,.1);padding:8px 15px;border-radius:999px;white-space:nowrap;align-self:center}
+@media(max-width:860px){
+  .stage-stack .srow{grid-template-columns:54px 1fr;gap:12px 18px}
+  .stage-stack .sbadge{grid-column:2;justify-self:start;margin-top:14px}
+}
+/* ----- two ways: decision tree ----- */
+.ways-top{display:flex;justify-content:center}
+.ways-toplabel{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:10px 20px;background:var(--glass);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ways-branch{position:relative;height:54px}
+.ways-branch .wb-stem{position:absolute;left:50%;top:0;width:1.5px;height:22px;background:var(--line);transform:translateX(-50%)}
+.ways-branch .wb-node{position:absolute;left:50%;top:22px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line);transform:translate(-50%,-50%);z-index:1}
+.ways-branch .wb-arm{position:absolute;top:22px;height:32px;border-color:var(--line);border-style:solid;border-width:0}
+.ways-branch .wb-arm.l{left:24.5%;right:50%;border-top-width:1.5px;border-left-width:1.5px;border-top-left-radius:16px}
+.ways-branch .wb-arm.r{left:50%;right:24.5%;border-top-width:1.5px;border-right-width:1.5px;border-top-right-radius:16px}
+.ways-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,30px);align-items:stretch}
+.way-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:20px;background:var(--glass);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
+  box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -46px rgba(22,16,52,.5);
+  padding:clamp(28px,3vw,40px);
+  transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
+.way-card:hover{border-color:rgba(22,16,52,.18);transform:translateY(-3px);
+  box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 34px 64px -42px rgba(22,16,52,.4)}
+.way-title{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.way-ico{flex:none;width:46px;height:46px;border-radius:50%;background:var(--paper);
+  border:1.5px solid var(--line);display:grid;place-items:center;color:var(--accent)}
+.way-card.dark-path .way-ico{color:var(--ink)}
+.way-ico svg{width:22px;height:22px}
+.way-toprow{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.way-pill{display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.way-pill.accent{background:var(--accent);color:#fff}
+.way-pill.dark{background:var(--ink);color:var(--paper)}
+.way-meta{font-family:var(--font-m);font-size:13px;color:var(--muted)}
+.way-card h4{font-family:var(--font-d);font-weight:600;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.02em;line-height:1.16;margin:0}
+.way-card>p{color:var(--muted);font-size:16px;line-height:1.6;margin:0}
+.way-best{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.way-best .bl{font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.way-chips{display:flex;flex-wrap:wrap;gap:10px}
+.way-chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-soft);border:1px solid var(--line);border-radius:10px;padding:9px 13px;background:var(--paper)}
+.way-chip svg{width:15px;height:15px;flex:none;color:var(--accent)}
+.way-card.dark-path .way-chip svg{color:var(--ink)}
+.way-card .arrow-link{margin-top:26px}
+.way-card:hover .arrow-link{color:var(--accent)}
+@media(max-width:760px){
+  .ways-grid{grid-template-columns:1fr}
+  .ways-branch{display:none}
+  .ways-top{margin-bottom:24px}
+}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="how-we-deliver.html">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Work</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="about.html">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="ventures.html">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero ea" id="top">
+  <div class="subhero-bg">
+    <div class="sh-dots"></div>
+    <div class="ea-wave"></div>
+    <div class="ea-aurora"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="index.html#work">Offerings</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>AI for your business</span></div>
+    <h1 class="rv rv-d1">You do not need a tech team to get the benefits of AI.</h1>
+    <p class="lead rv rv-d2">Most companies that need AI are not technology companies. They are roofing contractors, therapy practices, restaurant groups, construction lenders, and property managers. We built a four-stage engagement model for exactly that buyer: one that starts with your real problem, proves value early, and delivers production software you own.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="work.html"><s>See our work</s></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE QUESTION ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> The question</div>
+        <h2 class="rv" style="max-width:18ch">Where do I <span style="color:var(--accent)">start</span>, and what does it actually <span style="color:var(--accent)">cost</span>?</h2>
+      </div>
+      <p class="meta rv rv-d1">AI has moved fast enough that the pressure to act is real, but the range of options is wide enough that where to start is genuinely unclear. The companies we work with come in with anxiety and a business problem, not a technical requirement. We work backwards from the business problem to the software.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUR STAGES ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> How we engage</div>
+        <h2 class="rv" style="max-width:16ch">Four stages. Each one proves the next.</h2>
+      </div>
+      <p class="meta rv rv-d1">Most engagements follow a four-stage path. The first three land and prove. The fourth is the standing engine where the relationship compounds.</p>
+    </div>
+    <div class="stage-stack rv">
+      <div class="srow">
+        <div class="stage-lead"><span class="snum">01</span><span class="sconn"></span><span class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></div>
+        <div class="scell">
+          <h4>Roadmap</h4>
+          <p>We turn your AI uncertainty into a sequenced, ROI-backed plan. What to build first, why, and what it is worth. Most clients walk away with a clear first project and a number they can defend internally.</p>
+        </div>
+        <span class="sbadge">Start here</span>
+      </div>
+      <div class="srow">
+        <div class="stage-lead"><span class="snum">02</span><span class="sconn"></span><span class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></div>
+        <div class="scell">
+          <h4>Blueprint</h4>
+          <p>We scope and prove the first build on your own data, with a working prototype, before you commit to the full build. The Blueprint fee is credited toward the build.</p>
+        </div>
+        <span class="sbadge">Low commitment</span>
+      </div>
+      <div class="srow">
+        <div class="stage-lead"><span class="snum">03</span><span class="sconn"></span><span class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></div>
+        <div class="scell">
+          <h4>Build</h4>
+          <p>Production software delivered at a fixed, value-based price. You own the IP. The build is scoped to the problem, not padded for safety.</p>
+        </div>
+        <span class="sbadge">Fixed price</span>
+      </div>
+      <div class="srow">
+        <div class="stage-lead"><span class="snum">04</span></div>
+        <div class="scell">
+          <h4>Subscription</h4>
+          <p>The standing engine that keeps the software current, improves it, and runs it. Not a maintenance line. A standing partner that keeps your AI edge growing.</p>
+        </div>
+        <span class="sbadge">Compounding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO WAYS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Two ways AI creates value</div>
+        <h2 class="rv" style="max-width:18ch">Match the path to what is actually holding you back.</h2>
+      </div>
+    </div>
+    <div class="ways-top rv"><span class="ways-toplabel">What is holding you back?</span></div>
+    <div class="ways-branch rv" aria-hidden="true"><span class="wb-stem"></span><span class="wb-arm l"></span><span class="wb-arm r"></span><span class="wb-node"></span></div>
+    <div class="ways-grid rv">
+      <a class="way-card" href="build-new.html">
+        <div class="way-toprow"><span class="way-pill accent">Path A</span><span class="way-meta">When the software is the bottleneck</span></div>
+        <div class="way-title"><span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2 6.5L20.5 12 14 14l-2 6.5L10 14 3.5 12 10 9.5z"/></svg></span><h4>AI inside your software</h4></div>
+        <p>You are replacing or modernizing a system anyway. We build AI in from the start, so the new system is smarter than what it replaces. Best when the software itself is the bottleneck.</p>
+        <div class="way-best">
+          <div class="bl">Best for</div>
+          <div class="way-chips">
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5z"/><path d="M2 13l10 5 10-5"/></svg>Legacy modernization</span>
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21 8v8a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4A2 2 0 0 1 21 8z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg>New platforms</span>
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>Embedded AI</span>
+          </div>
+        </div>
+      </a>
+      <a class="way-card dark-path" href="ai.html">
+        <div class="way-toprow"><span class="way-pill dark">Path B</span><span class="way-meta">When people are the bottleneck</span></div>
+        <div class="way-title"><span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19c0-2.8-2.7-5-6-5s-6 2.2-6 5"/><circle cx="10" cy="8" r="3.2"/><path d="M19.5 18.5c0-2.2-1.4-3.9-3.4-4.3"/><path d="M16.6 9.7a2.6 2.6 0 0 0 0-5"/></svg></span><h4>AI agents on your workflows</h4></div>
+        <p>Your systems are fine, but your people's time is the constraint. We build the data foundation, then put AI agents on the workflows that take the most manual hours. Best when the people are the bottleneck.</p>
+        <div class="way-best">
+          <div class="bl">Best for</div>
+          <div class="way-chips">
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-2.9-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.1-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 2.9 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.4.9z"/></svg>Operations</span>
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Manual workflows</span>
+            <span class="way-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2 6.5L20.5 12 14 14l-2 6.5L10 14 3.5 12 10 9.5z"/></svg>AI agents</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT FOR THIS BUYER ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> Built for this buyer</div>
+        <h2 class="rv" style="max-width:20ch">A roofing company, a therapy practice, a construction lender.</h2>
+      </div>
+      <p class="meta rv rv-d1">We work with businesses that have real operations, real customers, and a real problem AI can solve. They do not have an engineering team. They are not trying to become a tech company. They want software that works, and a partner who understands their business well enough to build it right. These are the engagements we design for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFERINGS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="engage-panel rv">
+      <div class="sec-head">
+        <div class="t">
+          <div class="lbl"><span class="dot">✸</span> Offerings</div>
+          <h2 style="max-width:15ch">Come in where it counts.</h2>
+        </div>
+        <p class="meta">AI for your business is one of four ways we engage. We build new products as production MVPs, rebuild partial-fit systems into tailored ones, run sustained work on a fixed-fee subscription, and bring AI to companies without a tech team.</p>
+      </div>
+      <div class="engage-row">
+        <span class="engage-tag">Build new</span>
+        <span class="engage-tag">Rebuild</span>
+        <span class="engage-tag">Engineering subscription</span>
+        <span class="engage-tag">AI for your business</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv" style="font-size:90px;width:700px;margin-inline:auto">Not sure where to start?</h2>
+    <p class="hero-sub rv rv-d1" style="width:1260px;max-width:100%;margin:0 auto 40px;color:var(--ink-soft);text-align:center">Most clients begin with a Roadmap. It turns the question into a plan, and it is the lowest-commitment way to find out if this is the right fit.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="work.html"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5><a href="how-we-deliver.html">How we deliver</a></h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Work</h5>
+            <a href="work.html">Work</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="ventures.html">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc.</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://x.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>

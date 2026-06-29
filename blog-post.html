@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How to Migrate an Ethereum Protocol to Solana — Preamble · 57Blocks</title>
+<meta name="description" content="A systematic introduction to the fundamental differences between Ethereum and Solana in account models, execution mechanisms, and fee systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- violet plume hero (Thinking family) ----- */
+.subhero.rs .subhero-bg{background:linear-gradient(180deg,#f5f4ff 0%,#eef0ff 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%)}
+.rs-plume{position:absolute;inset:-15%;pointer-events:none;
+  background:
+    radial-gradient(32% 62% at 67% -8%, rgba(96,71,255,.40) 0%, rgba(124,92,255,.24) 34%, transparent 66%),
+    radial-gradient(46% 50% at 90% 26%, rgba(150,108,255,.26), transparent 66%),
+    radial-gradient(40% 42% at 52% 4%, rgba(150,140,255,.18), transparent 72%);
+  filter:blur(30px);animation:rsDrift 17s ease-in-out infinite alternate}
+@keyframes rsDrift{from{transform:translate(-1.5%,-1%) scale(1)}to{transform:translate(2%,1%) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.rs-plume{animation:none}}
+/* ----- post hero ----- */
+.post-hero{padding:120px 0 56px}
+.post-hero .wrap{text-align:left}
+.post-tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+.post-tag{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  background:rgba(124,92,255,.1);padding:7px 13px;border-radius:999px}
+.post-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.04em;line-height:1.06;
+  font-size:clamp(34px,4.4vw,58px);max-width:20ch;margin:0 0 22px}
+.post-hero .lead{max-width:62ch;font-size:clamp(17px,1.7vw,20px);line-height:1.6;color:var(--ink-soft);margin:0 0 30px}
+.post-byline{display:flex;flex-direction:column;gap:18px;padding-top:24px;border-top:1px solid var(--line);max-width:900px}
+.post-byline-top{display:flex;align-items:center;gap:16px}
+.av{width:32px;height:32px;border-radius:50%;background:rgba(124,92,255,.14);color:var(--accent);
+  font-family:var(--font-m);font-size:11px;font-weight:600;letter-spacing:.02em;display:grid;place-items:center;flex:none}
+.post-hrow{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(30px,5vw,64px);align-items:center;margin-top:clamp(22px,3vw,34px)}
+.post-hcover{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -34px rgba(22,16,52,.5);aspect-ratio:16/10}
+.post-hcover img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:860px){.post-hrow{grid-template-columns:1fr;gap:26px}}
+.post-share{display:inline-flex;gap:8px;margin-left:auto}
+.post-share a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  color:var(--ink);transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.post-share a:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,92,255,.06)}
+.post-share svg{width:16px;height:16px}
+.post-date{font-family:var(--font-m);font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.post-authors{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.author-avatars{display:flex}
+.author-avatars .av{margin-left:-9px;border:2px solid var(--paper)}
+.author-avatars .av:first-child{margin-left:0}
+.author-names{font-size:14.5px;line-height:1.5;color:var(--ink-soft)}
+.author-names strong{color:var(--ink);font-weight:500}
+.post-author span{color:var(--muted)}
+/* ----- layout: toc + article ----- */
+.post-layout{display:grid;grid-template-columns:248px minmax(0,1fr);gap:clamp(40px,6vw,80px);align-items:start}
+.toc{position:sticky;top:100px;max-height:calc(100vh - 140px);overflow:auto}
+.toc-title{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  padding-bottom:14px;border-bottom:1.5px solid var(--ink);margin-bottom:14px}
+.toc a{display:block;font-size:13.5px;line-height:1.4;color:var(--muted);padding:6px 0;text-decoration:none;transition:color .2s var(--ease)}
+.toc a:hover{color:var(--accent)}
+.toc a.sub{padding-left:16px;font-size:13px}
+/* ----- article prose ----- */
+.post-body{max-width:760px;min-width:0}
+.post-body h2{font-family:var(--font-d);font-weight:600;font-size:clamp(25px,3vw,36px);letter-spacing:-.03em;
+  line-height:1.14;margin:52px 0 16px;text-wrap:pretty}
+.post-body h2:first-child{margin-top:0}
+.post-body h3{font-family:var(--font-d);font-weight:600;font-size:clamp(20px,2.1vw,26px);letter-spacing:-.02em;margin:36px 0 12px}
+.post-body h4{font-family:var(--font-d);font-weight:600;font-size:18px;letter-spacing:-.01em;margin:26px 0 10px}
+.post-body p{font-size:clamp(16px,1.3vw,17.5px);line-height:1.72;color:var(--ink-soft);margin:0 0 18px}
+.post-body strong{color:var(--ink);font-weight:600}
+.post-body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.post-body ul{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:11px}
+.post-body ul ul{margin:11px 0 0;padding-left:20px}
+.post-body li{position:relative;padding-left:22px;font-size:clamp(15.5px,1.2vw,17px);line-height:1.62;color:var(--ink-soft)}
+.post-body li::before{content:"";position:absolute;left:3px;top:.66em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.post-body ol{margin:0 0 20px;padding-left:22px;display:flex;flex-direction:column;gap:11px}
+.post-body ol li{padding-left:6px}
+.post-body ol li::before{display:none}
+.post-body code{font-family:var(--font-m);font-size:.88em;background:rgba(124,92,255,.1);color:var(--ink);padding:2px 6px;border-radius:5px}
+.post-body pre{background:#0E0E13;color:#E9E8F2;border-radius:12px;padding:20px 22px;overflow:auto;margin:0 0 22px;
+  font-family:var(--font-m);font-size:14px;line-height:1.6}
+.post-body pre code{background:none;padding:0;color:inherit;font-size:inherit}
+.post-table-wrap{overflow:auto;margin:0 0 22px}
+.post-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:440px}
+.post-table th{text-align:left;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);padding:12px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap}
+.post-table td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--ink-soft);line-height:1.5;vertical-align:top}
+.post-table td:first-child{white-space:nowrap}
+.post-table code{font-size:.92em}
+.post-note{display:block;margin:0 0 18px;padding:16px 20px;border-left:2px solid var(--accent);background:rgba(124,92,255,.05);
+  border-radius:0 10px 10px 0;font-size:16px;line-height:1.6;color:var(--ink-soft)}
+.post-refs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.post-refs li{padding-left:0}
+.post-refs li::before{display:none}
+@media(max-width:980px){
+  .post-layout{grid-template-columns:1fr;gap:32px}
+  .toc{position:static;max-height:none;border-bottom:1px solid var(--line);padding-bottom:18px}
+}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="how-we-deliver.html">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Work</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="about.html">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="ventures.html">Ventures</a>
+              <a href="index.html#operator">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero post-hero rs" id="top">
+  <div class="subhero-bg"><div class="rs-plume"></div></div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="blog.html">Blog</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Engineering</span></div>
+    <div class="post-hrow">
+      <div>
+        <h1 class="rv rv-d1">How to Migrate an Ethereum Protocol to Solana — Preamble</h1>
+        <div class="post-tags rv rv-d1" style="margin-top:18px">
+          <span class="post-tag">Anchor</span>
+          <span class="post-tag">Ethereum</span>
+          <span class="post-tag">Smart Contract</span>
+          <span class="post-tag">Solana</span>
+          <span class="post-tag">Solidity</span>
+        </div>
+        <p class="lead rv rv-d1">A systematic introduction to the fundamental differences between Ethereum and Solana in account models, execution mechanisms, and fee systems.</p>
+      </div>
+      <div class="post-hcover rv rv-d2"><img src="assets/blog/how-to-migrate-preamble.png" alt="How to Migrate an Ethereum Protocol to Solana" /></div>
+    </div>
+    <div class="post-byline rv rv-d2">
+      <div class="post-byline-top">
+        <span class="post-date">Published Jan 23, 2026</span>
+        <div class="post-share">
+          <a href="https://twitter.com/intent/tweet?text=How%20to%20Migrate%20an%20Ethereum%20Protocol%20to%20Solana%20%E2%80%94%20Preamble&url=https%3A%2F%2F57blocks.com%2Fblog%2Fhow-to-migrate-an-ethereum-protocol-to-solana-preamble" target="_blank" rel="noopener noreferrer" aria-label="Share on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F57blocks.com%2Fblog%2Fhow-to-migrate-an-ethereum-protocol-to-solana-preamble" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a>
+        </div>
+      </div>
+      <div class="post-authors">
+        <div class="author-avatars">
+          <span class="av">BC</span><span class="av">BL</span><span class="av">JZ</span><span class="av">SY</span><span class="av">JL</span><span class="av">WW</span>
+        </div>
+        <span class="author-names"><strong>By Bonnie Chen, Bin Li, Jimmy Zhao, Shan Yang, Jia Xin Liang, and Wei Wang</strong></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BODY ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="post-layout">
+      <aside class="toc">
+        <div class="toc-title">On this page</div>
+        <a href="#overview">Overview</a>
+        <a href="#account-model">1. Account Model</a>
+        <a class="sub" href="#account-model">1.1 EVM: Logic and State</a>
+        <a class="sub" href="#account-model">1.2 Solana: Decoupling</a>
+        <a href="#execution-model">2. Execution Model</a>
+        <a href="#transaction-structure">3. Transaction Structure</a>
+        <a href="#fee-model">4. Fee Model</a>
+        <a class="sub" href="#fee-model">4.1 EVM: Gas</a>
+        <a class="sub" href="#fee-model">4.2 Solana: Compute Units</a>
+        <a href="#core-concepts">5. Core Concepts of Solana</a>
+        <a href="#summary">6. Summary</a>
+        <a href="#references">References</a>
+      </aside>
+
+      <article class="post-body">
+        <h2 id="overview">Overview</h2>
+        <p>As the Solana ecosystem matures, more and more product owners are considering migrating their Ethereum (EVM) projects to Solana to gain higher performance, lower transaction costs, and a better user experience. Our company has extensive hands-on experience in this area, having led the migration and refactoring of multiple Ethereum protocols to Solana across various industries. We understand the complexity of migration across contract architecture, data models, transaction logic, and front-backend coordination, and we've developed a systematic methodology and set of best practices to address these areas.</p>
+        <p>To help developers systematically master the methods and practices for migrating from Ethereum to Solana, we're launching a series of articles focused on three core layers—the smart contract layer, backend services, and frontend interactions. In this series, we'll share lessons we learned from real projects, including key caveats, best practices, and typical issues encountered during migration. Additionally, we'll share case studies that demonstrate an end-to-end migration approach and implementation path along with sample code to help you get started.</p>
+        <p>Through this series, we hope to help developers not only complete the migration, but also fully tap into Solana's high-performance potential and unique mechanisms to redesign protocols natively for Solana.</p>
+
+        <h3>Article Navigation</h3>
+        <ul>
+          <li><a href="blog-post.html"><strong>How to Migrate an Ethereum Protocol to Solana — Preamble</strong></a>: A systematic introduction to the fundamental differences between Ethereum and Solana in account models, execution mechanisms, and fee systems.</li>
+          <li><a href="blog-post.html"><strong>How to Migrate an Ethereum Protocol to Solana — Contracts (Part 1)</strong></a>: A focus on the core mindset shift and best practices for contract development from Ethereum to Solana.</li>
+        </ul>
+        <p>This article approaches the topic from a <strong>system design</strong> perspective, summarizing the core differences between EVM and Solana across four dimensions: account model, execution model, transaction structure, and fee model. Understanding these differences provides a foundational shift in how developers reason about smart contract platforms at the architectural level.</p>
+
+        <h2 id="account-model">1. Account Model: How Logic and Data Are Bound</h2>
+        <h3>1.1 EVM: Logic and State as a Single Unit</h3>
+        <p>In EVM, there are two types of accounts:</p>
+        <ul>
+          <li><strong>EOA (Externally Owned Account)</strong>: Controlled by a private key. It can send transactions and hold ETH, but does not contain any code.</li>
+          <li><strong>Contract Account</strong>: Contains executable logic and persistent storage. When a user is interacting with the contract, they simply specify its address.</li>
+        </ul>
+        <p>EVM follows a "logic + state bundled together" model. Each contract not only defines function logic but also carries its own internal storage. Any changes to the contract's state must be performed through its own code. This design makes contract interaction straightforward; however, because logic and state are tightly coupled, it limits modularity and composability.</p>
+        <h3>1.2 Solana: Decoupling Logic and Data</h3>
+        <p>Solana completely separates execution logic from data storage:</p>
+        <ul>
+          <li><strong>Program Account</strong> stores executable logic. It is immutable and does not hold business state.</li>
+          <li><strong>Data Account</strong> works as an independent data storage unit, explicitly defined and accessed by the program.</li>
+          <li><strong>System Account/Sysvar Account</strong> is used by the Solana runtime layer to store SOL balances and maintain chain state.</li>
+        </ul>
+        <p>In this model, the program only defines how data should be operated on, while the actual data (account) must be passed explicitly during execution.</p>
+        <p>The same account may be shared across multiple programs. Different programs can jointly operate on the same piece of data.</p>
+        <p>This results in an account model that is highly composable—logic remains lightweight, data is flexible, and parallel execution becomes possible. However, it also requires developers to explicitly specify all data dependencies when constructing instructions.</p>
+        <p>For more details on account structure and access rules, refer to Solana's documentation: <a href="https://solana.com/docs/core/accounts" target="_blank" rel="noopener noreferrer">Solana Docs: Accounts</a>.</p>
+
+        <h2 id="execution-model">2. Execution Model: Serial vs Parallel</h2>
+        <h3>2.1 EVM: Single-Threaded Execution</h3>
+        <p>EVM executes transactions in a serial manner. Each transaction is processed one after another, and the global state is updated before the next transaction can run.</p>
+        <p>Although contracts can call each other (via <code>call</code>, <code>delegatecall</code>, etc.), the overall execution still forms a linear execution chain.</p>
+        <p>This serial model ensures state consistency, but it naturally limits throughput.</p>
+        <h3>2.2 Solana: Explicit Dependencies + Parallel Execution</h3>
+        <p>In Solana, a transaction consists of multiple instructions. Each instruction invokes a program and explicitly declares the accounts it needs to read or write.</p>
+        <p>At runtime, Solana schedules execution based on account dependency rules:</p>
+        <ul>
+          <li>If two instructions access different accounts, then they can be executed in parallel.</li>
+          <li>If two instructions read the same account, then they can still run in parallel.</li>
+          <li>If two instructions access the same account and at least one writes, then they must be executed sequentially to maintain state consistency.</li>
+        </ul>
+        <p>Thus, Solana's parallelism is not automatic but explicitly driven by account access patterns. This is the core reason Solana can achieve high throughput on a single chain.</p>
+
+        <h2 id="transaction-structure">3. Transaction Structure: Functional vs Compositional</h2>
+        <h3>3.1 EVM: Single-Target Invocation</h3>
+        <p>In EVM, a transaction typically targets one contract and one function. The call relationship forms a tree structure where the outer transaction triggers internal contract calls, which then execute sequentially to completion.</p>
+        <h3>3.2 Solana: Multi-Instruction Composition</h3>
+        <p>A Solana transaction is more like a container of instructions.</p>
+        <p>Developers can bundle multiple Instructions in a single transaction, such as:</p>
+        <ul>
+          <li>Creating an account</li>
+          <li>Initializing stored data</li>
+          <li>Executing business logic operations</li>
+        </ul>
+        <p>Each Instruction explicitly specifies the program it calls and the accounts it depends on. This structure provides much greater flexibility and enables composability across programs.</p>
+        <p>However, it also introduces more complexity in that developers must clearly understand account layouts and access patterns when constructing transactions.</p>
+        <p>For more details on composing transactions, see Solana's documentation: <a href="https://solana.com/docs/core/transactions" target="_blank" rel="noopener noreferrer">Solana Docs: Transactions</a>.</p>
+
+        <h2 id="fee-model">4. Fee Model: Gas vs Compute Units</h2>
+        <h3>4.1 EVM: Gas, Base Fee, and Priority Fee</h3>
+        <p>In EVM, transaction fees are composed of the following components:</p>
+        <ul>
+          <li><strong>Base Fee</strong>: Automatically adjusted by the protocol. This is the minimum required fee per unit of gas in the current block and is burned.</li>
+          <li><strong>Priority Fee (Tip)</strong>: Set by the user to incentivize validators to prioritize their transaction. This fee goes directly to the validator.</li>
+          <li><strong>Max Fee</strong>: The maximum gas price a user is willing to pay. Any unused portion is refunded.</li>
+          <li><strong>Gas Limit</strong>: The maximum amount of gas the transaction is allowed to consume.</li>
+        </ul>
+        <p><strong>Fee Calculation Formula</strong>:</p>
+        <pre><code>Transaction Fee = Gas Used × (Base Fee + Priority Fee)</code></pre>
+        <h3>4.2 Solana: Compute Units, Priority Fee, and Rent</h3>
+        <p>Solana's transaction cost structure consists of three main parts:</p>
+        <h4>(1) Base Fee</h4>
+        <ul>
+          <li>Each signature in a transaction costs 5,000 lamports (where lamports are the smallest unit of SOL, similar to wei in Ethereum).</li>
+          <li><strong>Fee Allocation</strong>: 50% is burned; 50% is paid to the validator who processes the transaction.</li>
+          <li>Importantly, this fee is unrelated to transaction complexity.</li>
+        </ul>
+        <h4>(2) Prioritization Fee (Optional)</h4>
+        <ul>
+          <li>This fee applies only when a Compute Unit Price is explicitly set.</li>
+        </ul>
+        <p><strong>Formula</strong>:</p>
+        <pre><code>Prioritization Fee = Compute Units Consumed × Compute Unit Price</code></pre>
+        <ul>
+          <li><strong>Compute Units (CU)</strong> are Solana's core resource measurement unit, similar to gas in EVM.
+            <ul>
+              <li>Default limit per transaction: 200,000 CU</li>
+              <li>Compute Units themselves do not incur cost — fees arise only when <code>ComputeUnitPrice</code> is set.</li>
+              <li><strong>Purpose</strong>: During network congestion, users can increase priority by paying more CUs.</li>
+            </ul>
+          </li>
+          <li>Developers can use the <code>ComputeBudgetProgram</code> to:
+            <ul>
+              <li><code>setComputeUnitLimit</code>: Increase the CU limit, suitable for complex contract calls.</li>
+              <li><code>setComputeUnitPrice</code>: Set the prioritization fee, similar to the Gas Price in EVM.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4>(3) Rent (Storage Cost)</h4>
+        <p>On Solana, on-chain accounts occupy storage space and storage resources are limited. To prevent users from creating excessive unused accounts that waste blockchain state, Solana implements a Rent mechanism.</p>
+        <ul>
+          <li>If an account holds a sufficient SOL deposit, it avoids periodic rent deductions; this state is called <strong>Rent-exempt</strong>.</li>
+        </ul>
+        <p>The minimum balance for rent exemption is calculated as:</p>
+        <pre><code>rent_exempt_minimum = lamports_per_byte_year × data_len × exemption_threshold</code></pre>
+        <p>where:</p>
+        <ul>
+          <li><code>lamports_per_byte_year</code> = rent per byte per year</li>
+          <li><code>exemption_threshold</code> = number of years exempt from rent (default: 2 years)</li>
+        </ul>
+        <ul>
+          <li>If an account balance exceeds the rent-exempt threshold, the account will not be reclaimed.</li>
+          <li>If the balance falls below the threshold, rent must be paid, reducing the balance. If the balance is depleted, the account is deleted.</li>
+          <li>The required minimum balance is determined programmatically using <code>getMinimumBalanceForRentExemption</code>.</li>
+          <li>When an account is closed, the system automatically refunds the rent deposit (the previously frozen SOL), freeing the occupied storage space.</li>
+        </ul>
+        <p>For more details on Rent calculations, see Solana's documentation: <a href="https://docs.anza.xyz/implemented-proposals/rent" target="_blank" rel="noopener noreferrer">Solana Docs: Rent</a>.</p>
+
+        <h2 id="core-concepts">5. Core Conceptual Foundations of Solana</h2>
+        <p>Most of this article compares EVM-compatible chains, which share similar account models, execution models, transaction structure, and fee models. Solana, however, operates differently. Understanding its architecture makes the comparison more meaningful. This section introduces the key concepts that define Solana.</p>
+        <h3>5.1 Program</h3>
+        <p>A Program in Solana plays a role similar to a smart contract in the EVM, but it is significantly more lightweight:</p>
+        <ul>
+          <li>It contains only execution logic, without its own persistent storage.</li>
+          <li>All states must be explicitly passed in through external Data Accounts during instruction execution.</li>
+          <li>The most commonly used development framework is Anchor, which automates serialization, account validation, and other boilerplate tasks.</li>
+        </ul>
+        <h3>5.2 Account</h3>
+        <p>In Solana, all persistent states are stored in Accounts. Any data that needs to be retained across transactions must be stored in an Account.</p>
+        <p>Every Account contains the following fields:</p>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead><tr><th>Field</th><th>Type / Unit</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>lamports</code></td><td>Integer (1 SOL = 10⁹ lamports)</td><td>Balance held by the account, used to pay transaction fees or maintain rent-exempt status.</td></tr>
+              <tr><td><code>owner</code></td><td>Public Key (Program ID)</td><td>The program that "owns" the account. Only this program can modify the account's data or withdraw lamports.</td></tr>
+              <tr><td><code>executable</code></td><td>Boolean</td><td>Indicates whether the account is a Program (true) or a Data Account (false).</td></tr>
+              <tr><td><code>data</code></td><td>Byte Array</td><td>The raw stored data. Its layout and interpretation are defined by the owning program.</td></tr>
+              <tr><td><code>rent_epoch</code></td><td>Integer</td><td>The next epoch at which rent is due. Accounts with insufficient balance may be reclaimed. If closed, the stored rent deposit is refunded.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>In simple terms:</p>
+        <p class="post-note"><strong>Account in Solana ≈ Storage in an EVM contract</strong></p>
+        <h3>5.3 PDA (Program Derived Address)</h3>
+        <p>A PDA (Program Derived Address) is one of the core concepts in Solana understood as a deterministic, program-controlled address. Unlike regular wallet addresses, a PDA is not derived from a private key and therefore has no signing capability on its own. Instead, it can act as a signer through a specific Program's logic, enabling secure ownership and management of data accounts.</p>
+        <p>A PDA Account serves a role similar to a storage slot in EVM, used to persist contract state.</p>
+        <h4>Address Derivation</h4>
+        <p>The generation of a PDA is deterministic and depends on three factors:</p>
+        <ol>
+          <li><strong>Seeds (optional)</strong> — Developer-defined inputs (e.g., strings, numbers, wallet addresses, or other account addresses). Different seed combinations produce different PDAs.</li>
+          <li><strong>Bump Seed</strong> — A one-byte value appended to the seeds. Ensures the generated address lies off the Ed25519 curve (i.e., cannot correspond to a private key). The runtime searches bump from 255 downward until a valid PDA is found.</li>
+          <li><strong>Program ID</strong> — The address of the program that owns the PDA. The Program ID implicitly acts as the signing authority for the PDA.</li>
+        </ol>
+        <p>Given the same seeds + bump + Program ID, the resulting PDA is always identical, meaning both on-chain programs and front-end clients can compute it without needing to store it anywhere.</p>
+        <h4>Key Properties of PDA</h4>
+        <p>Program Derived Addresses (PDAs) are a cornerstone of Solana's account model. Unlike Ethereum's smart contracts, which are inherently associated with an externally owned account, Solana separates program logic from account ownership. PDAs allow programs to securely manage accounts, enforce deterministic access control, and authorize actions without relying on user private keys. Understanding their properties is essential for building secure, composable, and predictable on-chain programs.</p>
+        <ul>
+          <li><strong>Non-public-key nature</strong> — Although SDKs like <code>web3.js</code> represent PDAs using the <code>PublicKey</code> type, a PDA is not a traditional public key and has no corresponding private key. PDAs exist off the Ed25519 curve, so they cannot be directly controlled by any private key.</li>
+          <li><strong>Uniqueness</strong> — A PDA is bound to a specific Program, ensuring no address conflicts. PDAs generated by different Programs do not interfere with each other.</li>
+          <li><strong>Can act as a signer</strong> — In certain cases, a Program can use runtime APIs to allow a PDA to act as a "virtual signer" for a transaction. This enables secure authorization of data modifications without exposing any private key.</li>
+        </ul>
+        <p>PDAs are central to Solana's implementation of deterministic storage, keyless signing, and secure data access. They enable developers to organize on-chain data structures in a predictable, composable, and pre-deployment-free manner, distinguishing Solana from EVM.</p>
+        <p>Furthermore, PDAs represent Solana's native account abstraction (AA): the essence of AA is that "accounts are controlled by code", which Solana implements via predictable PDA addresses and programmatic signing.</p>
+        <p>For the complete rules on PDA generation, refer to Solana's documentation: <a href="https://solana.com/docs/core/pda" target="_blank" rel="noopener noreferrer">Solana Docs: PDA</a>.</p>
+        <h3>5.4 SPL (Solana Program Library)</h3>
+        <p>The Solana Program Library (SPL) is a collection of standard, audited on-chain programs maintained by the Solana Foundation. Commonly used modules include:</p>
+        <ul>
+          <li><strong>Token Program</strong>, which manages the creation, minting, transfer, and burning of fungible tokens and NFTs.</li>
+          <li><strong>Associated Token Program</strong>, which generates and manages Associated Token Accounts (ATA), ensuring deterministic and standard token account ownership.</li>
+          <li><strong>Memo Program</strong>, which allows adding human-readable text notes in transactions for logging or on-chain metadata.</li>
+        </ul>
+        <p>SPL is a standardized collection of smart contracts officially provided by Solana, analogous to the ERC standards (ERC-20, ERC-721) and the OpenZeppelin library in the EVM ecosystem.</p>
+        <p>Source code and documentation are available on the <a href="https://github.com/solana-labs/solana-program-library" target="_blank" rel="noopener noreferrer">official SPL repository</a>.</p>
+        <h3>5.5 ATA (Associated Token Account)</h3>
+        <p>In Solana, a single wallet could have multiple token accounts for the same token, which can lead to difficulties in tracking, leading to fragmented funds, and potential misuse. The Associated Token Account (ATA) solves this by deterministically deriving a unique, predictable default token account from the combination of the owner's address + Mint via the Associated Token Program. Essentially, this is a token account managed by the SPL Token Program with a PDA address, which anyone can compute locally. On the front-end, before transferring or minting, the ATA is derived and created independently using <code>getAssociatedTokenAddressSync</code>. If the ATA doesn't exist, it is created (with a small SOL rent); if the ATA exists, it is used directly. This eliminates the need to search or select accounts, ensures funds consolidate into a single address, and makes interactions simpler, safer, and compliant with ecosystem standards.</p>
+        <p>In Solana, ATA functions similarly to how ERC-20 or ERC-721 contracts track balances internally in EVM. In the EVM model, each token contract maintains a centralized ledger using a <code>mapping(address =&gt; uint256)</code> to record all addresses and balances. Solana, however, uses a distributed account-based model: each user has an independent on-chain account that stores the token balance and related information.</p>
+        <h3>5.6 IDL (Interface Description Language)</h3>
+        <p>The Interface Description Language (IDL) serves as the "interface specification" for a Solana program, functioning similarly to the ABI in EVM. It describes:</p>
+        <ul>
+          <li>Program instructions</li>
+          <li>Parameter types</li>
+          <li>Return values/errors</li>
+          <li>Events</li>
+          <li>The structure and constraints of relevant accounts</li>
+        </ul>
+        <p>Using Anchor, developers can generate an IDL file that reflects the program's structure, simplifying client-side interaction with Solana programs. By combining the IDL with Anchor's TypeScript library <a href="https://github.com/solana-foundation/anchor/tree/0e5285aecdf410fa0779b7cd09a47f235882c156/ts/packages/anchor" target="_blank" rel="noopener noreferrer">@coral-xyz/anchor</a>, constructing instructions and transactions becomes much easier.</p>
+        <p>Ideally, you can also use TypeScript types generated from the IDL, which makes program interaction more convenient. After building a program, these types can be found in the <code>/target/types</code> folder. The example we provide below uses this approach.</p>
+        <h4>How to obtain an IDL:</h4>
+        <ul>
+          <li><strong>Solana Explorer</strong>: If you know the programId (e.g., <code>time2Z2SCnn3qYg3ULKVtdkh8YmZ5jFdKicnA1W2YnJ</code>), you can directly access the Explorer to find and copy the corresponding IDL.</li>
+          <li><strong>Anchor Local Build</strong>: If you have the program source code, run <code>anchor build</code>. This will generate a JSON-format IDL file in <code>/target/idl</code> and corresponding TypeScript types in <code>/target/types</code>.</li>
+        </ul>
+        <p>These mechanisms together form Solana's account-centric architecture, where logic and data are predictable, composable, and parallelizable—a fundamental difference from EVM's contract-centric architecture.</p>
+        <p>More about IDL: <a href="https://www.anchor-lang.com/docs/basics/idl" target="_blank" rel="noopener noreferrer">Program IDL File</a></p>
+
+        <h2 id="summary">6. Summary: Comparing the Two Paradigms</h2>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead><tr><th>Comparison Dimension</th><th>EVM</th><th>Solana</th></tr></thead>
+            <tbody>
+              <tr><td>Logic &amp; Data Relation</td><td>Contract cohesion (logic + storage)</td><td>Program and accounts separated</td></tr>
+              <tr><td>Execution Model</td><td>Serial</td><td>Explicit dependencies + parallel</td></tr>
+              <tr><td>State Management</td><td>Implicit (via internal contract variables)</td><td>Explicit (passed-in accounts)</td></tr>
+              <tr><td>Call Structure</td><td>Single-target, functional</td><td>Multi-instruction, composable</td></tr>
+              <tr><td>Fee Model</td><td>Gas-based</td><td>Compute Units + Rent</td></tr>
+              <tr><td>Architectural Style</td><td>Integrated, encapsulated</td><td>Composable, modular</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>EVM resembles a state machine running around each contract. Solana, in contrast, is more like a distributed operating system, executing logic in parallel based on account dependencies. The former emphasizes encapsulation, the latter emphasizes composition. Understanding these differences is key to grasping the underlying operation of Web3 platforms.</p>
+        <p>This article is the first in a series. Subsequent articles will delve deeper into migrating from Ethereum to Solana. If you are interested in cross-chain development or migrating from the EVM ecosystem to Solana, stay tuned for the updates!</p>
+
+        <h2 id="references">References</h2>
+        <ul class="post-refs">
+          <li><a href="https://solana.com/docs/core/accounts" target="_blank" rel="noopener noreferrer">Solana Account</a></li>
+          <li><a href="https://solana.com/docs/core/transactions" target="_blank" rel="noopener noreferrer">Solana Transaction</a></li>
+          <li><a href="https://solana.com/docs/core/pda" target="_blank" rel="noopener noreferrer">Solana PDA</a></li>
+          <li><a href="https://solana.com/developers/evm-to-svm" target="_blank" rel="noopener noreferrer">Moving from Ethereum Development to Solana</a></li>
+          <li><a href="https://www.anchor-lang.com/" target="_blank" rel="noopener noreferrer">Anchor</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv">Build with purpose,<br />scale with us.</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">Tell us what you are building.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="blog.html"><s>More articles</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5><a href="how-we-deliver.html">How we deliver</a></h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Work</h5>
+            <a href="work.html">Work</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="ventures.html">Ventures</a>
+            <a href="index.html#operator">Careers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc.</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://x.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>
