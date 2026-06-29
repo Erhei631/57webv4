@@ -31,12 +31,12 @@
 .post-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.04em;line-height:1.06;
   font-size:clamp(34px,4.4vw,58px);max-width:20ch;margin:0 0 22px}
 .post-hero .lead{max-width:62ch;font-size:clamp(17px,1.7vw,20px);line-height:1.6;color:var(--ink-soft);margin:0 0 30px}
-.post-byline{display:flex;flex-direction:column;gap:18px;padding-top:24px;border-top:1px solid var(--line);max-width:900px}
+.post-byline{display:flex;flex-direction:column;gap:18px;padding-top:24px;border-top:1px solid var(--line)}
 .post-byline-top{display:flex;align-items:center;gap:16px}
 .av{width:32px;height:32px;border-radius:50%;background:rgba(124,92,255,.14);color:var(--accent);
   font-family:var(--font-m);font-size:11px;font-weight:600;letter-spacing:.02em;display:grid;place-items:center;flex:none}
 .post-hrow{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(30px,5vw,64px);align-items:center;margin-top:clamp(22px,3vw,34px)}
-.post-hcover{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -34px rgba(22,16,52,.5);aspect-ratio:16/10}
+.post-hcover{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10}
 .post-hcover img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:860px){.post-hrow{grid-template-columns:1fr;gap:26px}}
 .post-share{display:inline-flex;gap:8px;margin-left:auto}
@@ -169,7 +169,6 @@
             <div class="mega-col">
               <a href="about.html">About</a>
               <a href="ventures.html">Ventures</a>
-              <a href="index.html#operator">Careers</a>
             </div>
           </div>
         </div>
@@ -186,7 +185,7 @@
   <div class="subhero-bg"><div class="rs-plume"></div></div>
   <div class="wrap">
     <div class="crumb rv"><a href="blog.html">Blog</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Engineering</span></div>
-    <div class="post-hrow">
+    <div class="post-hrow" style="margin: 34px 0px 10px">
       <div>
         <h1 class="rv rv-d1">How to Migrate an Ethereum Protocol to Solana — Preamble</h1>
         <div class="post-tags rv rv-d1" style="margin-top:18px">
@@ -541,7 +540,6 @@
             <h5>Company</h5>
             <a href="about.html">About</a>
             <a href="ventures.html">Ventures</a>
-            <a href="index.html#operator">Careers</a>
           </div>
         </div>
       </div>
@@ -559,7 +557,7 @@
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>

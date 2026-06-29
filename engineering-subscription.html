@@ -29,6 +29,13 @@
   filter:blur(36px);mix-blend-mode:screen}
 @keyframes etDrift{from{transform:translate(-1.4%,-1%)}to{transform:translate(1.4%,1%)}}
 @media(prefers-reduced-motion:reduce){.et-mesh{animation:none}}
+/* ----- featured plan: indigo→blue→black mesh (matches hero) ----- */
+.plan.feat{background:#6f5cf0;
+  background-image:radial-gradient(135% 120% at 38% -8%, #b79cf8 0%, #9d80f5 28%, #8569f2 50%, #7058ee 74%, #6650ec 100%);
+  border-color:#6f5cf0}
+.plan.feat .pk{color:rgba(255,255,255,.62)}
+.plan.feat .model em{color:#c9ccff}
+.plan.feat li svg{color:#c9ccff}
 </style>
 </head>
 <body class="subpage">
@@ -101,7 +108,6 @@
             <div class="mega-col">
               <a href="about.html">About</a>
               <a href="ventures.html">Ventures</a>
-              <a href="index.html#operator">Careers</a>
             </div>
           </div>
         </div>
@@ -127,7 +133,7 @@
     <p class="lead rv rv-d2">For sustained product work we sell a fixed monthly fee, a cadence we own, and quality gates you can track, not a named roster of engineers you manage. AI efficiency is our margin. Your fee stays flat.</p>
     <div class="hero-cta rv rv-d2">
       <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="index.html#engine"><s>How we deliver</s></a>
+      <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
     </div>
   </div>
 </header>
@@ -184,8 +190,7 @@
         </ul>
         <a class="btn" href="contact.html"><s>Talk to our team</s></a>
       </div>
-      <div class="plan feat">
-        <span class="ribbon">Most common</span>
+      <div class="plan feat" style="border-style: none">
         <div class="pk">Engineering subscription</div>
         <h3>Delivery pod</h3>
         <div class="model"><em>Fixed monthly fee</em> · a small team</div>
@@ -308,7 +313,6 @@
             <h5>Company</h5>
             <a href="about.html">About</a>
             <a href="ventures.html">Ventures</a>
-            <a href="index.html#operator">Careers</a>
           </div>
         </div>
       </div>

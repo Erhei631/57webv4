@@ -20,7 +20,7 @@
   animation:cpDrift 18s ease-in-out infinite alternate}
 @keyframes cpDrift{from{transform:translate(-52%,-50%) scale(1)}to{transform:translate(-48%,-50%) scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.cp-clouds{animation:none}}
-.cp-why{display:grid;grid-template-columns:minmax(0,670px) 1fr;gap:clamp(36px,4.5vw,72px);align-items:start}
+.cp-why{display:grid;grid-template-columns:minmax(0,670px) 1fr;gap:clamp(36px,4.5vw,72px);align-items:center}
 .cp-why .lbl{margin-bottom:22px}
 .cp-why h2{font-size:clamp(30px,5vw,58px);line-height:1.02;letter-spacing:-.03em;font-weight:600}
 .cp-copy{margin-top:30px;max-width:670px}
@@ -32,14 +32,24 @@
   -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
   box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -40px rgba(22,16,52,.5);
   padding:clamp(24px,2.6vw,34px)}
-.cp-grp+.cp-grp{margin-top:24px}
-.cp-grp-h{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.cp-grp-h .cp-ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+.cp-axis+.cp-axis{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.cp-axhead{display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.cp-axhead .cp-ic{flex:0 0 auto;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
   background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.32);color:var(--accent)}
-.cp-grp-h .cp-ic svg{width:18px;height:18px}
-.cp-grp-h b{font-family:var(--font-d);font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
-.cp-grp-h span{margin-left:auto;font-family:var(--font-m);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.cp-chips{display:flex;flex-wrap:wrap;gap:9px}
+.cp-axhead .cp-ic svg{width:15px;height:15px}
+.cp-axhead b{font-family:var(--font-d);font-weight:600;font-size:14.5px;letter-spacing:-.01em;color:var(--ink)}
+.cp-axhead em{font-family:var(--font-m);font-style:normal;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:auto}
+.cp-hwrap{display:flex;align-items:center;gap:10px}
+.cp-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:var(--accent);opacity:.5}
+.cp-arrow svg{width:16px;height:16px}
+.cp-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.cp-row::-webkit-scrollbar{display:none}
+.cp-row .cp-chip{flex:0 0 auto}
+.cp-vwrap{display:flex;gap:12px;justify-content:center}
+.cp-vwrap .cp-arrow{align-items:flex-start;padding-top:8px}
+.cp-col{position:relative;display:flex;flex-direction:column;gap:8px;align-items:center}
+.cp-col::before{content:"";position:absolute;top:6px;bottom:6px;left:50%;width:1px;background:var(--line);transform:translateX(-50%);z-index:0}
+.cp-col .cp-chip{position:relative;z-index:1}
 .cp-chip{font-family:var(--font-d);font-size:14px;font-weight:500;color:var(--ink-soft);
   background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;
   transition:border-color .22s var(--ease),transform .22s var(--ease),color .22s var(--ease)}
@@ -50,15 +60,11 @@
 @media(prefers-reduced-motion:no-preference){
   .cp-illu .cp-chip{opacity:0;transform:translateY(8px)}
   .cp-illu.in .cp-chip{animation:cpChipIn .5s var(--ease) forwards}
-  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(1){animation-delay:.05s}
-  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(2){animation-delay:.11s}
-  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(3){animation-delay:.17s}
-  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(4){animation-delay:.23s}
-  .cp-illu.in .cp-grp:nth-child(1) .cp-chip:nth-child(5){animation-delay:.29s}
-  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(1){animation-delay:.36s}
-  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(2){animation-delay:.42s}
-  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(3){animation-delay:.48s}
-  .cp-illu.in .cp-grp:nth-child(2) .cp-chip:nth-child(4){animation-delay:.54s}
+  .cp-illu.in .cp-chip:nth-child(1){animation-delay:.05s}
+  .cp-illu.in .cp-chip:nth-child(2){animation-delay:.11s}
+  .cp-illu.in .cp-chip:nth-child(3){animation-delay:.17s}
+  .cp-illu.in .cp-chip:nth-child(4){animation-delay:.23s}
+  .cp-illu.in .cp-chip:nth-child(5){animation-delay:.29s}
 }
 @keyframes cpChipIn{to{opacity:1;transform:none}}
 @media(max-width:860px){.cp-why{grid-template-columns:1fr}.cp-copy{max-width:none}}
@@ -161,7 +167,6 @@
             <div class="mega-col">
               <a href="about.html">About</a>
               <a href="ventures.html">Ventures</a>
-              <a href="index.html#operator">Careers</a>
             </div>
           </div>
         </div>
@@ -181,7 +186,7 @@
   </div>
   <div class="wrap">
     <div class="dlv-copy">
-      <div class="crumb rv"><a href="index.html#engine">How we deliver</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Compass</span></div>
+      <div class="crumb rv"><a href="how-we-deliver.html">How we deliver</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Compass</span></div>
       <h1 class="rv rv-d1">Proven patterns, brought to your build.</h1>
       <p class="lead rv rv-d2">Compass is the engineering knowledge our teams bring to your project: the patterns, reference implementations, and known failure modes we have proven across our own work, applied through Blueprint and the build harness from the first day. What it means for you is simple. Your build starts ahead.</p>
       <div class="hero-cta rv rv-d2">
@@ -239,29 +244,33 @@
       </div>
       <div class="cp-illu rv rv-d2">
         <div class="cp-card">
-          <div class="cp-grp">
-            <div class="cp-grp-h">
+          <div class="cp-axis">
+            <div class="cp-axhead">
               <span class="cp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span>
-              <b>Horizontal practice</b><span>Engineering</span>
+              <b>Horizontal practice</b><em>Engineering</em>
             </div>
-            <div class="cp-chips">
-              <span class="cp-chip">Frontend</span>
-              <span class="cp-chip">Backend</span>
-              <span class="cp-chip">Mobile</span>
-              <span class="cp-chip">Testing</span>
-              <span class="cp-chip">Product</span>
+            <div class="cp-hwrap">
+              <div class="cp-row">
+                <span class="cp-chip">Frontend</span>
+                <span class="cp-chip">Backend</span>
+                <span class="cp-chip">Mobile</span>
+                <span class="cp-chip">Testing</span>
+                <span class="cp-chip">Product</span>
+              </div>
             </div>
           </div>
-          <div class="cp-grp">
-            <div class="cp-grp-h">
+          <div class="cp-axis">
+            <div class="cp-axhead">
               <span class="cp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></span>
-              <b>Vertical domains</b><span>Best practice</span>
+              <b>Vertical domains</b><em>Best practice</em>
             </div>
-            <div class="cp-chips">
-              <span class="cp-chip">Financial services</span>
-              <span class="cp-chip">Health</span>
-              <span class="cp-chip">Legal</span>
-              <span class="cp-chip">Consumer</span>
+            <div class="cp-vwrap">
+              <div class="cp-col">
+                <span class="cp-chip">Financial services</span>
+                <span class="cp-chip">Health</span>
+                <span class="cp-chip">Legal</span>
+                <span class="cp-chip">Consumer</span>
+              </div>
             </div>
           </div>
           <div class="cp-harness"><span class="dot">✸</span> Applied through Blueprint &amp; the build harness</div>
@@ -292,7 +301,7 @@
         <p>Domain and engineering patterns shape the specification, so the costly decisions are made well before code is written.</p>
       </article>
       <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.4-3 7.4-7 8.9-4-1.5-7-4.5-7-8.9V6l7-3z"/><path d="m9 11.5 2 2 4-4"/></svg></div>
         <h4>Your IP stays yours</h4>
         <p>Compass is our own engineering knowledge, not client data. Whatever we build with you belongs to you.</p>
       </article>
@@ -395,7 +404,6 @@
             <h5>Company</h5>
             <a href="about.html">About</a>
             <a href="ventures.html">Ventures</a>
-            <a href="index.html#operator">Careers</a>
           </div>
         </div>
       </div>

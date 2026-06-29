@@ -93,8 +93,8 @@
     if(!link) return;
     link.addEventListener('click',function(e){
       var href=link.getAttribute('href')||'';
-      /* real page links navigate; in-page anchors just toggle the menu */
-      if(href && href.indexOf('#')===-1) return;
+      /* real page links navigate reliably; in-page anchors just toggle the menu */
+      if(href && href.indexOf('#')===-1){ e.preventDefault(); window.location.href=href; return; }
       e.preventDefault();
       e.stopImmediatePropagation();
       var wasOpen=item.classList.contains('open');
