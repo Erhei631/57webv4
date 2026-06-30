@@ -10,7 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
 <script>try{if(sessionStorage.getItem('57b_loader_seen'))document.documentElement.classList.add('skip-loader');}catch(e){}</script>
-<style>html.skip-loader #loader{display:none!important}html.skip-loader body.locked{overflow:auto;height:auto}</style>
+<style>html.skip-loader #loader{display:none!important}html.skip-loader body.locked{overflow:auto;height:auto}
+@media(min-width:1025px){
+  #industries .ind-cols{grid-template-columns:repeat(5,1fr);gap:24px}
+  #industries .ind-cols .icol{min-height:0}
+  #industries .ind-cols .icol h3{line-height:1.08;min-height:2.16em}
+}</style>
 </head>
 <body class="locked">
 
@@ -296,10 +301,11 @@
       <p class="meta rv rv-d1">Each vertical leads with a solution, then pairs with build or rebuild.</p>
     </div>
     <div class="ind-cols rv">
-      <article class="icol"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></div><h3>Financial services</h3><span class="ceng">build · operate</span><div class="chips"><span class="chip">Stablecoins</span><span class="chip">Payments</span><span class="chip">On-chain credit</span><span class="chip">Wealth</span><span class="chip">Brokerage</span></div></article>
+      <a class="icol" href="financial-services.html"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M4 9.5h16"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M3 21h18"/></svg></div><h3>Financial services</h3><span class="ceng">build · operate</span><div class="chips"><span class="chip">Stablecoins</span><span class="chip">Payments</span><span class="chip">On-chain credit</span><span class="chip">Wealth</span><span class="chip">Brokerage</span></div></a>
       <a class="icol" href="consumer.html"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Consumer</h3><span class="ceng">build · rebuild</span><div class="chips"><span class="chip">Marketplaces</span><span class="chip">Sports &amp; fan</span><span class="chip">Mobile</span></div></a>
       <a class="icol" href="legal.html"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 6a3 3 0 0 0 6 0z"/><path d="M17 7l3 6a3 3 0 0 1-6 0z"/><path d="M8 21h8"/></svg></div><h3>Legal</h3><span class="ceng">build · rebuild</span><div class="chips"><span class="chip">Document AI</span><span class="chip">Firm systems</span><span class="chip">Workflow</span></div></a>
       <a class="icol" href="health.html"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2 7 4-14 2 7h6"/></svg></div><h3>Health</h3><span class="ceng">build</span><div class="chips"><span class="chip">Digital health</span><span class="chip">Remote monitoring</span><span class="chip">Clinical workflow</span></div></a>
+      <a class="icol" href="construction-property.html"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M15 21V11h2a2 2 0 0 1 2 2v8"/><path d="M8.5 8h.01M12 8h.01M8.5 12h.01M12 12h.01M8.5 16h.01M12 16h.01"/></svg></div><h3>Construction &amp; property</h3><span class="ceng">build · rebuild</span><div class="chips"><span class="chip">Field software</span><span class="chip">Inspection platforms</span><span class="chip">Property management</span></div></a>
     </div>
   </div>
 </section>
