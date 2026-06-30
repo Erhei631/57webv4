@@ -219,7 +219,7 @@ img{max-width:100%;display:block}
 /* big kinetic statement marquee (dark) */
 .statement{background:var(--ink);color:var(--paper);padding:60px 0;overflow:hidden}
 .statement .row{display:flex;width:max-content;animation:march 30s linear infinite;animation-play-state:paused}
-.statement.in .row{animation-play-state:running}
+.statement.go .row{animation-play-state:running}
 .statement .row span{font-family:var(--font-d);font-weight:600;font-size:clamp(48px,9vw,128px);letter-spacing:-.04em;
   padding-right:.5em;white-space:nowrap;-webkit-text-stroke:1px var(--paper);color:transparent}
 .statement .row span.fill{color:var(--paper);-webkit-text-stroke:0}
