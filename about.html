@@ -31,14 +31,14 @@
 .about-hero .crumb{margin-bottom:clamp(22px,3vw,36px)}
 .about-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
 .about-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.02;
-  font-size:clamp(38px,4.6vw,62px);max-width:none;margin:0}
+  font-size:var(--fs-h1);max-width:none;margin:0}
 .about-hero-aside{align-self:end;max-width:420px;padding-bottom:8px;transform:translateY(34px)}
 .about-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
 .about-hero-aside .hero-cta{justify-content:flex-start;margin:0;flex-wrap:wrap;gap:14px 22px}
 .about-hero-link{color:var(--accent);font-weight:500}
 @media(max-width:768px){
   .about-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
-  .about-hero h1{font-size:clamp(34px,8.5vw,50px)}
+  .about-hero h1{font-size:var(--fs-h1)}
   .about-hero-aside{max-width:none;padding-bottom:0;transform:none}
 }
 /* ---- editorial two-column belief blocks ---- */
@@ -62,7 +62,7 @@
 .map-sec .wrap{position:relative;z-index:1}
 .map-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:6px}
 .map-head h2{font-family:var(--font-d);font-weight:600;letter-spacing:-.03em;line-height:1.04;
-  font-size:clamp(30px,3.8vw,52px);max-width:16ch;margin:14px 0 0}
+  font-size:var(--fs-h2);max-width:16ch;margin:14px 0 0}
 .map-head .lead{max-width:38ch;font-size:16px;line-height:1.6;color:var(--ink-soft);margin:0}
 .dotmap-scene{position:relative;margin:clamp(34px,5vw,64px) 0 0}
 .dotmap-plane{position:relative;width:calc(100% - 30px);margin-inline:auto}

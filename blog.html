@@ -79,14 +79,14 @@
 .blog-hero .lbl .dot{color:var(--accent);font-size:10px;line-height:1}
 .blog-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
 .blog-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
-  font-size:clamp(40px,5vw,68px);max-width:none;margin:0}
+  font-size:var(--fs-h1);max-width:none;margin:0}
 .blog-hero-aside{align-self:end;max-width:400px;padding-bottom:8px;transform:translateY(34px)}
 .blog-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
 .blog-hero-aside .hero-cta{justify-content:flex-start;margin:0}
 .blog-hero-link{color:var(--accent);font-weight:500}
 @media(max-width:768px){
   .blog-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
-  .blog-hero h1{font-size:clamp(36px,9vw,54px)}
+  .blog-hero h1{font-size:var(--fs-h1)}
   .blog-hero-aside{max-width:none;padding-bottom:0}
 }
 </style>
