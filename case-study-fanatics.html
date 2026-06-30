@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fanatics Live · Case study · 57Blocks</title>
+<meta name="description" content="How 57Blocks helped Fanatics Live build a proprietary multimodal embedding model — a best-in-industry AI system that identifies, classifies, and values millions of collectibles at scale." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<style>
+/* ----- violet plume hero (Thinking family) ----- */
+.subhero.rs .subhero-bg{background:linear-gradient(180deg,#f5f4ff 0%,#eef0ff 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%)}
+.rs-plume{position:absolute;inset:-15%;pointer-events:none;
+  background:
+    radial-gradient(32% 62% at 67% -8%, rgba(96,71,255,.40) 0%, rgba(124,92,255,.24) 34%, transparent 66%),
+    radial-gradient(46% 50% at 90% 26%, rgba(150,108,255,.26), transparent 66%),
+    radial-gradient(40% 42% at 52% 4%, rgba(150,140,255,.18), transparent 72%);
+  filter:blur(30px);transform-origin:center;
+  animation:rsDrift 17s ease-in-out infinite alternate}
+@keyframes rsDrift{from{transform:translate(-1.5%,-1%) scale(1)}to{transform:translate(2%,1%) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.rs-plume{animation:none}}
+/* ---- paper hero (two column) ---- */
+.hm-hero{padding:128px 0 60px}
+.hm-hero .wrap{text-align:left}
+.hm-hrow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:center}
+.hm-meta{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-m);font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(18px,2.4vw,28px)}
+.hm-meta .dot{font-size:10px;line-height:1}
+.hm-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.02;
+  font-size:var(--fs-h1);margin:0;max-width:18ch}
+.hm-haside{max-width:none}
+.cs-tag{display:inline-flex;align-items:center;margin-top:22px;font-family:var(--font-m);font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(124,92,255,.1);padding:8px 15px;border-radius:999px}
+.cs-cover{position:relative;display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 24px 60px -34px rgba(22,16,52,.5);aspect-ratio:16/10}
+.cs-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.cs-cover:hover img{transform:scale(1.04)}
+.cs-cover-btn{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-m);font-size:13px;font-weight:500;color:#fff;background:rgba(15,18,16,.62);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);
+  padding:11px 18px;border-radius:999px;transition:background .25s var(--ease)}
+.cs-cover:hover .cs-cover-btn{background:rgba(15,18,16,.86)}
+.cs-cover-btn svg{width:15px;height:15px}
+.hm-haside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
+.hm-haside .hero-cta{justify-content:flex-start;margin:0}
+@media(max-width:768px){
+  .hm-hrow{grid-template-columns:1fr;gap:26px;align-items:start}
+  .hm-hero h1{font-size:var(--fs-h1)}
+  .hm-haside{max-width:none}
+}
+/* ---- engagement facts strip ---- */
+.cs-facts{display:flex;flex-wrap:wrap;gap:16px 56px;margin-top:clamp(34px,4vw,50px);padding-top:28px;border-top:1px solid var(--line)}
+.cs-facts .cm{display:flex;flex-direction:column;gap:6px}
+.cs-facts .cm .k{font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cs-facts .cm .v{font-size:17px;color:var(--ink);font-weight:500}
+/* ---- editorial doc body ---- */
+.hm-doc{display:flex;flex-direction:column;gap:clamp(44px,5vw,72px)}
+.hm-row{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(28px,4.5vw,72px);align-items:start}
+.hm-rlabel{position:sticky;top:108px;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);padding-top:6px;border-top:1.5px solid var(--ink)}
+.hm-rbody p{margin:0;color:var(--ink-soft);font-size:clamp(16px,1.3vw,18px);line-height:1.66;max-width:70ch}
+.hm-rbody p+p{margin-top:18px}
+.hm-rbody h2{margin:0 0 20px;font-family:var(--font-d);font-weight:600;font-size:clamp(24px,2.6vw,34px);
+  line-height:1.12;letter-spacing:-.03em;color:var(--ink);text-wrap:pretty}
+.hm-rbody h3{margin:26px 0 6px;font-family:var(--font-d);font-weight:600;font-size:clamp(18px,1.8vw,21px);
+  letter-spacing:-.01em;color:var(--ink)}
+.hm-rbody h3 .st{font-family:var(--font-m);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-right:10px}
+.hm-rbody h3:first-child{margin-top:0}
+@media(max-width:768px){
+  .hm-row{grid-template-columns:1fr;gap:16px}
+  .hm-rlabel{position:static;border-top:none;padding-top:0}
+}
+/* ---- pull quote ---- */
+.hm-quote{padding-top:4px;margin-top:8px}
+.hm-quote .qmark{display:block;font-family:var(--font-d);font-weight:700;font-size:72px;line-height:.6;color:var(--accent);margin-bottom:14px}
+.hm-quote blockquote{margin:0;font-family:var(--font-d);font-weight:500;letter-spacing:-.02em;
+  font-size:clamp(24px,2.9vw,36px);line-height:1.3;color:var(--ink);max-width:24ch;text-wrap:pretty}
+.hm-quote .qby{margin-top:24px;font-size:16px;color:var(--muted)}
+.hm-quote .qby strong{color:var(--ink);font-weight:600}
+/* ---- related link row ---- */
+.hm-comp-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding-bottom:16px;border-bottom:1.5px solid var(--ink);margin-bottom:26px}
+.hm-comp-head .l{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hm-comp-head .r{font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.hm-comp{display:flex;flex-wrap:wrap;gap:12px}
+.hm-clink{display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--line);border-radius:999px;background:var(--glass);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
+  padding:10px 18px;text-decoration:none;
+  transition:border-color .25s var(--ease),background .25s var(--ease),transform .2s var(--ease)}
+.hm-clink:hover{border-color:rgba(124,92,255,.42);background:rgba(124,92,255,.06);transform:translateY(-2px)}
+.hm-clink span{font-family:var(--font-m);font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--ink)}
+.hm-clink svg{width:15px;height:15px;color:var(--muted);flex:0 0 auto;transition:transform .25s var(--ease),color .25s var(--ease)}
+.hm-clink:hover svg{transform:translateX(3px);color:var(--accent)}
+.hm-clink:hover span{color:var(--accent)}
+/* ---- case switcher sidebar ---- */
+.cs-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:clamp(40px,6vw,84px);align-items:start}
+.cs-nav{position:sticky;top:100px}
+.cs-nav-title{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.cs-cat{font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  margin:24px 0 8px;padding-top:16px;border-top:1px solid var(--line)}
+.cs-cat:first-of-type{margin-top:0}
+.cs-nav a{display:block;font-size:15px;color:var(--ink-soft);padding:7px 0;text-decoration:none;transition:color .2s var(--ease)}
+.cs-nav a:hover{color:var(--accent)}
+.cs-nav a.active{color:var(--ink);font-weight:600}
+.cs-nav a.active::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:middle}
+.cs-main .hm-row{grid-template-columns:1fr;gap:14px}
+.cs-main .hm-rlabel{position:static;border-top:1.5px solid var(--ink);padding-top:12px;display:block}
+@media(max-width:1024px){
+  .cs-layout{grid-template-columns:1fr;gap:34px}
+  .cs-nav{position:static;padding-bottom:8px;border-bottom:1px solid var(--line)}
+}
+@media(max-width:768px){
+  .cs-layout{gap:0}
+  .cs-nav{display:none}
+}
+</style>
+</head>
+<body class="subpage">
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-bg"></div>
+  <div class="nav-in">
+    <a class="brand" href="index.html" aria-label="57Blocks"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="index.html#industries">Solutions <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega">
+            <div class="mega-col">
+              <h6>Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="mega-col">
+              <h6>Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="mega-col">
+              <h6>Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="how-we-deliver.html">How we deliver <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="blueprint.html">Blueprint</a>
+              <a href="agentic-builder.html">Agentic Builder</a>
+              <a href="compass.html">Compass</a>
+              <a href="excavator.html">Excavator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="work.html">Work</a>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#research">Thinking <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="research.html">Research</a>
+              <a href="blog.html">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="about.html">Company <svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="nav-menu">
+          <div class="nav-pop mega solo">
+            <div class="mega-col">
+              <a href="about.html">About</a>
+              <a href="ventures.html">Ventures</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="subhero hm-hero rs" id="top">
+  <div class="subhero-bg">
+    <div class="rs-plume"></div>
+  </div>
+  <div class="wrap">
+    <div class="crumb rv"><a href="work.html">Work</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Fanatics Live</span></div>
+    <div class="hm-hrow" style="margin-top:clamp(22px,3vw,34px)">
+      <div>
+        <h1 class="rv rv-d1">Building a competitive moat: industry-leading AI for the world's largest collectibles marketplace.</h1>
+        <span class="cs-tag rv rv-d1">Multimodal embedding model</span>
+      </div>
+      <div class="hm-haside rv rv-d2">
+        <a class="cs-cover" href="https://www.fanatics.live/home" target="_blank" rel="noopener noreferrer">
+          <img src="assets/cases/fanatics.png" alt="Fanatics Live" />
+          <span class="cs-cover-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg> View website</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ARTICLE BODY ============ -->
+<section class="sec" style="padding: 80px 0px 120px">
+  <div class="wrap">
+    <div class="cs-layout">
+      <aside class="cs-nav rv">
+        <div class="cs-nav-title">Case studies</div>
+        <div class="cs-cat">Enterprise and consumer</div>
+        <a class="active" href="case-study-fanatics.html">Fanatics</a>
+        <a href="case-study.html">Supio</a>
+        <a href="case-study-gmi.html">GMI Cloud</a>
+        <div class="cs-cat">On-chain and financial infrastructure</div>
+        <a href="case-study.html">Stellar</a>
+        <a href="case-study.html">Rain</a>
+        <a href="case-study.html">Huma</a>
+        <a href="case-study.html">LI.FI</a>
+        <a href="case-study.html">Solv</a>
+        <a href="case-study.html">CipherOwl</a>
+        <a href="case-study.html">Story Protocol</a>
+        <div class="cs-cat">Research</div>
+        <a href="case-study.html">Stanford</a>
+      </aside>
+      <div class="cs-main">
+    <div class="hm-doc">
+
+      <div class="hm-row rv">
+        <div class="hm-rlabel">The challenge</div>
+        <div class="hm-rbody">
+          <p>Managing the world's largest collectibles catalog presents a massive data challenge: identifying, classifying, and valuing millions of trading cards with precision.</p>
+          <p>To transform this vast inventory into a personalized, real-time experience for collectors, Fanatics Live needed an infrastructure capable of handling extreme scale. They required a partner who could not only provide immediate, top-tier engineering capacity but also architect a proprietary solution that would serve as a long-term competitive advantage.</p>
+        </div>
+      </div>
+
+      <div class="hm-row rv">
+        <div class="hm-rlabel">The solution</div>
+        <div class="hm-rbody">
+          <p>57Blocks partnered with Fanatics Live to engineer a best-in-industry AI system that acts as a strategic moat. By deploying a team of elite AI and software engineers, we helped build a proprietary multimodal embedding model that fuses computer vision with advanced data logic.</p>
+          <h3 style="display:flex;align-items:center;gap:12px"><svg width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex:0 0 auto"><path d="M27.416 19.626V32.374L27.4072 32.7275C27.2225 36.3567 24.212 39.2559 20.5342 39.2559C16.7377 39.2557 13.6525 36.1705 13.6523 32.374V31.0264C13.6523 30.2418 14.2906 29.6035 15.0752 29.6035L15.2207 29.6104C15.9398 29.6832 16.4971 30.29 16.4971 31.0264V32.374C16.4972 34.6016 18.3117 36.415 20.5391 36.415C22.7664 36.4148 24.58 34.6014 24.5801 32.374V19.6279C24.5801 18.8437 25.2181 18.2061 26.0029 18.2061L26.1475 18.2129C26.8628 18.2856 27.419 18.891 27.416 19.626Z" fill="url(#fa_g0)"/><path d="M19.6279 24.5762C20.4162 24.5762 21.0506 25.2132 21.0508 25.998C21.0508 26.7832 20.4122 27.4188 19.6309 27.4121H6.88184C3.0854 27.412 0 24.3227 0 20.5303C8.27615e-05 16.7379 3.08547 13.6486 6.88184 13.6484H8.22949C9.01772 13.6484 9.65234 14.2861 9.65234 15.0713L9.64551 15.2168C9.57221 15.9329 8.96497 16.4932 8.22949 16.4932H6.88184C4.6543 16.4933 2.84082 18.3078 2.84082 20.5352C2.84109 22.7624 4.65454 24.576 6.88184 24.5762H19.6279Z" fill="url(#fa_g0)"/><path d="M36.4092 18.5078C36.3003 16.3767 34.5317 14.6748 32.374 14.6748H19.6279C18.84 14.6747 18.2063 14.038 18.2061 13.2529L18.2129 13.1074C18.2859 12.3907 18.8928 11.8301 19.6279 11.8301H32.374L32.7275 11.8389C36.3597 12.0241 39.2559 15.046 39.2559 18.7207L39.2471 19.0742C39.0624 22.7033 36.0518 25.6025 32.374 25.6025H31.0264C30.2381 25.6025 29.6035 24.9649 29.6035 24.1797C29.6037 23.3955 30.2418 22.7578 31.0264 22.7578H32.374C34.6017 22.7578 36.415 20.9432 36.415 18.7158L36.4092 18.5078Z" fill="url(#fa_g0)"/><path d="M14.6719 19.7695C14.5986 20.4857 13.992 21.0458 13.2568 21.0459C12.4666 21.0459 11.8362 20.4114 11.8428 19.6309V6.88184C11.8428 3.08932 14.9281 7.36158e-06 18.7246 0C22.5213 0 25.6064 3.08519 25.6064 6.88184V8.22949C25.6064 9.01404 24.9688 9.6521 24.1846 9.65234C23.3963 9.65234 22.7617 9.01466 22.7617 8.22949V6.87793C22.7617 4.65057 20.9482 2.83615 18.7207 2.83594C16.4931 2.83594 14.6787 4.65035 14.6787 6.87793V19.624L14.6719 19.7695Z" fill="url(#fa_g0)"/><defs><linearGradient id="fa_g0" x1="0" y1="6.16226" x2="36.0606" y2="39.2559" gradientUnits="userSpaceOnUse"><stop stop-color="#7670E6"/><stop offset="1" stop-color="#E46464"/></linearGradient></defs></svg>Custom AI architecture</h3>
+          <p>We moved beyond off-the-shelf solutions, developing a tailored system trained on Fanatics' unique data to achieve identification accuracy that significantly outperforms standard industry baselines.</p>
+          <h3 style="display:flex;align-items:center;gap:12px"><svg width="26" height="26" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex:0 0 auto"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.40039 26.7998H12.2607L15.5 30.0391V35.9004C15.5 36.9497 16.351 37.8008 17.4004 37.8008H23.4004C24.4497 37.8008 25.3008 36.9497 25.3008 35.9004V29.9004C25.3008 28.8511 24.4497 28 23.4004 28H17.4209L13.4209 24H1.40039C0.627225 24 0 24.6272 0 25.4004C3.19464e-05 26.1736 0.627225 26.7998 1.40039 26.7998ZM18.3008 35H22.5V30.8008H18.3008V35Z" fill="url(#fa_g1)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M28.5 20.3008H1.40039C0.627192 20.3008 0 19.6736 0 18.9004C0 18.1272 0.627192 17.5 1.40039 17.5H28.5V15.9004C28.5 14.8511 29.351 14 30.4004 14H36.4004C37.4497 14 38.3008 14.8511 38.3008 15.9004V21.9004C38.3008 22.9497 37.4497 23.8008 36.4004 23.8008H30.4004C29.351 23.8008 28.5 22.9497 28.5 21.9004V20.3008ZM13.4209 13.6406H1.40039C0.627186 13.6406 0 13.0134 0 12.2402C5.20362e-05 11.4671 0.627235 10.8399 1.40039 10.8398H12.2607L15.5 7.59961V1.90039C15.5 0.85105 16.351 0 17.4004 0H23.4004C24.4497 1.0306e-06 25.3008 0.85105 25.3008 1.90039V7.90039C25.3008 8.94973 24.4497 9.80078 23.4004 9.80078H17.2588L13.4209 13.6406ZM31.3008 21H35.5V16.8008H31.3008V21ZM18.3008 7H22.5V2.80078H18.3008V7Z" fill="url(#fa_g1)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1.40039 20.3008H28.5V21.9004C28.5 22.9497 29.351 23.8008 30.4004 23.8008H36.4004C37.4497 23.8008 38.3008 22.9497 38.3008 21.9004V15.9004C38.3008 14.8511 37.4497 14 36.4004 14H30.4004C29.351 14 28.5 14.8511 28.5 15.9004V17.5H1.40039C0.627192 17.5 0 18.1272 0 18.9004C0 19.6736 0.627192 20.3008 1.40039 20.3008ZM31.3008 21H35.5V16.8008H31.3008V21Z" fill="url(#fa_g1)"/><defs><linearGradient id="fa_g1" x1="0" y1="5.93384" x2="34.7601" y2="38.2559" gradientUnits="userSpaceOnUse"><stop stop-color="#7670E6"/><stop offset="1" stop-color="#E46464"/></linearGradient></defs></svg>Scalable engineering capacity</h3>
+          <p>57Blocks provided the critical engineering surge needed to accelerate the roadmap, working alongside internal teams to deliver complex features like real-time market insights and automated cataloging.</p>
+        </div>
+      </div>
+
+      <div class="hm-row rv">
+        <div class="hm-rlabel">Business impact</div>
+        <div class="hm-rbody">
+          <p>This partnership successfully established a technological foundation that differentiates Fanatics Live in the marketplace. The custom AI stack now powers the platform's ability to identify and surface items with unmatched speed and accuracy, driving user engagement and operational efficiency.</p>
+          <p>By leveraging 57Blocks' top engineering talent, Fanatics Live secured a critical role in their current success, turning a complex data problem into a seamless user experience.</p>
+        </div>
+      </div>
+
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="hero-bg"><div class="stars"></div>
+    <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
+  </div>
+  <div class="wrap final-in">
+    <h2 class="rv">Let's build with you.</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">Tell us what you are working on.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="work.html"><s>See our work</s></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-lead">
+        <div class="foot-brand">
+          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+          <p>AI-native engineering delivery. Operator first, vendor second.</p>
+        </div>
+        <div class="foot-solutions">
+          <h5>Solutions</h5>
+          <div class="foot-sub-grid">
+            <div class="foot-col">
+              <h6 class="foot-sub">Industries</h6>
+              <a href="financial-services.html">Financial services</a>
+              <a href="consumer.html">Consumer</a>
+              <a href="legal.html">Legal</a>
+              <a href="health.html">Health</a>
+              <a href="construction-property.html">Construction &amp; property</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Capabilities</h6>
+              <a href="ai.html">AI</a>
+              <a href="blockchain.html">Blockchain</a>
+              <a href="robotics.html">Robotics</a>
+            </div>
+            <div class="foot-col">
+              <h6 class="foot-sub">Offerings</h6>
+              <a href="build-new.html">Build new</a>
+              <a href="rebuild.html">Rebuild</a>
+              <a href="engineering-subscription.html">Engineering subscription</a>
+              <a href="enterprise-ai.html">AI for your business</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-cols-spacer"></div>
+        <div class="foot-sub-grid">
+          <div class="foot-col">
+            <h5><a href="how-we-deliver.html">How we deliver</a></h5>
+            <a href="blueprint.html">Blueprint</a>
+            <a href="agentic-builder.html">Agentic Builder</a>
+            <a href="compass.html">Compass</a>
+            <a href="excavator.html">Excavator</a>
+          </div>
+          <div class="foot-col">
+            <h5>Thinking</h5>
+            <a href="research.html">Research</a>
+            <a href="blog.html">Blog</a>
+            <h5 class="foot-h5-gap">Work</h5>
+            <a href="work.html">Work</a>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="about.html">About</a>
+            <a href="ventures.html">Ventures</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 57Blocks Technology, Inc.</span>
+      <a class="foot-privacy" href="privacy.html">Privacy &amp; Terms</a>
+      <div class="soc"><a href="https://www.linkedin.com/company/57blocks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.2 8.02h4.6V24H.2V8.02zM8.02 8.02h4.41v2.18h.06c.61-1.16 2.11-2.38 4.34-2.38 4.64 0 5.5 3.05 5.5 7.02V24h-4.6v-6.86c0-1.64-.03-3.74-2.28-3.74-2.28 0-2.63 1.78-2.63 3.62V24h-4.6V8.02z"/></svg></a><a href="https://github.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a><a href="https://x.com/57blocks" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site-v2.js?v=20260624"></script>
+<script src="assets/hero-fx.js?v=20260624"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+</body>
+</html>

@@ -114,6 +114,10 @@
   .cs-layout{grid-template-columns:1fr;gap:34px}
   .cs-nav{position:static;padding-bottom:8px;border-bottom:1px solid var(--line)}
 }
+@media(max-width:768px){
+  .cs-layout{gap:0}
+  .cs-nav{display:none}
+}
 </style>
 </head>
 <body class="subpage">
@@ -221,15 +225,15 @@
 </header>
 
 <!-- ============ ARTICLE BODY ============ -->
-<section class="sec">
+<section class="sec" style="padding: 80px 0px 120px">
   <div class="wrap">
     <div class="cs-layout">
       <aside class="cs-nav rv">
         <div class="cs-nav-title">Case studies</div>
         <div class="cs-cat">Enterprise and consumer</div>
-        <a href="case-study.html">Fanatics</a>
+        <a href="case-study-fanatics.html">Fanatics</a>
         <a class="active" href="case-study.html">Supio</a>
-        <a href="case-study.html">GMI Cloud</a>
+        <a href="case-study-gmi.html">GMI Cloud</a>
         <div class="cs-cat">On-chain and financial infrastructure</div>
         <a href="case-study.html">Stellar</a>
         <a href="case-study.html">Rain</a>
@@ -277,7 +281,7 @@
         <div class="hm-rbody">
           <div class="hm-quote">
             <span class="qmark" aria-hidden="true" style="margin:0px">“</span>
-            <blockquote style="width:670px;max-width:100%;font-size:26px">57Blocks is an integral partner. Peter's team supported us by providing access to key talent. When it came time to fundraise, they helped create a highly competitive round through mentorship and introduction to friend venture capital. This is a founder friendly model that any startup can benefit from.</blockquote>
+            <blockquote style="max-width:670px;max-width:100%;font-size:26px">57Blocks is an integral partner. Peter's team supported us by providing access to key talent. When it came time to fundraise, they helped create a highly competitive round through mentorship and introduction to friend venture capital. This is a founder friendly model that any startup can benefit from.</blockquote>
             <div class="qby"><strong>Jerry Zhou</strong> · Co-Founder &amp; CEO of Supio</div>
           </div>
         </div>

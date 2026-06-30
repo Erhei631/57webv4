@@ -48,7 +48,7 @@
 .cp-vwrap{display:flex;gap:12px;justify-content:center}
 .cp-vwrap .cp-arrow{align-items:flex-start;padding-top:8px}
 .cp-col{position:relative;display:flex;flex-direction:column;gap:8px;align-items:center}
-.cp-col::before{content:"";position:absolute;top:6px;bottom:6px;left:50%;width:1px;background:var(--line);transform:translateX(-50%);z-index:0}
+.cp-col::before{content:"";position:absolute;top:6px;bottom:6px;left:50%;max-width:1px;background:var(--line);transform:translateX(-50%);z-index:0}
 .cp-col .cp-chip{position:relative;z-index:1}
 .cp-chip{font-family:var(--font-d);font-size:14px;font-weight:500;color:var(--ink-soft);
   background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;
@@ -67,7 +67,8 @@
   .cp-illu.in .cp-chip:nth-child(5){animation-delay:.29s}
 }
 @keyframes cpChipIn{to{opacity:1;transform:none}}
-@media(max-width:768px){.cp-why{grid-template-columns:1fr}.cp-copy{max-width:none}}
+.cp-why>*{min-width:0}
+@media(max-width:1024px){.cp-why{grid-template-columns:1fr}.cp-copy{max-width:none}}
 /* ----- hero art: proven-pattern catalog ----- */
 .cpx-doc{position:relative;background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.55);border-radius:20px;
   -webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
@@ -339,7 +340,7 @@
     <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
   </div>
   <div class="wrap final-in">
-    <h2 class="rv" style="font-size:90px">Want the detail?</h2>
+    <h2 class="rv" style="font-size:var(--fs-hero)">Want the detail?</h2>
     <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">The harness paper documents the full architecture.</p>
     <div class="hero-cta rv rv-d2">
       <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>

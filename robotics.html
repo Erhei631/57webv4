@@ -36,6 +36,7 @@
 /* tech-stack marquee */
 .stack-band .marquee .it{padding-right:72px}
 .stack-band .marquee .it img{height:46px;width:auto;display:block;object-fit:contain;mix-blend-mode:multiply;opacity:.9}
+@media(max-width:768px){.stack-band .marquee .it img{height:32px}.stack-band .marquee .it{padding-right:44px}}
 </style>
 </head>
 <body class="subpage">
@@ -145,7 +146,7 @@
     <div class="sec-head">
       <div class="t">
         <div class="lbl rv"><span class="dot">✸</span> The problem</div>
-        <h2 class="rv" style="max-width:18ch; font-size:60px">The hard part isn't the model. It's the <span style="color:var(--accent)">platform</span> around it.</h2>
+        <h2 class="rv" style="max-width:18ch; font-size:var(--fs-h2)">The hard part isn't the model. It's the <span style="color:var(--accent)">platform</span> around it.</h2>
       </div>
       <p class="meta rv rv-d1">Photorealistic simulated environments, streamed efficiently, with data collected and annotated inside them, and turning all of it into training data faster and at a scale real-world collection cannot match. We have engineered that full stack to production, and we bring it to teams who have the research but not the platform.</p>
     </div>
@@ -169,7 +170,7 @@
         <p>Cloud platforms for hosting, sharing, and interacting with simulated robotics environments, with browser-based 3D scene and physics editing that does not require writing code.</p>
       </article>
       <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v10M8 9l4 4 4-4"/><path d="M4 15v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M9 21h6"/></svg></div>
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7.5 21 10v5l-5 2.5L11 15v-5l5-2.5Z"/><path d="M11 10l5 2.5 5-2.5M16 12.5V18"/><path d="M3 8h5M3 12h6.5M3 16h4" stroke-dasharray="2 2.4"/></svg></div>
         <h4>Streaming simulation SDKs</h4>
         <p>SDKs for on-demand streaming and loading of simulation components, so large, heavy scenes run without heavy clients.</p>
       </article>
@@ -184,7 +185,7 @@
         <p>Generative systems that turn a concept into a usable virtual training environment in seconds.</p>
       </article>
       <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="20" height="9" rx="3"/><path d="M9 17c0-1.6 1.1-2.6 3-2.6s3 1 3 2.6"/><path d="M2 11.5h1.6M20.4 11.5H22"/></svg></div>
+        <div class="ficon"><svg viewBox="0 0 1024 1024" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M288 231.253c-45.796 0-85.12 16.427-117.973 49.28s-49.28 72.178-49.28 117.973v224c0 47.787 16.427 88.107 49.28 120.96s72.178 49.28 117.973 49.28h20.907c33.849 0 65.707-9.956 95.573-29.867l44.8-29.867c19.911-11.947 40.818-17.92 62.72-17.92s42.809 5.973 62.72 17.92l44.8 29.867c29.867 19.911 61.724 29.867 95.573 29.867H736c45.796 0 85.12-16.427 117.973-49.28s49.28-73.173 49.28-120.96v-224c0-45.796-16.427-85.12-49.28-117.973s-72.178-49.28-117.973-49.28H288zM736 288c31.858 0 58.738 10.951 80.64 32.853s32.853 47.787 32.853 77.653v224c0 31.858-10.951 58.738-32.853 80.64S767.858 736 736 736h-20.907c-23.893 0-44.8-5.973-62.72-17.92l-47.787-32.853c-27.876-17.92-58.738-26.88-92.587-26.88s-64.711 8.96-92.587 26.88l-47.787 32.853C353.707 730.027 332.8 736 308.907 736H288c-31.858 0-58.24-10.951-79.147-32.853s-32.356-48.782-34.347-80.64v-224c0-29.867 10.951-55.751 32.853-77.653S256.142 288 288 288h448zM64 622.507h56.747V455.253H64v167.254z m839.253 0H960V455.253h-56.747v167.254zM288 512c-7.964 0-14.436 2.489-19.413 7.467-4.978 4.978-7.467 11.449-7.467 19.413s2.489 14.933 7.467 20.907c4.978 5.973 11.449 8.96 19.413 8.96h140.373c7.964 0 14.436-2.987 19.413-8.96 4.978-5.973 7.467-12.942 7.467-20.907s-2.489-14.436-7.467-19.413c-4.978-4.978-11.449-7.467-19.413-7.467H288z m307.627 0c-7.964 0-14.436 2.489-19.413 7.467s-7.467 11.449-7.467 19.413 2.489 14.933 7.467 20.907 11.449 8.96 19.413 8.96H736c7.964 0 14.436-2.987 19.413-8.96s7.467-12.942 7.467-20.907-2.489-14.436-7.467-19.413S743.964 512 736 512H595.627z"></path></svg></div>
         <h4>VR data collection and annotation</h4>
         <p>WebXR environments for collecting and annotating training data in virtual reality, hardened for device compatibility and stability.</p>
       </article>

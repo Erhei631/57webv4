@@ -15,11 +15,14 @@
     var seen;
     try{ seen = sessionStorage.getItem('57b_loader_seen'); }catch(e){ seen = null; }
     if(seen){
+      loader.style.transition='none';
+      loader.style.display='none';
       loader.classList.add('done');
       go();
     }else{
       try{ sessionStorage.setItem('57b_loader_seen','1'); }catch(e){}
-      document.body.classList.add('locked');
+      /* do NOT lock scrolling — the loader is a pointer-events:none overlay
+         that slides away on its own, so the page can scroll immediately */
       if(reduce){
         lc.textContent='100';
         setTimeout(function(){loader.classList.add('done');go();},300);

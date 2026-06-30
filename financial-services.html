@@ -16,6 +16,10 @@
 .trust .marquee-band{border-bottom:none;background:transparent;padding:10px 0}
 .trust .marquee .it{padding-right:72px}
 .trust .marquee .it img{height:60px;width:auto;display:block;mix-blend-mode:multiply}
+/* chain cards: brand-logo icons, no hover fill */
+.feat--static .ficon img{height:24px;width:auto;display:block}
+.feat--static:hover .ficon{background:linear-gradient(rgba(124,92,255,.10),rgba(124,92,255,.04));border-color:rgba(124,92,255,.28);color:var(--accent);transform:none}
+@media(max-width:768px){.trust .marquee .it img{height:40px}.trust .marquee .it{padding-right:44px}}
 
 /* ----- soft-blue aurora hero ----- */
 .subhero.fs .subhero-bg{background:linear-gradient(168deg,#eef5ff 0%,#d8e9ff 40%,#c3dcff 74%,#b2d1ff 100%);
@@ -55,6 +59,7 @@
 /* ----- selected work cards (match work.html sizing) ----- */
 .case .cname-logo{display:block;height:60px;width:auto;margin-bottom:2px}
 .case-grid .cdesc{min-height:2.9em}
+@media(max-width:768px){.case-grid .case{min-height:188px;padding:22px}.case-grid .case .cname-logo{height:48px}.case-grid .cdesc{min-height:0}}
 </style>
 </head>
 <body class="subpage">
@@ -163,7 +168,7 @@
     <div class="sec-head">
       <div class="t">
         <div class="lbl rv"><span class="dot">✸</span> The problem</div>
-        <h2 class="rv" style="max-width:17ch; font-size:60px">In finance, <span style="color:var(--accent)">trust</span> and correctness are the product.</h2>
+        <h2 class="rv" style="max-width:17ch; font-size:var(--fs-h2)">In finance, <span style="color:var(--accent)">trust</span> and correctness are the product.</h2>
       </div>
       <p class="meta rv rv-d1">Money movement has no tolerance for ambiguity. Regulated workloads, throughput, correctness, and audit traceability are unforgiving, and the bar is the same whether the rails are traditional or on-chain. The patterns below recur across the financial platforms we build.</p>
     </div>
@@ -190,7 +195,7 @@
     </div>
     <div class="feat-grid rv">
       <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="1.6"/><circle cx="14" cy="12" r="1.6"/><circle cx="10" cy="17" r="1.6"/></svg></div>
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7H16"/><path d="M12 7.08V13.62"/><circle cx="4.27" cy="7.08" r="3.27"/><circle cx="19.73" cy="7.08" r="3.27"/><circle cx="12" cy="17.78" r="4.16"/><path d="M12 15.7V19.86" stroke-width="0.9"/><path d="M13.78 16.47c-.42-.42-1.07-.65-1.78-.65-1.01 0-1.66.48-1.66 1.19 0 1.55 3.33.42 3.33 1.97 0 .71-.65 1.19-1.66 1.19-.83 0-1.55-.3-1.96-.77" stroke-width="0.9"/></svg></div>
         <h4>On-chain money movement</h4>
         <p>Stablecoin issuance, payments, card issuance, wallets, and on-chain credit, across Stellar, Canton, EVM, Solana, Cosmos, and Sui.</p>
       </article>
@@ -279,18 +284,18 @@
       <p class="meta rv rv-d1">Some chains we partner with formally, building developer tooling and contributing critical infrastructure. On others we ship production code every week.</p>
     </div>
     <div class="feat-grid rv">
-      <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M5 9h14"/><path d="M5 15h14"/></svg></div>
+      <article class="feat feat--static">
+        <div class="ficon"><img src="assets/logos/stellar-icon.png" alt="Stellar" /></div>
         <h4>Stellar</h4>
         <p>Preferred engineering partner. Migrations, ecosystem contributions, and developer tooling on Stellar and Soroban.</p>
       </article>
-      <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <article class="feat feat--static">
+        <div class="ficon"><img src="assets/logos/canton-icon.png" alt="Canton Network" /></div>
         <h4>Canton Network</h4>
         <p>Privacy-preserving institutional infrastructure. Integrations and validator services for our clients.</p>
       </article>
-      <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 5 12l7 4 7-4z"/><path d="m5 13.5 7 4 7-4"/><path d="M12 22V6"/></svg></div>
+      <article class="feat feat--static">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.3"/><circle cx="12" cy="4" r="1.8"/><circle cx="12" cy="20" r="1.8"/><circle cx="4.6" cy="8" r="1.8"/><circle cx="19.4" cy="8" r="1.8"/><path d="M12 6.1v3.6M12 14.3v3.9M10.1 11.1 6.2 8.9M13.9 11.1l3.9-2.2"/></svg></div>
         <h4>EVM · Solana · Cosmos · Sui</h4>
         <p>Production code on every chain our clients run on, with ChainSmith automating EVM verification.</p>
       </article>
@@ -336,7 +341,7 @@
         <p>Portfolio, reporting, and advisor workflow systems with the audit traceability regulated work requires.</p>
       </article>
       <article class="feat">
-        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18l-2 12H5z"/><path d="M3 7 5 3h14l2 4"/><path d="M9 11v4M15 11v4"/></svg></div>
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14M14 5l3 3-3 3"/><path d="M21 16H7m3 3-3-3 3-3"/></svg></div>
         <h4>Payments and ledgers</h4>
         <p>High-throughput event processing, reconciliation, and settlement at card-network scale.</p>
       </article>
@@ -403,7 +408,7 @@
     <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
   </div>
   <div class="wrap final-in">
-    <h2 class="rv" style="font-size:90px">Let's build the next<br />layer of the stack.</h2>
+    <h2 class="rv" style="font-size:var(--fs-hero)">Let's build the next<br />layer of the stack.</h2>
     <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">Whether you are issuing a stablecoin, building a payment rail, or building a wealth platform, we start with a conversation about scope.</p>
     <div class="hero-cta rv rv-d2">
       <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
