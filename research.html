@@ -34,7 +34,7 @@
 .rs-hero-aside{align-self:center;max-width:420px}
 .rs-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
 .rs-hero-aside .hero-cta{justify-content:flex-start;margin:0}
-@media(max-width:820px){
+@media(max-width:768px){
   .rs-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
   .rs-hero h1{font-size:clamp(36px,9vw,54px)}
   .rs-hero-aside{max-width:none;padding-bottom:0;transform:none}
@@ -56,7 +56,7 @@
 .rs-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,34px);align-items:stretch}
 .rs-cols .rs-group{margin-top:0;display:flex;flex-direction:column}
 .rs-cols .rs-paper{grid-template-columns:1fr;gap:22px;flex:1}
-@media(max-width:860px){.rs-cols{grid-template-columns:1fr;gap:clamp(40px,5vw,68px)}}
+@media(max-width:768px){.rs-cols{grid-template-columns:1fr;gap:clamp(40px,5vw,68px)}}
 .rs-paper-meta{display:flex;flex-direction:column;gap:12px}
 .rs-pill{align-self:flex-start;display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--accent);background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.3);
@@ -68,7 +68,7 @@
 .rs-paper:hover .rs-paper-body h3 a{color:var(--accent)}
 .rs-paper-body p{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:70ch}
 .rs-paper-body .arrow-link{margin-top:22px}
-@media(max-width:760px){.rs-paper{grid-template-columns:1fr;gap:18px}}
+@media(max-width:768px){.rs-paper{grid-template-columns:1fr;gap:18px}}
 /* ---- also in thinking ---- */
 .rs-also{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);
   border-top:1px dashed var(--line);padding-top:28px}
@@ -151,6 +151,7 @@
       </div>
     </div>
     <div class="nav-right">
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
     </div>
   </div>

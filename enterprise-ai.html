@@ -43,7 +43,7 @@
 .stage-stack .scell p{color:var(--ink-soft);font-size:16px;line-height:1.56;max-width:60ch;margin:0}
 .stage-stack .sbadge{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--accent);background:rgba(124,92,255,.1);padding:8px 15px;border-radius:999px;white-space:nowrap;align-self:center}
-@media(max-width:860px){
+@media(max-width:768px){
   .stage-stack .srow{grid-template-columns:54px 1fr;gap:12px 18px}
   .stage-stack .sbadge{grid-column:2;justify-self:start;margin-top:14px}
 }
@@ -87,7 +87,7 @@
 .way-card.dark-path .way-chip svg{color:var(--ink)}
 .way-card .arrow-link{margin-top:26px}
 .way-card:hover .arrow-link{color:var(--accent)}
-@media(max-width:760px){
+@media(max-width:768px){
   .ways-grid{grid-template-columns:1fr}
   .ways-branch{display:none}
   .ways-top{margin-bottom:24px}
@@ -170,6 +170,7 @@
       </div>
     </div>
     <div class="nav-right">
+      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <a class="btn btn-sm" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
     </div>
   </div>

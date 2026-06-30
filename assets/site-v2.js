@@ -87,11 +87,19 @@
   });
 
   /* ---------- dropdown parents are triggers, not links ---------- */
+  var isMobile=function(){return window.matchMedia('(max-width:1024px)').matches;};
   var menuItems=[].slice.call(document.querySelectorAll('.nav-item.has-menu'));
   menuItems.forEach(function(item){
     var link=item.querySelector(':scope > a');
     if(!link) return;
     link.addEventListener('click',function(e){
+      /* mobile: parent links expand the accordion, never navigate */
+      if(isMobile()){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        item.classList.toggle('open');
+        return;
+      }
       var href=link.getAttribute('href')||'';
       /* real page links navigate reliably; in-page anchors just toggle the menu */
       if(href && href.indexOf('#')===-1){ e.preventDefault(); window.location.href=href; return; }
@@ -103,9 +111,39 @@
     });
   });
   document.addEventListener('click',function(e){
+    if(isMobile()) return;
     if(e.target.closest && e.target.closest('.nav-item.has-menu')) return;
     menuItems.forEach(function(o){o.classList.remove('open');});
   });
+
+  /* ---------- mobile hamburger drawer ---------- */
+  (function(){
+    var burger=document.querySelector('.nav-burger');
+    var links=document.querySelector('.nav-links');
+    if(!burger||!nav||!links) return;
+    /* clone the top-bar CTA into the bottom of the drawer */
+    var cta=document.querySelector('.nav-right .btn:not(.brand)');
+    if(cta && !links.querySelector('.nav-cta-m')){
+      var m=cta.cloneNode(true);
+      m.classList.add('nav-cta-m');
+      links.appendChild(m);
+    }
+    function close(){nav.classList.remove('nav-open');burger.setAttribute('aria-expanded','false');document.body.classList.remove('nav-locked');}
+    burger.addEventListener('click',function(){
+      var open=!nav.classList.contains('nav-open');
+      nav.classList.toggle('nav-open',open);
+      burger.setAttribute('aria-expanded',open?'true':'false');
+      document.body.classList.toggle('nav-locked',open);
+    });
+    /* close when a real link is tapped */
+    links.addEventListener('click',function(e){
+      var a=e.target.closest('a');
+      if(!a) return;
+      if(a.parentElement && a.parentElement.classList.contains('nav-item') && a.parentElement.classList.contains('has-menu')) return;
+      close();
+    });
+    window.addEventListener('resize',function(){ if(!isMobile()) close(); });
+  })();
 
   /* ---------- smooth anchor scroll ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
