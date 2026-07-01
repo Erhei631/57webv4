@@ -33,16 +33,17 @@
   box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -40px rgba(22,16,52,.5);
   padding:clamp(24px,2.6vw,34px)}
 .cp-axis+.cp-axis{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.cp-axis{min-width:0}
 .cp-axhead{display:flex;align-items:center;gap:8px;margin-bottom:13px}
 .cp-axhead .cp-ic{flex:0 0 auto;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
   background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.32);color:var(--accent)}
 .cp-axhead .cp-ic svg{width:15px;height:15px}
 .cp-axhead b{font-family:var(--font-d);font-weight:600;font-size:14.5px;letter-spacing:-.01em;color:var(--ink)}
 .cp-axhead em{font-family:var(--font-m);font-style:normal;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:auto}
-.cp-hwrap{display:flex;align-items:center;gap:10px}
+.cp-hwrap{display:flex;align-items:center;gap:10px;min-width:0}
 .cp-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:var(--accent);opacity:.5}
 .cp-arrow svg{width:16px;height:16px}
-.cp-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.cp-row{display:flex;gap:8px;flex-wrap:wrap;min-width:0}
 .cp-row::-webkit-scrollbar{display:none}
 .cp-row .cp-chip{flex:0 0 auto}
 .cp-vwrap{display:flex;gap:12px;justify-content:center}
@@ -352,61 +353,53 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-lead">
-        <div class="foot-brand">
-          <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
-          <p>AI-native engineering delivery. Operator first, vendor second.</p>
-        </div>
-        <div class="foot-solutions">
-          <h5>Solutions</h5>
-          <div class="foot-sub-grid">
-            <div class="foot-col">
-              <h6 class="foot-sub">Industries</h6>
-              <a href="financial-services.html">Financial services</a>
-              <a href="consumer.html">Consumer</a>
-              <a href="legal.html">Legal</a>
-              <a href="health.html">Health</a>
-              <a href="construction-property.html">Construction &amp; property</a>
-            </div>
-            <div class="foot-col">
-              <h6 class="foot-sub">Capabilities</h6>
-              <a href="ai.html">AI</a>
-              <a href="blockchain.html">Blockchain</a>
-              <a href="robotics.html">Robotics</a>
-            </div>
-            <div class="foot-col">
-              <h6 class="foot-sub">Offerings</h6>
-              <a href="build-new.html">Build new</a>
-              <a href="rebuild.html">Rebuild</a>
-              <a href="engineering-subscription.html">Engineering subscription</a>
-              <a href="enterprise-ai.html">AI for your business</a>
-            </div>
-          </div>
-        </div>
+    <div class="foot-top cfoot">
+      <div class="cfoot-brand">
+        <div class="brand"><img class="logo-svg" src="assets/logo-57blocks.png" alt="57Blocks" /></div>
+        <p>AI-native engineering delivery. Operator first, vendor second.</p>
       </div>
-      <div class="foot-cols">
-        <div class="foot-cols-spacer"></div>
-        <div class="foot-sub-grid">
-          <div class="foot-col">
-            <h5><a href="how-we-deliver.html">How we deliver</a></h5>
-            <a href="blueprint.html">Blueprint</a>
-            <a href="agentic-builder.html">Agentic Builder</a>
-            <a href="compass.html">Compass</a>
-            <a href="excavator.html">Excavator</a>
-          </div>
-          <div class="foot-col">
-            <h5>Thinking</h5>
-            <a href="research.html">Research</a>
-            <a href="blog.html">Blog</a>
-            <h5 class="foot-h5-gap">Work</h5>
-            <a href="work.html">Work</a>
-          </div>
-          <div class="foot-col">
-            <h5>Company</h5>
-            <a href="about.html">About</a>
-            <a href="ventures.html">Ventures</a>
-          </div>
+      <div class="cfoot-nav">
+        <div class="cfoot-g">
+          <h5>Industries</h5>
+          <a href="financial-services.html">Financial services</a>
+          <a href="consumer.html">Consumer</a>
+          <a href="legal.html">Legal</a>
+          <a href="health.html">Health</a>
+          <a href="construction-property.html">Construction &amp; property</a>
+        </div>
+        <div class="cfoot-g">
+          <h5>Capabilities</h5>
+          <a href="ai.html">AI</a>
+          <a href="blockchain.html">Blockchain</a>
+          <a href="robotics.html">Robotics</a>
+        </div>
+        <div class="cfoot-g">
+          <h5>Offerings</h5>
+          <a href="build-new.html">Build new</a>
+          <a href="rebuild.html">Rebuild</a>
+          <a href="engineering-subscription.html">Engineering subscription</a>
+          <a href="enterprise-ai.html">AI for your business</a>
+        </div>
+        <div class="cfoot-g">
+          <h5><a href="how-we-deliver.html">How we deliver</a></h5>
+          <a href="blueprint.html">Blueprint</a>
+          <a href="agentic-builder.html">Agentic Builder</a>
+          <a href="compass.html">Compass</a>
+          <a href="excavator.html">Excavator</a>
+        </div>
+        <div class="cfoot-g">
+          <h5>Work</h5>
+          <a href="work.html">Work</a>
+        </div>
+        <div class="cfoot-g">
+          <h5>Thinking</h5>
+          <a href="research.html">Research</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div class="cfoot-g">
+          <h5>Company</h5>
+          <a href="about.html">About</a>
+          <a href="ventures.html">Ventures</a>
         </div>
       </div>
     </div>

@@ -39,11 +39,25 @@
     }
   }else{ go(); }
 
-  /* ---------- nav scrolled state ---------- */
+  /* ---------- nav scrolled state (hysteresis + rAF, flicker-proof) ---------- */
   var nav=document.querySelector('.nav');
-  window.addEventListener('scroll',function(){
-    if(nav) nav.classList.toggle('scrolled', window.scrollY>24);
-  },{passive:true});
+  (function(){
+    if(!nav) return;
+    var on=false, ticking=false;
+    function apply(){
+      var y=window.scrollY;
+      /* two thresholds so a scroll position resting near the trigger can't
+         rapidly toggle the blurred bg on/off (the cause of the flicker) */
+      if(!on && y>60){ on=true; nav.classList.add('scrolled'); }
+      else if(on && y<20){ on=false; nav.classList.remove('scrolled'); }
+      ticking=false;
+    }
+    window.addEventListener('scroll',function(){
+      if(ticking) return;
+      ticking=true; requestAnimationFrame(apply);
+    },{passive:true});
+    apply();
+  })();
 
   /* ---------- scroll reveal ---------- */
   var io=new IntersectionObserver(function(es){
