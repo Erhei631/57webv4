@@ -8,11 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260702" />
 <style>
 /* ---- editorial left-aligned hero (matches work) ---- */
-.about-hero{padding:128px 0 64px;position:relative}
-.about-hero .sh-dots,.about-hero .sh-ring,.about-hero .sh-bloom{display:none}
+.about-hero{padding:120px 0 72px;position:relative}
+.stats-sec{padding:56px 0}
+.stats-sec .stat .n{font-size:clamp(38px,4.2vw,62px)}
+.about-hero .sh-ring,.about-hero .sh-bloom{display:none}
+.about-hero .sh-dots{display:block;opacity:.5;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 58%,transparent 92%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 58%,transparent 92%)}
 .about-hero .subhero-bg{
   background:
     radial-gradient(55% 70% at 14% 12%, rgba(170,150,255,.16), transparent 62%),
@@ -27,25 +32,24 @@
     radial-gradient(110% 60% at 95% 70%, rgba(190,170,255,.13), transparent 58%);
   -webkit-mask-image:linear-gradient(180deg,transparent 18%,#000 70%,transparent 100%);
   mask-image:linear-gradient(180deg,transparent 18%,#000 70%,transparent 100%)}
-.about-hero .wrap{text-align:left}
+.about-hero .wrap{text-align:center}
 .about-hero .crumb{margin-bottom:clamp(22px,3vw,36px)}
-.about-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
+.about-hero-row{display:block}
+.about-hero-copy{max-width:900px;margin:0 auto}
+.about-hero .crumb{justify-content:center}
 .about-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.02;
   font-size:var(--fs-h1);max-width:none;margin:0}
-.about-hero-aside{align-self:end;max-width:420px;padding-bottom:8px;transform:translateY(34px)}
-.about-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
-.about-hero-aside .hero-cta{justify-content:flex-start;margin:0;flex-wrap:wrap;gap:14px 22px}
-.about-hero-link{color:var(--accent);font-weight:500}
+.about-hero-copy .hero-cta{justify-content:center;margin:clamp(30px,3.4vw,44px) 0 0;flex-wrap:wrap;gap:14px 16px}
 @media(max-width:768px){
-  .about-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
+  .about-hero-copy .hero-cta{justify-content:center}
   .about-hero h1{font-size:var(--fs-h1)}
-  .about-hero-aside{max-width:none;padding-bottom:0;transform:none}
+  .about-hero-copy .hero-cta{margin-top:26px}
 }
 /* ---- editorial two-column belief blocks ---- */
 .beliefs{padding-top:0}
 .belief{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,6vw,90px);
   padding:clamp(48px,6vw,80px) 0;border-top:1px solid var(--line)}
-.belief:last-child{border-bottom:1px solid var(--line)}
+.belief:last-child{border-bottom:0}
 .belief .b-lbl{font-family:var(--font-m);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding-top:10px}
 .belief .b-body p{font-family:var(--font-d);font-weight:500;letter-spacing:-.02em;line-height:1.32;
   font-size:clamp(24px,2.6vw,34px);color:var(--ink);margin:0;text-wrap:pretty}
@@ -131,6 +135,28 @@
   .dotmap-plane{--tilt:24deg}
 }
 @media(max-width:480px){.hubs{grid-template-columns:1fr}}
+/* ---- about intro narrative ---- */
+.about-intro{padding:clamp(56px,6vw,88px) 0}
+.about-intro-inner{border-top:1px solid var(--line);padding-top:clamp(28px,3vw,44px)}
+.about-intro .lbl{margin-bottom:clamp(26px,3vw,40px)}
+.about-intro-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,80px)}
+.about-intro-cols p{font-family:var(--font-d);font-weight:500;letter-spacing:-.015em;line-height:1.4;
+  font-size:clamp(19px,1.6vw,25px);color:var(--ink);margin:0;text-wrap:pretty}
+.about-intro-cols b{font-weight:600}
+@media(max-width:768px){.about-intro-cols{grid-template-columns:1fr;gap:18px}}
+/* ---- leadership team ---- */
+.team-sec{padding:clamp(64px,8vw,104px) 0}
+.team-head{max-width:60ch;margin-bottom:clamp(34px,4vw,52px)}
+.team-head h2{font-family:var(--font-d);font-weight:600;letter-spacing:-.03em;line-height:1.04;
+  font-size:var(--fs-h2);margin:14px 0 0}
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,2.4vw,34px)}
+.tm{display:flex;flex-direction:column}
+.tm image-slot{width:100%;aspect-ratio:1/1;height:auto}
+.tm .tm-name{font-family:var(--font-d);font-weight:600;letter-spacing:-.02em;font-size:19px;color:var(--ink);margin:18px 0 3px}
+.tm .tm-role{font-family:var(--font-m);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.tm .tm-bio{font-size:14px;line-height:1.55;color:var(--muted);margin:10px 0 0}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(3,1fr);row-gap:38px}}
+@media(max-width:560px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body class="subpage">
@@ -225,17 +251,30 @@
   <div class="wrap">
     <div class="crumb rv"><a href="index.html">Company</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>About</span></div>
     <div class="about-hero-row">
-      <h1 class="rv rv-d1">A sovereign, vertically integrated frontier tech company.</h1>
-      <div class="about-hero-aside rv rv-d2">
-        <p class="lead">57Blocks is a technology services firm spun out of Adobe in 2018, with around 200 engineers across hubs in the United States, Chengdu, Colombia, Poland, and São Paulo. We build, we invest, and we operate.</p>
-        <div class="hero-cta">
-          <a class="arrow-link about-hero-link" href="work.html">See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="arrow-link about-hero-link" href="research.html">Read our research <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="about-hero-copy">
+        <h1 class="rv rv-d1">A sovereign, vertically integrated frontier<br>tech company.</h1>
+        <div class="hero-cta rv rv-d2">
+          <a class="btn btn-fill" href="work.html"><s>See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+          <a class="btn" href="research.html"><s>Read our research</s></a>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<!-- ============ STATS ============ -->
+<!-- ============ INTRO NARRATIVE ============ -->
+<section class="sec about-intro">
+  <div class="wrap">
+    <div class="about-intro-inner">
+      <div class="lbl rv"><span class="dot">✸</span> Who we are</div>
+      <div class="about-intro-cols rv rv-d1">
+        <p>57Blocks is a global engineering services firm spun out of Adobe. Since 2018, our teams have built solutions for <b>Google</b>, <b>Fanatics</b>, <b>Apple</b>, and venture-backed startups from <b>Y Combinator</b> and <b>a16z</b>.</p>
+        <p>Beyond engineering, 57Blocks operates a venture investment arm that invests in early vertical AI and research-driven founders. We combine capital and embedded engineering to shape product faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ STATS ============ -->
 <section class="stats-sec">
@@ -244,7 +283,7 @@
       <div class="stat rv"><div class="n"><span data-count="200" data-suffix="+">0</span></div><div class="d">engineers</div></div>
       <div class="stat rv rv-d1"><div class="n"><span data-count="150" data-suffix="+">0</span></div><div class="d">MVPs and products</div></div>
       <div class="stat rv rv-d2"><div class="n"><span data-count="5">0</span></div><div class="d">global hubs</div></div>
-      <div class="stat rv rv-d3"><div class="n"><span data-count="2018">0</span></div><div class="d">founded</div></div>
+      <div class="stat rv rv-d3"><div class="n"><span data-count="2018">0</span></div><div class="d">Spun out of Adobe</div></div>
     </div>
   </div>
 </section>
@@ -285,6 +324,43 @@
       <div class="hub-card"><div class="cc"><i></i> Colombia</div><ul><li>Bogotá</li><li>Medellín</li></ul></div>
       <div class="hub-card"><div class="cc"><i></i> Brazil</div><ul><li>Rio de Janeiro</li></ul></div>
       <div class="hub-card"><div class="cc"><i></i> Poland</div><ul><li>Wrocław</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEADERSHIP ============ -->
+<section class="sec team-sec" id="leadership">
+  <div class="wrap">
+    <div class="team-head">
+      <div class="lbl rv"><span class="dot">✸</span> Leadership</div>
+      <h2 class="rv">The people steering the company.</h2>
+    </div>
+    <div class="team-grid rv rv-d1">
+      <div class="tm">
+        <image-slot id="team-1" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <div class="tm-name">Peter Wang</div>
+        <div class="tm-role">CEO</div>
+      </div>
+      <div class="tm">
+        <image-slot id="team-2" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <div class="tm-name">Linda Yan</div>
+        <div class="tm-role">Head of Delivery</div>
+      </div>
+      <div class="tm">
+        <image-slot id="team-3" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <div class="tm-name">Kevin Wang</div>
+        <div class="tm-role">Managing Partner</div>
+      </div>
+      <div class="tm">
+        <image-slot id="team-4" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <div class="tm-name">Kamil Krupa</div>
+        <div class="tm-role">GTM Lead, Europe</div>
+      </div>
+      <div class="tm">
+        <image-slot id="team-5" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <div class="tm-name">Juan E Quintero</div>
+        <div class="tm-role">Eng Lead, Latin America</div>
+      </div>
     </div>
   </div>
 </section>
@@ -383,8 +459,9 @@
   </div>
 </footer>
 
-<script src="assets/site-v2.js?v=20260624"></script>
-<script src="assets/hero-fx.js?v=20260624"></script>
+<script src="assets/site-v2.js?v=20260702"></script>
+<script src="image-slot.js"></script>
+<script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){

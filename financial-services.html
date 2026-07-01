@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260702" />
 <style>
 /* ----- trusted-by marquee ----- */
 .trust{margin-top:30px}
@@ -19,7 +19,21 @@
 /* chain cards: brand-logo icons, no hover fill */
 .feat--static .ficon img{height:24px;width:auto;display:block}
 .feat--static:hover .ficon{background:linear-gradient(rgba(124,92,255,.10),rgba(124,92,255,.04));border-color:rgba(124,92,255,.28);color:var(--accent);transform:none}
+.feat-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:600;font-size:14px;color:var(--accent);text-decoration:none;transition:gap .25s var(--ease)}
+.feat-link svg{width:14px;height:14px}
+.feat-link:hover{gap:10px}
 @media(max-width:768px){.trust .marquee .it img{height:30px}.trust .marquee .it{padding-right:32px}}
+/* ----- partnerships card grid ----- */
+.pt-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.pt-card{display:grid;place-items:center;min-height:78px;border-radius:12px;padding:8px;
+  background:var(--glass);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.66);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 24px 60px -34px rgba(22,16,52,.5);
+  transition:transform .4s var(--ease),border-color .3s}
+.pt-card:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.5)}
+.pt-card img{max-height:40px;max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.pt-card .pt-name{font-family:var(--font-d);font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--ink)}
+@media(max-width:1100px){.pt-grid{grid-template-columns:repeat(4,1fr)}.pt-card{min-height:96px}.pt-card img{max-height:40px}}
+@media(max-width:560px){.pt-grid{grid-template-columns:repeat(2,1fr)}.pt-card{min-height:82px}}
 
 /* ----- soft-blue aurora hero ----- */
 .subhero.fs .subhero-bg{background:linear-gradient(168deg,#eef5ff 0%,#d8e9ff 40%,#c3dcff 74%,#b2d1ff 100%);
@@ -162,6 +176,20 @@
   </div>
 </header>
 
+<!-- ============ STATS (temporarily hidden) ============ -->
+<!--
+<section class="stats-sec">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat rv"><div class="n">8</div><div class="d">years building financial &amp; Web3 products</div></div>
+      <div class="stat rv rv-d1"><div class="n">100+</div><div class="d">production systems shipped across tens of DeFi categories</div></div>
+      <div class="stat rv rv-d2"><div class="n">5</div><div class="d">global engineering hubs: US, LATAM, EU, APAC</div></div>
+      <div class="stat rv rv-d3"><div class="n" style="font-size:clamp(34px,4vw,58px)"><em style="font-size:62px">AI native</em></div><div class="d">across org workflows, orchestration, and engineering processes</div></div>
+    </div>
+  </div>
+</section>
+-->
+
 <!-- ============ THE PROBLEM ============ -->
 <section class="sec">
   <div class="wrap">
@@ -176,8 +204,8 @@
       <div class="trust-lbl">Trusted by</div>
       <div class="marquee-band">
         <div class="marquee">
-          <span class="it"><img src="assets/logos/fs-upmarket.png" alt="UpMarket" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-stellar.png" alt="Stellar" /></span><span class="it"><img src="assets/logos/fs-lifi.png" alt="LI.FI" /></span><span class="it"><img src="assets/logos/fs-jia.png" alt="jia" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span>
-          <span class="it"><img src="assets/logos/fs-upmarket.png" alt="UpMarket" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-stellar.png" alt="Stellar" /></span><span class="it"><img src="assets/logos/fs-lifi.png" alt="LI.FI" /></span><span class="it"><img src="assets/logos/fs-jia.png" alt="jia" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span>
+          <span class="it"><img src="assets/logos/fs-upmarket.png" alt="UpMarket" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-stellar.png" alt="Stellar" /></span><span class="it"><img src="assets/logos/fs-brale.png" alt="Brale" /></span><span class="it"><img src="assets/logos/fs-jia.png" alt="jia" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span>
+          <span class="it"><img src="assets/logos/fs-upmarket.png" alt="UpMarket" /></span><span class="it"><img src="assets/logos/fs-rain.png" alt="Rain" /></span><span class="it"><img src="assets/logos/fs-huma.png" alt="Huma" /></span><span class="it"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></span><span class="it"><img src="assets/logos/fs-solv.png" alt="Solv" /></span><span class="it"><img src="assets/logos/fs-stellar.png" alt="Stellar" /></span><span class="it"><img src="assets/logos/fs-brale.png" alt="Brale" /></span><span class="it"><img src="assets/logos/fs-jia.png" alt="jia" /></span><span class="it"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></span>
         </div>
       </div>
     </div>
@@ -247,27 +275,27 @@
       <div class="stack-row">
         <div class="sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M21 11h-5a2 2 0 0 0 0 4h5v-4z"/></svg></div>
         <div><h3>Wallets: the entry point</h3><p>Custody, key management, embedded wallets, and account abstraction.</p></div>
-        <div class="swork swork-logos"><img src="assets/logos/crossmint.png" alt="Crossmint" /><img src="assets/logos/stellar.png" alt="Stellar" /></div>
+        <div class="swork swork-logos"><img src="assets/logos/fs-crossmint.png" alt="Crossmint" /><img src="assets/logos/fs-stellar.png" alt="Stellar" /></div>
       </div>
       <div class="stack-row">
         <div class="sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.3a2.6 2.6 0 0 0-2.3-1.3h-.7a2.1 2.1 0 0 0 0 4.2h1.4a2.1 2.1 0 0 1 0 4.2h-.7a2.6 2.6 0 0 1-2.3-1.3"/><path d="M12 6v12"/></svg></div>
         <div><h3>Stablecoin issuance: the asset itself</h3><p>Minting, redemption, reserves, and integration with traditional banking.</p></div>
-        <div class="swork swork-logos"><img src="assets/logos/paxos.png" alt="Paxos" /></div>
+        <div class="swork swork-logos"><img src="assets/logos/fs-paxos.png" alt="Paxos" /></div>
       </div>
       <div class="stack-row">
         <div class="sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8h18z"/><path d="M4 21h16"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/></svg></div>
         <div><h3>Credit and RWA: the financing layer</h3><p>Receivables financing, private credit, tokenized real-world assets, and collateral management.</p></div>
-        <div class="swork swork-logos"><img src="assets/logos/huma.png" alt="Huma" /><img src="assets/logos/solv.png" alt="Solv" /></div>
+        <div class="swork swork-logos"><img src="assets/logos/fs-huma.png" alt="Huma" /><img src="assets/logos/fs-solv.png" alt="Solv" /></div>
       </div>
       <div class="stack-row">
         <div class="sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
         <div><h3>Payments and cards: the exit</h3><p>Card issuance, settlement, and reconciliation at merchant and card-network scale.</p></div>
-        <div class="swork swork-logos"><img src="assets/logos/rain.png" alt="Rain" /></div>
+        <div class="swork swork-logos"><img src="assets/logos/fs-rain.png" alt="Rain" /></div>
       </div>
       <div class="stack-row">
         <div class="sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <div><h3>Compliance: the trust layer</h3><p>KYC and KYB, sanctions screening, AML, and transaction monitoring as the envelope around every layer.</p></div>
-        <div class="swork swork-logos"><img src="assets/logos/cipherowl.png" alt="CipherOwl" /></div>
+        <div class="swork swork-logos"><img src="assets/logos/fs-cipherowl.png" alt="CipherOwl" /></div>
       </div>
     </div>
   </div>
@@ -283,21 +311,27 @@
       </div>
       <p class="meta rv rv-d1">Some chains we partner with formally, building developer tooling and contributing critical infrastructure. On others we ship production code every week.</p>
     </div>
-    <div class="feat-grid rv">
+    <div class="feat-grid four rv">
       <article class="feat feat--static">
         <div class="ficon"><img src="assets/logos/stellar-icon.png" alt="Stellar" /></div>
         <h4>Stellar</h4>
-        <p>Preferred engineering partner. Migrations, ecosystem contributions, and developer tooling on Stellar and Soroban.</p>
+        <p>Recognized as a Trusted Service Provider. Migrations, ecosystem contributions, and developer tooling on Stellar and Soroban.</p>
       </article>
       <article class="feat feat--static">
         <div class="ficon"><img src="assets/logos/canton-icon.png" alt="Canton Network" /></div>
         <h4>Canton Network</h4>
-        <p>Privacy-preserving institutional infrastructure. Integrations and validator services for our clients.</p>
+        <p>Design and deployment on Canton's privacy-preserving architecture. DAML development, tokenization, support for Canton coin formats / UTXO, and permissioned settlement integrations from asset issuance to 24/7 institutional settlement. Integration and validator operation services.</p>
       </article>
       <article class="feat feat--static">
         <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.3"/><circle cx="12" cy="4" r="1.8"/><circle cx="12" cy="20" r="1.8"/><circle cx="4.6" cy="8" r="1.8"/><circle cx="19.4" cy="8" r="1.8"/><path d="M12 6.1v3.6M12 14.3v3.9M10.1 11.1 6.2 8.9M13.9 11.1l3.9-2.2"/></svg></div>
         <h4>EVM · Solana · Cosmos · Sui</h4>
-        <p>Production code on every chain our clients run on, with ChainSmith automating EVM verification.</p>
+        <p>Production code on every chain our clients run on, with ChainSmith automating Cosmos EVM testing. Smart contract development, pre-audit, vaults design, issuance, RWA &amp; Tokenization.</p>
+      </article>
+      <article class="feat feat--static">
+        <div class="ficon"><img src="assets/logos/blocksmith-icon.png" alt="BlockSmith" /></div>
+        <h4>BlockSmith</h4>
+        <p>An all-in-one Rust-native developer toolkit for Soroban smart contracts. Scaffolding, testing, deployment, and tracing in a single CLI — the same workflow our engineers use to ship to production every day.</p>
+        <a class="feat-link" href="https://blocksmith.co" target="_blank" rel="noopener">blocksmith.co<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
       </article>
     </div>
   </div>
@@ -315,11 +349,11 @@
     </div>
     <div class="case-grid rv" style="margin-top:8px">
       <a class="case" href="work.html"><span class="cover"><img src="assets/cases/rain.png" alt="Rain" /></span><span class="ctop"><span class="ctag">Payments</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/rain-wordmark.png" alt="Rain" /><span class="cdesc">Card issuance and reconciliation scaled from 118K to 1M events per hour.</span></span></a>
-      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/huma.png" alt="Huma" /></span><span class="ctop"><span class="ctag">Credit · RWA</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/huma-wordmark.png" alt="Huma" /><span class="cdesc">PayFi and on-chain credit infrastructure.</span></span></a>
-      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/lifi.png" alt="LI.FI" /></span><span class="ctop"><span class="ctag">DeFi</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/lifi-wordmark.png" alt="LI.FI" /><span class="cdesc">Swap router across 30+ DEXs with real-time routing.</span></span></a>
+      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/huma.png" alt="Huma" /></span><span class="ctop"><span class="ctag">Credit · RWA</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/huma-wordmark.png" alt="Huma" /><span class="cdesc">PayFi and on-chain credit infrastructure on EVM, Solana &amp; Stellar.</span></span></a>
+      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/lifi.png" alt="LI.FI" /></span><span class="ctop"><span class="ctag">DeFi</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/lifi-wordmark.png" alt="LI.FI" /><span class="cdesc">DEX Aggregation across 30+ DEXs with real-time swaps and routing.</span></span></a>
       <a class="case" href="work.html"><span class="cover"><img src="assets/cases/stellar.png" alt="Stellar" /></span><span class="ctop"><span class="ctag">Wallets</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/stellar-wordmark.png" alt="Stellar" /><span class="cdesc">Migrations and ecosystem engineering on Soroban.</span></span></a>
       <a class="case" href="work.html"><span class="cover"><img src="assets/cases/cipherowl.png" alt="CipherOwl" /></span><span class="ctop"><span class="ctag">Compliance</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/cipherowl-wordmark.png" alt="CipherOwl" /><span class="cdesc">Compliance infrastructure: screening and monitoring.</span></span></a>
-      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/solv.png" alt="Solv" /></span><span class="ctop"><span class="ctag">Credit</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/solv-wordmark.png" alt="Solv" /><span class="cdesc">BTC yield and tokenized credit infrastructure.</span></span></a>
+      <a class="case" href="work.html"><span class="cover"><img src="assets/cases/solv.png" alt="Solv" /></span><span class="ctop"><span class="ctag">Credit · RWA</span><span class="peek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="cmeta"><img class="cname-logo" src="assets/logos/solv-wordmark.png" alt="Solv" /><span class="cdesc">BTC yield and tokenized credit infrastructure.</span></span></a>
     </div>
   </div>
 </section>
@@ -478,8 +512,8 @@
   </div>
 </footer>
 
-<script src="assets/site-v2.js?v=20260624"></script>
-<script src="assets/hero-fx.js?v=20260624"></script>
+<script src="assets/site-v2.js?v=20260702"></script>
+<script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;

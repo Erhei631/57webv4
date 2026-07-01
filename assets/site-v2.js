@@ -65,6 +65,21 @@
   },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 
+  /* ---------- marquee: enter view, pause briefly, then start ---------- */
+  document.querySelectorAll('.marquee-band').forEach(function(band){
+    var mq=band.querySelector('.marquee');
+    if(!mq) return;
+    var mio=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          setTimeout(function(){ mq.classList.add('marquee--run'); }, 700);
+          mio.unobserve(e.target);
+        }
+      });
+    },{threshold:.35});
+    mio.observe(band);
+  });
+
   /* ---------- count-up stats ---------- */
   function animateCount(el){
     var raw=el.getAttribute('data-count');

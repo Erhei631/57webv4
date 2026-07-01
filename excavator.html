@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site-v2.css?v=20260624" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260702" />
 <style>
 /* ----- soft violet hero ----- */
 .subhero.split.ex .subhero-bg{background:linear-gradient(100deg,#e9e0ff 0%,#ece5ff 38%,#f0e8ff 70%,#f6e9fb 100%);
@@ -99,7 +99,9 @@
   background:rgba(124,92,255,.12);color:var(--accent)}
 .exx-chk svg{width:11px;height:11px}
 @media(prefers-reduced-motion:reduce){.exx-doc{animation:none}}
-.dlv-art .dlv-badge{right:18px;bottom:-19px;white-space:nowrap}
+.dlv-art{isolation:isolate}
+.dlv-art .exx-doc{z-index:1}
+.dlv-art .dlv-badge{right:18px;bottom:-19px;white-space:nowrap;z-index:5}
 </style>
 </head>
 <body class="subpage">
@@ -402,8 +404,8 @@
   </div>
 </footer>
 
-<script src="assets/site-v2.js?v=20260624"></script>
-<script src="assets/hero-fx.js?v=20260624"></script>
+<script src="assets/site-v2.js?v=20260702"></script>
+<script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
