@@ -71,8 +71,8 @@
 .ex-card{background:transparent;border:none;border-radius:0;overflow:visible;box-shadow:none;text-decoration:none;cursor:pointer;
   display:flex;flex-direction:column;transition:transform .3s var(--ease)}
 .ex-card:hover{transform:translateY(-5px);box-shadow:none}
-.ex-card image-slot{display:block;width:100%;aspect-ratio:1/1;border-radius:18px;overflow:hidden;
-  background:#fff;border:1px solid var(--line);--is-bg:#fff}
+.ex-card img{display:block;width:100%;aspect-ratio:1/1;border-radius:18px;overflow:hidden;object-fit:cover;
+  background:#fff;border:1px solid var(--line)}
 .ex-card .ex-body{padding:20px 2px 0}
 .ex-card .ex-nm{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-d);font-weight:700;
   font-size:20px;letter-spacing:-.02em;color:var(--ink)}
@@ -232,7 +232,7 @@
     </div>
     <div class="ex-grid">
       <a class="ex-card rv" href="https://www.linkedin.com/in/kamil-krupa-zg/" target="_blank" rel="noopener noreferrer">
-        <image-slot id="expert-kamil" shape="rect" src="assets/experts/kamil.png" placeholder="Kamil Krupa"></image-slot>
+        <img src="assets/experts/kamil.png" alt="Kamil Krupa" />
         <div class="ex-body">
           <span class="ex-nm">Kamil Krupa</span>
           <div class="ex-loc">Poland, Europe</div>
@@ -241,7 +241,7 @@
         </div>
       </a>
       <a class="ex-card rv rv-d1" href="https://www.linkedin.com/in/tkflitcraft/" target="_blank" rel="noopener noreferrer">
-        <image-slot id="expert-traci" shape="rect" src="assets/experts/traci.png" placeholder="Traci Flitcraft"></image-slot>
+        <img src="assets/experts/traci.png" alt="Traci Flitcraft" />
         <div class="ex-body">
           <span class="ex-nm">Traci Flitcraft</span>
           <div class="ex-loc">Portland, US</div>
@@ -250,7 +250,7 @@
         </div>
       </a>
       <a class="ex-card rv rv-d2" href="https://www.linkedin.com/in/leo-meng-12028045/" target="_blank" rel="noopener noreferrer">
-        <image-slot id="expert-leo" shape="rect" src="assets/experts/leo.png" placeholder="Leo Meng"></image-slot>
+        <img src="assets/experts/leo.png" alt="Leo Meng" />
         <div class="ex-body">
           <span class="ex-nm">Leo Meng</span>
           <div class="ex-loc">China, Asia</div>
@@ -259,7 +259,7 @@
         </div>
       </a>
       <a class="ex-card rv rv-d3" href="https://www.linkedin.com/in/evaxsong/" target="_blank" rel="noopener noreferrer">
-        <image-slot id="expert-eva" shape="rect" src="assets/experts/eva.png" placeholder="Eva Song"></image-slot>
+        <img src="assets/experts/eva.png" alt="Eva Song" />
         <div class="ex-body">
           <span class="ex-nm">Eva Song</span>
           <div class="ex-loc">San Francisco, US</div>
@@ -333,7 +333,6 @@
 </footer>
 
 <script src="assets/site-v2.js?v=20260702"></script>
-<script src="image-slot.js"></script>
 <script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){

@@ -151,7 +151,8 @@
   font-size:var(--fs-h2);margin:14px 0 0}
 .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,2.4vw,34px)}
 .tm{display:flex;flex-direction:column}
-.tm image-slot{width:100%;aspect-ratio:1/1;height:auto}
+.tm img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;object-position:center top;border-radius:16px;display:block;background:#fff;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease)}
+.tm:hover img{transform:translateY(-6px);background:#f3f1ff;box-shadow:0 22px 44px -22px rgba(22,16,52,.42)}
 .tm .tm-name{font-family:var(--font-d);font-weight:600;letter-spacing:-.02em;font-size:19px;color:var(--ink);margin:18px 0 3px}
 .tm .tm-role{font-family:var(--font-m);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .tm .tm-bio{font-size:14px;line-height:1.55;color:var(--muted);margin:10px 0 0}
@@ -337,27 +338,27 @@
     </div>
     <div class="team-grid rv rv-d1">
       <div class="tm">
-        <image-slot id="team-1" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <img class="tm-photo" src="assets/team/team-1.webp" alt="Peter Wang" />
         <div class="tm-name">Peter Wang</div>
         <div class="tm-role">CEO</div>
       </div>
       <div class="tm">
-        <image-slot id="team-2" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <img class="tm-photo" src="assets/team/team-2.webp" alt="Linda Yan" />
         <div class="tm-name">Linda Yan</div>
         <div class="tm-role">Head of Delivery</div>
       </div>
       <div class="tm">
-        <image-slot id="team-3" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <img class="tm-photo" src="assets/team/team-3.webp" alt="Kevin Wang" />
         <div class="tm-name">Kevin Wang</div>
         <div class="tm-role">Managing Partner</div>
       </div>
       <div class="tm">
-        <image-slot id="team-4" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <img class="tm-photo" src="assets/team/team-4.webp" alt="Kamil Krupa" />
         <div class="tm-name">Kamil Krupa</div>
         <div class="tm-role">GTM Lead, Europe</div>
       </div>
       <div class="tm">
-        <image-slot id="team-5" shape="rounded" radius="16" placeholder="Drop photo"></image-slot>
+        <img class="tm-photo" src="assets/team/team-5.webp" alt="Juan E Quintero" />
         <div class="tm-name">Juan E Quintero</div>
         <div class="tm-role">Eng Lead, Latin America</div>
       </div>
@@ -460,7 +461,6 @@
 </footer>
 
 <script src="assets/site-v2.js?v=20260702"></script>
-<script src="image-slot.js"></script>
 <script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
