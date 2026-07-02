@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site-v2.css?v=20260702" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260702b" />
 <style>
 /* ----- blockchain hero — cool indigo→cyan ledger aurora ----- */
 .subhero.bc .bchero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
@@ -70,8 +70,8 @@
             </div>
             <div class="mega-col">
               <h6>Offerings</h6>
-              <a href="build-new.html">Build new</a>
-              <a href="rebuild.html">Rebuild</a>
+              <a href="create.html">Create</a>
+              <a href="transform.html">Transform</a>
               <a href="engineering-subscription.html">Engineering subscription</a>
               <a href="enterprise-ai.html">AI for your business</a>
             </div>
@@ -271,44 +271,50 @@
 </section>
 
 <!-- ============ RELATED READING ============ -->
-<section class="sec" style="padding-top:0">
+<section class="sec rr-sec" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rr-head">
       <div class="t">
         <div class="lbl rv"><span class="dot">✸</span> Related reading</div>
       </div>
+      <div class="rr-nav rv">
+        <button class="rr-arrow" type="button" data-dir="-1" aria-label="Previous articles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="rr-arrow" type="button" data-dir="1" aria-label="Next articles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
     </div>
-    <div class="papers papers-3 rv">
-      <a class="paper" href="blog-post.html">
+    <div class="rr-viewport rv">
+      <div class="rr-track">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>How to migrate an Ethereum protocol to Solana — contracts (Part 1).</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="paper" href="blog-post.html">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>Soroban integration testing best practices (JS).</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="paper" href="blog-post.html">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>Deep dive into resource limitations in Solana development — CU edition.</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="paper" href="blog-post.html">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>Account abstraction in Ethereum: building and optimizing smart wallets.</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="paper" href="blog-post.html">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>How to QA smart contracts on blockchain.</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="paper" href="blog-post.html">
+        <a class="paper" href="blog-post.html">
         <div class="meta"><span class="pill alt">Deep-dive</span> Engineering</div>
         <h3>A guide to Web3 and dApp infrastructure.</h3>
         <span class="arrow arrow-link" style="margin-top:auto">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+      </div>
     </div>
   </div>
 </section>
@@ -353,8 +359,8 @@
         </div>
         <div class="cfoot-g">
           <h5>Offerings</h5>
-          <a href="build-new.html">Build new</a>
-          <a href="rebuild.html">Rebuild</a>
+          <a href="create.html">Create</a>
+          <a href="transform.html">Transform</a>
           <a href="engineering-subscription.html">Engineering subscription</a>
           <a href="enterprise-ai.html">AI for your business</a>
         </div>
@@ -389,12 +395,12 @@
   </div>
 </footer>
 
-<script src="assets/site-v2.js?v=20260702"></script>
+<script src="assets/site-v2.js?v=20260702b"></script>
 <script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
   document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>

@@ -186,4 +186,47 @@
       if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:reduce?'auto':'smooth'});}
     });
   });
+
+  /* ---------- related-reading carousel ---------- */
+  (function(){
+    function tween(el, to, dur){
+      if(reduce){ el.scrollLeft = to; return; }
+      var from = el.scrollLeft, d = to - from, t0 = null;
+      function frame(t){
+        if(t0===null) t0 = t;
+        var p = Math.min(1, (t - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.scrollLeft = from + d * e;
+        if(p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    function init(sec){
+      var vp = sec.querySelector('.rr-viewport');
+      var track = sec.querySelector('.rr-track');
+      var nav = sec.querySelector('.rr-nav');
+      if(!vp || !track) return;
+      var prev = sec.querySelector('.rr-arrow[data-dir="-1"]');
+      var next = sec.querySelector('.rr-arrow[data-dir="1"]');
+      function page(){
+        var card = track.querySelector('.paper');
+        var stepW = card ? card.getBoundingClientRect().width + 16 : vp.clientWidth;
+        var visible = Math.max(1, Math.round(vp.clientWidth / stepW));
+        return visible * stepW;
+      }
+      function update(){
+        var max = vp.scrollWidth - vp.clientWidth;
+        if(nav) nav.classList.toggle('is-hidden', max <= 8);
+        if(prev) prev.disabled = vp.scrollLeft <= 8;
+        if(next) next.disabled = vp.scrollLeft >= max - 8;
+      }
+      if(prev) prev.addEventListener('click', function(){ tween(vp, Math.max(0, vp.scrollLeft - page()), 460); });
+      if(next) next.addEventListener('click', function(){ tween(vp, vp.scrollLeft + page(), 460); });
+      vp.addEventListener('scroll', update, {passive:true});
+      window.addEventListener('resize', update);
+      update();
+      setTimeout(update, 350);
+    }
+    document.querySelectorAll('.rr-sec').forEach(init);
+  })();
 })();

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site-v2.css?v=20260702" />
+<link rel="stylesheet" href="assets/site-v2.css?v=20260702b" />
 <style>
 /* ----- soft aurora hero ----- */
 .subhero.ea .subhero-bg{background:linear-gradient(160deg,#ece6ff 0%,#dee2ff 36%,#cfe7f6 70%,#c4eef0 100%);
@@ -122,8 +122,8 @@
             </div>
             <div class="mega-col">
               <h6>Offerings</h6>
-              <a href="build-new.html">Build new</a>
-              <a href="rebuild.html">Rebuild</a>
+              <a href="create.html">Create</a>
+              <a href="transform.html">Transform</a>
               <a href="engineering-subscription.html">Engineering subscription</a>
               <a href="enterprise-ai.html">AI for your business</a>
             </div>
@@ -266,7 +266,7 @@
     <div class="ways-top rv"><span class="ways-toplabel">What is holding you back?</span></div>
     <div class="ways-branch rv" aria-hidden="true"><span class="wb-stem"></span><span class="wb-arm l"></span><span class="wb-arm r"></span><span class="wb-node"></span></div>
     <div class="ways-grid rv">
-      <a class="way-card" href="build-new.html">
+      <a class="way-card" href="create.html">
         <div class="way-toprow"><span class="way-pill accent">Path A</span><span class="way-meta">When the software is the bottleneck</span></div>
         <div class="way-title"><span class="way-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l2 6.5L20.5 12 14 14l-2 6.5L10 14 3.5 12 10 9.5z"/></svg></span><h4>AI inside your software</h4></div>
         <p>You are replacing or modernizing a system anyway. We build AI in from the start, so the new system is smarter than what it replaces. Best when the software itself is the bottleneck.</p>
@@ -318,11 +318,11 @@
           <div class="lbl"><span class="dot">✸</span> Offerings</div>
           <h2 style="max-width:15ch">Come in where it counts.</h2>
         </div>
-        <p class="meta">AI for your business is one of four ways we engage. We build new products as production MVPs, rebuild partial-fit systems into tailored ones, run sustained work on a fixed-fee subscription, and bring AI to companies without a tech team.</p>
+        <p class="meta">AI for your business is one of four ways we engage. We build new products as production MVPs, transform partial-fit systems into tailored ones, run sustained work on a fixed-fee subscription, and bring AI to companies without a tech team.</p>
       </div>
       <div class="engage-row">
-        <span class="engage-tag">Build new</span>
-        <span class="engage-tag">Rebuild</span>
+        <span class="engage-tag">Create</span>
+        <span class="engage-tag">Transform</span>
         <span class="engage-tag">Engineering subscription</span>
         <span class="engage-tag">AI for your business</span>
       </div>
@@ -370,8 +370,8 @@
         </div>
         <div class="cfoot-g">
           <h5>Offerings</h5>
-          <a href="build-new.html">Build new</a>
-          <a href="rebuild.html">Rebuild</a>
+          <a href="create.html">Create</a>
+          <a href="transform.html">Transform</a>
           <a href="engineering-subscription.html">Engineering subscription</a>
           <a href="enterprise-ai.html">AI for your business</a>
         </div>
@@ -406,12 +406,12 @@
   </div>
 </footer>
 
-<script src="assets/site-v2.js?v=20260702"></script>
+<script src="assets/site-v2.js?v=20260702b"></script>
 <script src="assets/hero-fx.js?v=20260702"></script>
 <script>
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -6% 0px'});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
   document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>

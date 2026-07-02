@@ -3,76 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Research Library · 57Blocks</title>
-<meta name="description" content="Browse the 57Blocks research library — applied notes on AI-native engineering, agents, evaluation and production delivery." />
+<title>Create · 57Blocks</title>
+<meta name="description" content="Create a new product with 57Blocks — go from concept to a production MVP with an expert team and AI-native delivery from day one." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site-v2.css?v=20260702b" />
 <style>
-/* ----- violet plume hero (Thinking family) ----- */
-.subhero.rs .subhero-bg{background:linear-gradient(180deg,#f5f4ff 0%,#eef0ff 100%);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 100%)}
-.rs-plume{position:absolute;inset:-15%;pointer-events:none;
+/* ----- airy prismatic light-ray hero ----- */
+.subhero.bn .subhero-bg{background:linear-gradient(158deg,#e2e6ec 0%,#cfd9ea 38%,#bcd2f0 70%,#a8c5ef 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 32%,transparent 66%)}
+.bn-rays{position:absolute;inset:-25%;pointer-events:none;
   background:
-    radial-gradient(32% 62% at 67% -8%, rgba(96,71,255,.40) 0%, rgba(124,92,255,.24) 34%, transparent 66%),
-    radial-gradient(46% 50% at 90% 26%, rgba(150,108,255,.26), transparent 66%),
-    radial-gradient(40% 42% at 52% 4%, rgba(150,140,255,.18), transparent 72%);
-  filter:blur(30px);transform-origin:center;
-  animation:rsDrift 17s ease-in-out infinite alternate}
-@keyframes rsDrift{from{transform:translate(-1.5%,-1%) scale(1)}to{transform:translate(2%,1%) scale(1.05)}}
-@media(prefers-reduced-motion:reduce){.rs-plume{animation:none}}
-/* ---- editorial hero ---- */
-.rs-hero{padding:128px 0 64px}
-.rs-hero .wrap{text-align:left}
-.rs-hero .lbl{display:inline-flex;align-items:center;gap:9px;margin-bottom:clamp(22px,3vw,36px)}
-.rs-hero .lbl .dot{color:var(--accent);font-size:10px;line-height:1}
-.rs-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:center}
-.rs-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
-  font-size:var(--fs-h1);max-width:none;margin:0}
-.rs-hero-aside{align-self:center;max-width:420px}
-.rs-hero-aside .lead{margin:0 0 22px;max-width:none;font-size:16px;line-height:1.62;color:var(--muted)}
-.rs-hero-aside .hero-cta{justify-content:flex-start;margin:0}
-@media(max-width:768px){
-  .rs-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
-  .rs-hero h1{font-size:var(--fs-h1)}
-  .rs-hero-aside{max-width:none;padding-bottom:0;transform:none}
-}
-/* ---- paper groups ---- */
-.rs-group{margin-top:clamp(40px,5vw,68px)}
-.rs-group:first-of-type{margin-top:0}
-.rs-ghead{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:16px;border-bottom:1.5px solid var(--ink);margin-bottom:26px}
-.rs-glabel{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.rs-gsub{font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:var(--muted)}
-/* ---- paper card ---- */
-.rs-paper{display:grid;grid-template-columns:minmax(0,200px) 1fr;gap:clamp(24px,4vw,56px);
-  border:1px solid var(--line);border-radius:20px;background:var(--glass);
-  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
-  box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 30px 70px -46px rgba(22,16,52,.5);
-  padding:clamp(26px,2.8vw,38px);transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
-.rs-paper:hover{border-color:rgba(22,16,52,.18);transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 34px 64px -42px rgba(22,16,52,.4)}
-/* ---- two-up columns ---- */
-.rs-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,34px);align-items:stretch}
-.rs-cols .rs-group{margin-top:0;display:flex;flex-direction:column}
-.rs-cols .rs-paper{grid-template-columns:1fr;gap:22px;flex:1}
-@media(max-width:768px){.rs-cols{grid-template-columns:1fr;gap:clamp(40px,5vw,68px)}}
-.rs-paper-meta{display:flex;flex-direction:column;gap:12px}
-.rs-pill{align-self:flex-start;display:inline-flex;align-items:center;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--accent);background:rgba(124,92,255,.08);border:1px solid rgba(124,92,255,.3);
-  border-radius:999px;padding:6px 13px}
-.rs-venue{font-family:var(--font-m);font-size:13px;line-height:1.5;color:var(--muted)}
-.rs-paper-body h3{margin:0;font-family:var(--font-d);font-weight:600;font-size:clamp(22px,2.4vw,29px);
-  line-height:1.2;letter-spacing:-.02em;color:var(--ink);text-wrap:pretty}
-.rs-paper-body h3 a{color:inherit}
-.rs-paper:hover .rs-paper-body h3 a{color:var(--accent)}
-.rs-paper-body p{margin:16px 0 0;color:var(--muted);font-size:16px;line-height:1.6;max-width:70ch}
-.rs-paper-body .arrow-link{margin-top:22px}
-@media(max-width:768px){.rs-paper{grid-template-columns:1fr;gap:18px}}
-/* ---- also in thinking ---- */
-.rs-also{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);
-  border-top:1px dashed var(--line);padding-top:28px}
-.rs-also .rs-also-l{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    linear-gradient(135deg, transparent 18%, rgba(255,255,255,.88) 25%, transparent 35%),
+    linear-gradient(135deg, transparent 46%, rgba(255,255,255,.62) 53%, transparent 63%),
+    linear-gradient(135deg, transparent 70%, rgba(255,255,255,.5) 77%, transparent 88%);
+  filter:blur(26px);transform-origin:center;
+  animation:bnDrift 18s ease-in-out infinite alternate}
+.bn-prism{position:absolute;left:-6%;top:-30%;width:48%;height:170%;transform:rotate(26deg);transform-origin:top left;pointer-events:none;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,168,205,.24) 28%, rgba(255,255,255,.55) 46%, rgba(150,222,255,.24) 64%, transparent 100%);
+  filter:blur(34px);mix-blend-mode:screen}
+.bn-bloom{position:absolute;left:20%;top:20%;width:60vw;height:44vh;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(46% 50% at 50% 50%, rgba(255,255,255,.95), rgba(255,255,255,0) 70%);
+  filter:blur(12px)}
+@keyframes bnDrift{from{transform:translate(-3%,-2%)}to{transform:translate(3%,2%)}}
+@media(prefers-reduced-motion:reduce){.bn-rays{animation:none}}
 </style>
 </head>
 <body class="subpage">
@@ -158,63 +114,86 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero rs-hero rs" id="top">
+<header class="subhero bn" id="top">
   <div class="subhero-bg">
-    <div class="rs-plume"></div>
+    <div class="sh-dots"></div>
+    <div class="bn-rays"></div>
+    <div class="bn-prism"></div>
+    <div class="bn-bloom"></div>
   </div>
   <div class="wrap">
-    <div class="lbl rv"><span class="dot">●</span> Thinking · Research</div>
-    <div class="rs-hero-row">
-      <h1 class="rv rv-d1">Papers from the team.</h1>
-      <div class="rs-hero-aside rv rv-d2">
-        <p class="lead">The papers tier: peer-reviewed and systems work. The same candor that wins the rebuild work, an honest account of what an architecture does and where it falls short. More papers are in progress.</p>
-      </div>
+    <div class="crumb rv"><a href="index.html#work">Offerings</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Create</span></div>
+    <h1 class="rv rv-d1">Ship a production MVP you can trust, with an expert team.</h1>
+    <p class="lead rv rv-d2">We build new products as AI-native MVPs. An expert team delivers through the harness, with the client reviewing and approving the specification before any code is written, so what ships meets the bar from the first iteration.</p>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
     </div>
   </div>
 </header>
 
-<!-- ============ PAPERS ============ -->
+<!-- ============ WHAT CHANGES ============ -->
 <section class="sec">
   <div class="wrap">
-    <div class="rs-cols">
-    <div class="rs-group rv">
-      <div class="rs-ghead">
-        <span class="rs-glabel">Systems paper</span>
-        <span class="rs-gsub">How we build, documented in full</span>
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> What changes</div>
+        <h2 class="rv" style="max-width:16ch">A higher bar, held by an <span style="color:var(--accent)">expert</span> team.</h2>
       </div>
-      <article class="rs-paper">
-        <div class="rs-paper-meta">
-          <span class="rs-venue">Forthcoming · 2026</span>
-        </div>
-        <div class="rs-paper-body">
-          <h3><a href="harness-mediated-delivery.html">Harness-mediated software delivery: a services-firm architecture for long-horizon agentic builds.</a></h3>
-          <p>Why operating an agent harness inside a services firm yields a different architecture than shipping it as a product. Describes Blueprint, Agentic Builder, Compass, and Excavator, the five design constraints, and a cost-of-ownership benchmark, with an honest defect analysis.</p>
-          <a class="arrow-link" href="harness-mediated-delivery.html">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
+      <p class="meta rv rv-d1">AI-native delivery lets an expert team hold a higher quality bar than a larger team could, because review and proven domain patterns are built into every step rather than bolted on at the end.</p>
     </div>
+  </div>
+</section>
 
-    <div class="rs-group rv">
-      <div class="rs-ghead">
-        <span class="rs-glabel">Peer-reviewed</span>
-        <span class="rs-gsub">Published research, with collaborators</span>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <div class="lbl rv"><span class="dot">✸</span> How it works</div>
+        <h2 class="rv" style="max-width:15ch">Specification first, gated throughout.</h2>
       </div>
-      <article class="rs-paper">
-        <div class="rs-paper-meta">
-          <span class="rs-venue">Energy and AI (Elsevier) · 2025</span>
-        </div>
-        <div class="rs-paper-body">
-          <h3><a href="llm-data-extraction.html">Advancing oil and gas emissions assessment through large language model data extraction.</a></h3>
-          <p>A framework for extracting field-level data from technical literature, validated against expert ground truth. 57Blocks contributed engineering and cloud infrastructure to this study, led by Stanford with University of Pittsburgh and Aramco researchers.</p>
-          <a class="arrow-link" href="llm-data-extraction.html">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
+      <p class="meta rv rv-d1">Every build runs the same way: scoped, approved, then executed in gated steps with vertical skill carried in from past work.</p>
     </div>
+    <div class="feat-grid rv">
+      <a class="feat" href="blueprint.html">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13l1.5 1.5L13 12"/><path d="M9 17h6"/></svg></div>
+        <h4>Blueprint</h4>
+        <p>You review and approve the specification before code is generated.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="agentic-builder.html">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M9 13v2"/><path d="M15 13v2"/></svg></div>
+        <h4>Agentic Builder</h4>
+        <p>The harness runs the build in modular executions with gates between them.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="feat" href="compass.html">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m15 9-3.5 1.5L10 14l3.5-1.5L15 9z"/></svg></div>
+        <h4>Compass</h4>
+        <p>Accumulated vertical skill informs the build rather than regenerating it per project.</p>
+        <span class="arrow arrow-link" style="margin-top:18px">How we deliver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="rs-also rv">
-      <span class="rs-also-l">Also in Thinking</span>
-      <a class="arrow-link" href="blog.html">Blog · writing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<!-- ============ HOW WE ENGAGE ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="engage-panel rv">
+      <div class="sec-head">
+        <div class="t">
+          <div class="lbl"><span class="dot">✸</span> Offerings</div>
+          <h2 style="max-width:15ch">Start new, or come in where it counts.</h2>
+        </div>
+        <p class="meta">Create is one of three ways we engage. We build new products as production MVPs, transform partial-fit systems into tailored ones, and embed senior teams alongside yours.</p>
+      </div>
+      <div class="engage-row">
+        <span class="engage-tag">Create</span>
+        <span class="engage-tag">Transform</span>
+        <span class="engage-tag">Embedded teams</span>
+      </div>
     </div>
   </div>
 </section>
@@ -225,8 +204,8 @@
     <div class="aura"><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span><span class="trail-node"><span class="aura-band"></span></span></div>
   </div>
   <div class="wrap final-in">
-    <h2 class="rv" style="font-size:var(--fs-hero)">Building<br />something hard?</h2>
-    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">We tend to write up the things worth writing up. Tell us the problem.</p>
+    <h2 class="rv" style="font-size:var(--fs-hero)">Let's scope your MVP.</h2>
+    <p class="hero-sub rv rv-d1" style="margin:0 auto 40px;color:var(--ink-soft);text-align:center">We start with a conversation about scope.</p>
     <div class="hero-cta rv rv-d2">
       <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
       <a class="btn" href="work.html"><s>See our work</s></a>
@@ -301,7 +280,7 @@
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
-  document.querySelectorAll('section.sec, .rs-group, .rs-also, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>
 </body>
