@@ -946,7 +946,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   .subhero.split h1{margin-left:auto;margin-right:auto}.subhero.split .lead{margin-left:auto;margin-right:auto}
   .subhero.split .hero-cta{justify-content:center}.subhero.split .crumb{margin-left:auto;margin-right:auto}
   .dlv-art{margin-top:18px;max-width:380px}
-  .dlv-badge{position:static;margin:16px auto 0;bottom:auto;right:auto}}
+  .dlv-art .dlv-badge{right:14px;bottom:-18px;left:auto;top:auto;margin:0;animation:none}}
 
 /* ===== AI capability page ===== */
 .subhero.ai .aihero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
