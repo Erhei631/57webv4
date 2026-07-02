@@ -25,6 +25,7 @@
 .bp-why h2{font-size:var(--fs-h2);line-height:1.02;letter-spacing:-.03em;font-weight:600}
 .bp-copy{margin-top:30px;max-width:670px}
 .bp-copy p{color:var(--muted);font-size:17px;line-height:1.6}
+.bp-why>*{min-width:0}
 .bp-copy p+p{margin-top:18px}
 /* vertical step-flow illustration */
 .bp-illu{margin-top:0}
@@ -75,6 +76,10 @@
   .bp-illu.in .bp-step:nth-child(4)::before{animation-delay:1.7s}
 }
 @keyframes bpStepIn{to{opacity:1;transform:none}}
+@media(max-width:768px){
+  .bp-step{flex-wrap:wrap}
+  .bp-step-sub{flex-basis:100%;margin-left:60px;padding-left:0;text-align:left;white-space:normal;margin-top:4px}
+}
 @keyframes bpFlow{0%{transform:translate(-3px,-2px) scale(.3);opacity:0}25%{opacity:1}80%{opacity:1}100%{transform:translate(-3px,24px) scale(1);opacity:0}}
 @media(max-width:768px){.bp-why{grid-template-columns:1fr}.bp-copy{max-width:none}}
 /* ----- hero art: specification as a contract ----- */
@@ -195,7 +200,7 @@
   <div class="wrap">
     <div class="dlv-copy">
       <div class="crumb rv"><a href="how-we-deliver.html">How we deliver</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Blueprint</span></div>
-      <h1 class="rv rv-d1">Specification as a contract, not a developer's scratchpad.</h1>
+      <h1 class="rv rv-d1">The spec is the artifact the client approves.</h1>
       <p class="lead rv rv-d2">Blueprint is a collaborative application that produces an engagement's specification artifacts before any code is generated. Clients are first-class collaborators, so review happens where the artifacts live.</p>
       <div class="hero-cta rv rv-d2">
         <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>

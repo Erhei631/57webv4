@@ -945,7 +945,8 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 @media(max-width:768px){.subhero.split .wrap{grid-template-columns:1fr;text-align:center}
   .subhero.split h1{margin-left:auto;margin-right:auto}.subhero.split .lead{margin-left:auto;margin-right:auto}
   .subhero.split .hero-cta{justify-content:center}.subhero.split .crumb{margin-left:auto;margin-right:auto}
-  .dlv-art{margin-top:18px;max-width:380px}}
+  .dlv-art{margin-top:18px;max-width:380px}
+  .dlv-badge{position:static;margin:16px auto 0;bottom:auto;right:auto}}
 
 /* ===== AI capability page ===== */
 .subhero.ai .aihero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
@@ -971,6 +972,8 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 @media(max-width:768px){.feat-grid.two{grid-template-columns:1fr}}
 @media(max-width:1024px){.papers.papers-4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.papers.papers-4{grid-template-columns:1fr}}
+@media(max-width:768px){.paper .plogo{display:none}}
+@media(max-width:768px){.paper .meta{flex-direction:column;align-items:flex-start;gap:12px}}
 
 /* AI hero — node constellation + pipeline */
 .aihero-rich{position:relative;min-height:840px;padding:160px 0 0}
