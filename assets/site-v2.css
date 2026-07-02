@@ -976,7 +976,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 @media(max-width:768px){.paper .meta{flex-direction:column;align-items:flex-start;gap:12px}}
 
 /* ---------- related-reading carousel ---------- */
-.rr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.rr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
 .rr-nav{display:flex;gap:10px;flex:0 0 auto}
 .rr-nav.is-hidden{display:none}
 .rr-arrow{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
@@ -987,17 +987,19 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 .rr-arrow svg{width:20px;height:20px}
 .rr-arrow:hover:not(:disabled){transform:translateY(-2px);background:var(--accent);border-color:var(--accent);color:#fff}
 .rr-arrow:disabled{opacity:.3;cursor:default;pointer-events:none}
-.rr-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;margin:-18px -28px -46px;padding:18px 28px 46px}
-.rr-viewport::-webkit-scrollbar{display:none}
-.rr-track{display:flex;gap:16px}
+.rr-viewport{overflow:hidden;margin:-12px -24px -32px;padding:12px 24px 32px}
+.rr-track{display:flex;gap:24px;transition:transform .5s var(--ease);will-change:transform}
+.rr-track .paper{flex:0 0 calc((100% - 48px)/3);box-shadow:0 1px 0 rgba(255,255,255,.72) inset,0 8px 22px -12px rgba(22,16,52,.4)}
+.rr-track .paper.rr-off{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.rr-track{transition:none}}
 .rr-track .paper h3{display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.rr-track .paper{flex:0 0 clamp(288px,calc((100% - 32px)/3),440px);scroll-snap-align:start}
-@media(max-width:1024px){.rr-track .paper{flex-basis:calc((100% - 16px)/2)}}
+@media(max-width:1024px){.rr-track .paper{flex-basis:calc((100% - 24px)/2)}}
 @media(max-width:768px){
   .rr-head .rr-nav{display:none}
-  .rr-viewport{overflow:visible;scroll-snap-type:none;margin:0;padding:0}
-  .rr-track{flex-direction:column;gap:16px}
-  .rr-track .paper{flex:1 1 auto;width:100%;scroll-snap-align:none}
+  .rr-viewport{overflow:visible;margin:0;padding:0}
+  .rr-track{flex-direction:column;gap:16px;transform:none!important;transition:none}
+  .rr-track .paper{flex:1 1 auto;width:100%}
+  .rr-track .paper.rr-off{visibility:visible}
 }
 
 /* AI hero — node constellation + pipeline */

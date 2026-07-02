@@ -187,45 +187,58 @@
     });
   });
 
-  /* ---------- related-reading carousel ---------- */
+  /* ---------- related-reading carousel (slide; off-window cards truly hidden) ---------- */
   (function(){
-    function tween(el, to, dur){
-      if(reduce){ el.scrollLeft = to; return; }
-      var from = el.scrollLeft, d = to - from, t0 = null;
-      function frame(t){
-        if(t0===null) t0 = t;
-        var p = Math.min(1, (t - t0) / dur);
-        var e = 1 - Math.pow(1 - p, 3);
-        el.scrollLeft = from + d * e;
-        if(p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    }
     function init(sec){
-      var vp = sec.querySelector('.rr-viewport');
       var track = sec.querySelector('.rr-track');
       var nav = sec.querySelector('.rr-nav');
-      if(!vp || !track) return;
+      if(!track) return;
       var prev = sec.querySelector('.rr-arrow[data-dir="-1"]');
       var next = sec.querySelector('.rr-arrow[data-dir="1"]');
-      function page(){
-        var card = track.querySelector('.paper');
-        var stepW = card ? card.getBoundingClientRect().width + 16 : vp.clientWidth;
-        var visible = Math.max(1, Math.round(vp.clientWidth / stepW));
-        return visible * stepW;
+      var cards = [].slice.call(track.querySelectorAll('.paper'));
+      var index = 0, timer = null;
+      function visibleCount(){
+        if(window.matchMedia('(max-width:768px)').matches) return cards.length; // column
+        if(window.matchMedia('(max-width:1024px)').matches) return 2;
+        return 3;
       }
-      function update(){
-        var max = vp.scrollWidth - vp.clientWidth;
-        if(nav) nav.classList.toggle('is-hidden', max <= 8);
-        if(prev) prev.disabled = vp.scrollLeft <= 8;
-        if(next) next.disabled = vp.scrollLeft >= max - 8;
+      function step(){
+        return cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft)
+             : (cards[0] ? cards[0].offsetWidth : 0);
       }
-      if(prev) prev.addEventListener('click', function(){ tween(vp, Math.max(0, vp.scrollLeft - page()), 460); });
-      if(next) next.addEventListener('click', function(){ tween(vp, vp.scrollLeft + page(), 460); });
-      vp.addEventListener('scroll', update, {passive:true});
-      window.addEventListener('resize', update);
-      update();
-      setTimeout(update, 350);
+      function show(lo, hi){ // reveal cards in [lo,hi), hide the rest
+        cards.forEach(function(c,k){ c.classList.toggle('rr-off', !(k >= lo && k < hi)); });
+      }
+      function arrows(maxIndex){
+        if(nav) nav.classList.toggle('is-hidden', maxIndex <= 0);
+        if(prev) prev.disabled = index <= 0;
+        if(next) next.disabled = index >= maxIndex;
+      }
+      function settle(){
+        var v = visibleCount(), maxIndex = Math.max(0, cards.length - v);
+        index = Math.max(0, Math.min(index, maxIndex));
+        track.style.transform = 'translateX(' + (-index * step()) + 'px)';
+        show(index, index + v);
+        arrows(maxIndex);
+      }
+      function move(delta){
+        var v = visibleCount(), maxIndex = Math.max(0, cards.length - v);
+        var target = Math.max(0, Math.min(index + delta, maxIndex));
+        if(target === index) return;
+        // keep both the leaving and entering windows visible during the slide
+        show(Math.min(index, target), Math.max(index, target) + v);
+        index = target;
+        arrows(maxIndex);
+        if(reduce){ settle(); return; }
+        requestAnimationFrame(function(){ track.style.transform = 'translateX(' + (-index * step()) + 'px)'; });
+        clearTimeout(timer);
+        timer = setTimeout(settle, 540);
+      }
+      if(prev) prev.addEventListener('click', function(){ move(-1); });
+      if(next) next.addEventListener('click', function(){ move(1); });
+      window.addEventListener('resize', settle);
+      settle();
+      setTimeout(settle, 350);
     }
     document.querySelectorAll('.rr-sec').forEach(init);
   })();
