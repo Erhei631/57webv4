@@ -210,6 +210,11 @@ body.nav-locked{overflow:hidden}
 .sec-head h2{font-family:var(--font-d);font-weight:600;letter-spacing:-.035em;line-height:1.02;
   font-size:var(--fs-h2);margin-top:18px}
 .sec-head .meta{max-width:34ch;color:var(--muted);font-size:16px;line-height:1.55}
+/* homepage: unified section-title width — full column + balanced wrapping */
+body:not(.subpage) .sec-head h2{max-width:none;text-wrap:balance}
+/* when the right column has no subtitle, give the title the full width and let it balance */
+.sec-head:has(.t:only-child){grid-template-columns:1fr}
+.sec-head:has(.t:only-child) h2{max-width:none!important;text-wrap:balance}
 
 /* ---------- stats ---------- */
 .stats-sec{padding:96px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -232,7 +237,6 @@ body.nav-locked{overflow:hidden}
 .marquee .it::after{content:none}
 @keyframes march{to{transform:translateX(-50%)}}
 .marquee .it img{height:40px;width:auto;display:block;mix-blend-mode:multiply;opacity:.85}
-#engine .sec-head h2{max-width:16ch}
 
 /* big kinetic statement marquee (dark) */
 .statement{background:var(--ink);color:var(--paper);padding:60px 0;overflow:hidden}
@@ -373,7 +377,7 @@ body.nav-locked{overflow:hidden}
 .tri .num{font-family:var(--font-m);font-size:13px;color:var(--accent);margin-bottom:26px}
 .tri{perspective:600px}
 .tri .tcon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:var(--accent);background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.3);margin-bottom:26px;transition:transform .6s var(--ease),color .35s,background .35s,border-color .35s}
-.tri:hover .tcon{transform:rotateY(360deg);color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4)}
+.tri:hover .tcon{transform:rotateY(360deg);color:#fff;background:var(--accent);border-color:var(--accent)}
 .tri .tcon svg{width:23px;height:23px}
 .tri h3{font-family:var(--font-d);font-weight:600;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.03em;margin-bottom:16px}
 .tri p{color:#a7a39a;font-size:16px;line-height:1.55;max-width:30ch}
@@ -893,6 +897,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 .feat h4{font-family:var(--font-d);font-weight:600;font-size:21px;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
 .feat p{color:var(--muted);font-size:15.5px;line-height:1.56}
 .engage-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.engage-panel .t .engage-row{margin-top:32px}
 .engage-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-m);font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--accent);border:1px solid rgba(124,92,255,.32);border-radius:999px;padding:11px 20px}
 .papers.papers-3{grid-template-columns:repeat(3,1fr)}
@@ -903,7 +908,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 .engage-panel::before{content:"";position:absolute;right:-8%;top:-34%;width:56%;height:128%;pointer-events:none;
   background:radial-gradient(closest-side, rgba(124,92,255,.34), rgba(80,128,255,.12) 52%, transparent 72%)}
 .engage-panel>*{position:relative;z-index:1}
-.engage-panel .sec-head{grid-template-columns:1.25fr 0.75fr;gap:clamp(32px,5vw,64px);align-items:start;margin-bottom:38px}
+.engage-panel .sec-head{grid-template-columns:1.25fr 0.75fr;gap:clamp(32px,5vw,64px);align-items:center;margin-bottom:0}
 @media(max-width:768px){.engage-panel .sec-head{grid-template-columns:1fr}}
 .engage-panel .lbl{color:#8d8a82}
 .subpage .engage-panel .sec-head h2{color:var(--paper)}
@@ -1162,6 +1167,6 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   .de-node{font-size:11px;padding:9px 13px}
 }
 @media(max-width:480px){.svc-card.has-illu .svc-illu{min-height:120px}}
-.subpage .sec-head h2{font-size:var(--fs-h2);max-width:670px!important}
+.subpage .sec-head h2{font-size:var(--fs-h2);max-width:760px!important}
 .subpage .sec-head:has(+ .papers){margin-bottom:30px}
 @media(max-width:768px){.feat-grid{grid-template-columns:1fr}.papers.papers-3{grid-template-columns:1fr}.sec-head{grid-template-columns:1fr;align-items:start;gap:18px;margin-bottom:40px}.sec-head .meta{max-width:none}}

@@ -37,13 +37,12 @@
 .about-hero-row{display:block}
 .about-hero-copy{max-width:900px;margin:0 auto}
 .about-hero .crumb{justify-content:center}
-.about-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.02;
-  font-size:var(--fs-h1);max-width:none;margin:0}
-.about-hero-copy .hero-cta{justify-content:center;margin:clamp(30px,3.4vw,44px) 0 0;flex-wrap:wrap;gap:14px 16px}
+.about-hero h1{font-family:var(--font-d);font-weight:600;letter-spacing:-.04em;line-height:1.04;
+  font-size:var(--fs-h1);max-width:1000px;margin:0 auto}
+.about-hero .hero-cta{justify-content:center;margin:clamp(30px,3.4vw,44px) 0 0;flex-wrap:wrap;gap:14px 16px}
 @media(max-width:768px){
-  .about-hero-copy .hero-cta{justify-content:center}
+  .about-hero .hero-cta{justify-content:center;margin-top:26px}
   .about-hero h1{font-size:var(--fs-h1)}
-  .about-hero-copy .hero-cta{margin-top:26px}
 }
 /* ---- editorial two-column belief blocks ---- */
 .beliefs{padding-top:0}
@@ -251,14 +250,10 @@
   </div>
   <div class="wrap">
     <div class="crumb rv"><a href="index.html">Company</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>About</span></div>
-    <div class="about-hero-row">
-      <div class="about-hero-copy">
-        <h1 class="rv rv-d1">A sovereign, vertically integrated frontier<br>tech company.</h1>
-        <div class="hero-cta rv rv-d2">
-          <a class="btn btn-fill" href="work.html"><s>See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-          <a class="btn" href="research.html"><s>Read our research</s></a>
-        </div>
-      </div>
+    <h1 class="rv rv-d1">A sovereign, vertically<br>integrated frontier<br>tech company.</h1>
+    <div class="hero-cta rv rv-d2">
+      <a class="btn btn-fill" href="work.html"><s>See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+      <a class="btn" href="research.html"><s>Read our research</s></a>
     </div>
   </div>
 </header>
