@@ -44,6 +44,10 @@
 .cp-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:var(--accent);opacity:.5}
 .cp-arrow svg{width:16px;height:16px}
 .cp-row{display:flex;gap:8px;flex-wrap:wrap;min-width:0}
+@media(min-width:1025px){
+  .cp-row{flex-wrap:nowrap}
+  .cp-row .cp-chip{white-space:nowrap;padding:8px 13px}
+}
 .cp-row::-webkit-scrollbar{display:none}
 .cp-row .cp-chip{flex:0 0 auto}
 .cp-vwrap{display:flex;gap:12px;justify-content:center}
