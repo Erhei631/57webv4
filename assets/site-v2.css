@@ -620,7 +620,8 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   75%{border-radius:56% 44% 62% 38% / 52% 48% 50% 50%;transform:translate(-50%,-50%) rotate(-4deg) scale(1.05,.95)}
   100%{border-radius:60% 40% 58% 42% / 56% 46% 54% 44%;transform:translate(-50%,-50%) rotate(-16deg) scale(1,1)}
 }
-/* real logo */
+/* real logo — aspect-ratio reserves width before the image loads (prevents nav shift) */
+.logo-svg{aspect-ratio:1620/315}
 .brand .logo-svg{height:26px;width:auto;display:block}
 .foot-brand .logo-svg{height:34px}
 .sec-head .meta{flex:0 0 auto}
