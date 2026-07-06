@@ -88,7 +88,7 @@
     var suffix=el.getAttribute('data-suffix')||'';
     var dec=(raw.indexOf('.')>-1)?1:0;
     if(reduce){el.textContent=prefix+raw+suffix;return;}
-    var start=performance.now(), dur=1500;
+    var start=performance.now(), dur=1000;
     function tick(now){
       var p=Math.min(1,(now-start)/dur);
       var e=1-Math.pow(1-p,3);
@@ -189,6 +189,37 @@
 
   /* ---------- related-reading carousel (slide; off-window cards truly hidden) ---------- */
   (function(){
+    /* ---- shared custom tooltip bubble for clamped RR titles ---- */
+    var rrTip=null;
+    function rrTipEl(){
+      if(!rrTip){
+        rrTip=document.createElement('div');
+        rrTip.className='rr-tip';
+        document.body.appendChild(rrTip);
+      }
+      return rrTip;
+    }
+    window.rrTipShow=function(anchor, text){
+      var t=rrTipEl();
+      t.textContent=text;
+      t.classList.remove('below');
+      t.style.opacity='0';
+      t.classList.add('show');
+      /* position after layout so width is known */
+      requestAnimationFrame(function(){
+        var r=anchor.getBoundingClientRect();
+        var tw=t.offsetWidth, th=t.offsetHeight, m=10;
+        var left=r.left + r.width/2 - tw/2;
+        left=Math.max(m, Math.min(left, window.innerWidth - tw - m));
+        var top=r.top - th - 12;
+        if(top < m){ top=r.bottom + 12; t.classList.add('below'); } // flip below if no room
+        t.style.left=left+'px';
+        t.style.top=top+'px';
+        t.style.setProperty('--tip-arrow', (r.left + r.width/2 - left)+'px');
+        t.style.opacity='';
+      });
+    };
+    window.rrTipHide=function(){ if(rrTip) rrTip.classList.remove('show'); };
     function init(sec){
       var track = sec.querySelector('.rr-track');
       var nav = sec.querySelector('.rr-nav');
@@ -196,6 +227,26 @@
       var prev = sec.querySelector('.rr-arrow[data-dir="-1"]');
       var next = sec.querySelector('.rr-arrow[data-dir="1"]');
       var cards = [].slice.call(track.querySelectorAll('.paper'));
+      /* clamped titles: custom hover bubble showing the full title */
+      cards.forEach(function(c){
+        var h=c.querySelector('h3');
+        if(!h) return;
+        h.addEventListener('mouseenter', function(){
+          /* line-clamp + -webkit-box removes overflow from flow, so measuring
+             needs display/overflow lifted too — done synchronously, no repaint */
+          var clamped=h.clientHeight;
+          var d=h.style.display, lc=h.style.webkitLineClamp, ov=h.style.overflow;
+          h.style.display='block'; h.style.webkitLineClamp='unset'; h.style.overflow='visible';
+          var full=h.scrollHeight;
+          h.style.display=d; h.style.webkitLineClamp=lc; h.style.overflow=ov;
+          /* tolerance = half a line: catches a genuine hidden line, ignores
+             sub-pixel rounding that scales with large title font sizes */
+          var lh=parseFloat(getComputedStyle(h).lineHeight)||24;
+          if(full <= clamped + lh*0.5) return; // not truncated at current width
+          rrTipShow(h, h.textContent.trim());
+        });
+        h.addEventListener('mouseleave', rrTipHide);
+      });
       var index = 0, timer = null;
       function visibleCount(){
         if(window.matchMedia('(max-width:768px)').matches) return cards.length; // column
