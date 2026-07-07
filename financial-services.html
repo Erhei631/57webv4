@@ -74,6 +74,69 @@
 .case .cname-logo{display:block;height:60px;width:auto;margin-bottom:2px}
 .case-grid .cdesc{min-height:2.9em}
 @media(max-width:768px){.case-grid .case{min-height:188px;padding:22px}.case-grid .case .cname-logo{height:48px}.case-grid .cdesc{min-height:0}}
+
+/* ----- FS hero signature: three-node money rail (ledger → rails → wallet) ----- */
+.subhero.fs.split{padding:150px 0 92px}
+.subhero.fs.split .wrap{grid-template-columns:1fr minmax(0,560px)}
+.subhero.fs .dlv-art{max-width:560px;overflow:visible}
+.fvx-scene{position:relative;width:100%;max-width:548px;aspect-ratio:1/.82;margin:0 auto;
+  display:flex;align-items:center;justify-content:center}
+.fvx-rail{position:relative;z-index:2;width:100%;display:flex;align-items:center;justify-content:center;gap:0;
+  animation:fvxFloat 8s ease-in-out infinite}
+@keyframes fvxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.fvx-glass{background:rgba(255,255,255,.44);border:1px solid rgba(255,255,255,.62);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 40px 82px -46px rgba(30,50,120,.5)}
+
+/* --- core: the money-movement / settlement engine (the rails) --- */
+.fvx-core{width:min(84%,392px);min-height:342px;border-radius:20px;padding:20px 20px;display:flex;flex-direction:column;gap:18px;
+  box-shadow:0 1px 0 rgba(255,255,255,.85) inset,8px 9px 0 -1px rgba(255,255,255,.42),
+    16px 18px 0 -2px rgba(255,255,255,.26),0 46px 90px -46px rgba(30,50,120,.5)}
+.fvx-hd{display:flex;align-items:center;gap:7px}
+.fvx-hd .dot{width:8px;height:8px;flex:none;border-radius:50%;background:#2FB98A;
+  box-shadow:0 0 0 0 rgba(47,185,138,.5);animation:fvxPing 2.2s ease-out infinite}
+@keyframes fvxPing{0%{box-shadow:0 0 0 0 rgba(47,185,138,.45)}70%{box-shadow:0 0 0 7px rgba(47,185,138,0)}100%{box-shadow:0 0 0 0 rgba(47,185,138,0)}}
+.fvx-hd b{height:6px;flex:1;border-radius:3px;background:rgba(30,60,110,.16)}
+.fvx-hd .mi{flex:none;color:#2E56C6;display:grid;place-items:center}
+.fvx-hd .mi svg{width:15px;height:15px}
+/* routing engine: ledger chip → 3 lanes → hub → 3 lanes → wallet chip */
+.fvx-engine{flex:1;display:grid;grid-template-columns:34px 1fr 40px 1fr 34px;grid-template-rows:repeat(3,1fr);
+  align-items:center;column-gap:9px;row-gap:0;padding:4px 0}
+.e-c2{grid-column:2}.e-c4{grid-column:4}
+.e-r1{grid-row:1}.e-r2{grid-row:2}.e-r3{grid-row:3}
+.fvx-side{grid-row:1/4;align-self:stretch;border-radius:11px;display:grid;place-items:center;position:relative}
+.fvx-side.in{grid-column:1;color:#2E56C6;background:linear-gradient(135deg,rgba(62,107,255,.16),rgba(62,107,255,.05));border:1px solid rgba(62,107,255,.26)}
+.fvx-side.out{grid-column:5;color:#1f8a5b;background:linear-gradient(135deg,rgba(47,160,110,.16),rgba(47,160,110,.05));border:1px solid rgba(47,160,110,.28)}
+.fvx-side svg{width:18px;height:18px}
+.fvx-ln{height:2px;border-radius:2px;position:relative;overflow:hidden;
+  background:linear-gradient(90deg,rgba(62,107,255,.14),rgba(62,107,255,.34))}
+.fvx-ln.out{background:linear-gradient(90deg,rgba(47,160,110,.34),rgba(47,160,110,.14))}
+.fvx-ln::after{content:"";position:absolute;top:0;left:-32%;width:32%;height:100%;border-radius:2px;
+  background:linear-gradient(90deg,transparent,#3E6BFF,transparent);animation:fvxShift 2.3s linear infinite}
+.fvx-ln.l2::after{animation-delay:.5s}.fvx-ln.l3::after{animation-delay:1s}
+.fvx-ln.out::after{background:linear-gradient(90deg,transparent,#2FA06E,transparent);animation-delay:1.15s}
+.fvx-ln.out.l2::after{animation-delay:1.65s}.fvx-ln.out.l3::after{animation-delay:2.15s}
+@keyframes fvxShift{0%{left:-32%}100%{left:100%}}
+.fvx-hub{grid-column:3;grid-row:1/4;align-self:stretch;border-radius:11px;display:grid;place-items:center;color:#2E56C6;
+  background:linear-gradient(135deg,rgba(62,107,255,.2),rgba(124,124,240,.09));border:1px solid rgba(62,107,255,.32);position:relative}
+.fvx-hub svg{width:20px;height:20px}
+.fvx-hub::after{content:"";position:absolute;inset:-4px;border-radius:14px;border:1px solid rgba(62,107,255,.3);
+  animation:fvxHub 2.6s ease-out infinite}
+@keyframes fvxHub{0%{opacity:.6;transform:scale(.9)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0;transform:scale(1.12)}}
+.fvx-thru{display:flex;align-items:center;gap:8px}
+.fvx-thru .tk{height:5px;width:26px;flex:none;border-radius:3px;background:rgba(30,60,110,.16)}
+.fvx-thru .tt{flex:1;height:6px;border-radius:3px;background:rgba(30,60,110,.1);overflow:hidden}
+.fvx-thru .tf{display:block;height:100%;width:64%;border-radius:3px;background:linear-gradient(90deg,#3E6BFF,#2FA06E);
+  animation:fvxFill 3.8s var(--ease) infinite}
+@keyframes fvxFill{0%,100%{width:50%}50%{width:84%}}
+
+.fvx-ring{position:absolute;left:50%;top:50%;width:100%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  border:1px dashed rgba(40,80,180,.16);border-radius:50%;pointer-events:none;animation:ringSpin 62s linear infinite}
+.fvx-ring.r2{width:128%;border-style:dotted;border-color:rgba(40,80,180,.1);animation:ringSpin 94s linear infinite reverse}
+@media(prefers-reduced-motion:reduce){.fvx-rail,.fvx-ring,.fvx-hd .dot,.fvx-ln::after,.fvx-hub::after,.fvx-thru .tf{animation:none}}
+@media(max-width:768px){.subhero.fs.split .wrap{grid-template-columns:1fr}.subhero.fs .dlv-art{max-width:420px}
+  .fvx-scene{max-width:420px}.fvx-core{width:min(90%,360px);min-height:312px}}
+@media(max-width:420px){.fvx-core{padding:16px;min-height:288px}}
 </style>
 </head>
 <body class="subpage">
@@ -159,19 +222,56 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero fs" id="top">
+<header class="subhero fs split" id="top">
   <div class="subhero-bg">
     <div class="sh-dots"></div>
     <div class="fs-streaks"></div>
     <div class="fs-bloom"></div>
   </div>
   <div class="wrap">
-    <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Financial services</span></div>
-    <h1 class="rv rv-d1">Platforms and infrastructure<br>that move money.</h1>
-    <p class="lead rv rv-d2">We build the financial platforms and the rails beneath them, from on-chain money movement to full-stack investment and wealth platforms, and we make traditional finance and on-chain infrastructure work together seamlessly. It is the vertical where we have built the most.</p>
-    <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="work.html"><s>See our work</s></a>
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Financial services</span></div>
+      <h1 class="rv rv-d1">Platforms and infrastructure<br>that move money.</h1>
+      <p class="lead rv rv-d2">We build the financial platforms and the rails beneath them, from on-chain money movement to full-stack investment and wealth platforms, and we make traditional finance and on-chain infrastructure work together seamlessly. It is the vertical where we have built the most.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="work.html"><s>See our work</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="fvx-scene">
+        <div class="fvx-ring"></div>
+        <div class="fvx-ring r2"></div>
+        <span class="c3-glyph c3-glyph--acc" style="left:2%;top:60%;width:16px;height:16px;transform:rotate(18deg);animation-delay:.5s"></span>
+        <span class="c3-glyph" style="left:94%;top:74%;width:20px;height:20px;transform:rotate(-12deg);animation-delay:2.2s"></span>
+        <span class="c3-glyph" style="left:88%;top:8%;width:13px;height:13px;transform:rotate(32deg);animation-delay:3.4s"></span>
+        <span class="c3-glyph" style="left:10%;top:8%;width:17px;height:17px;transform:rotate(-22deg);animation-delay:1.2s"></span>
+        <span class="c3-particle" style="left:4%;top:26%;width:7px;height:7px;animation-delay:0s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:95%;top:34%;width:5px;height:5px;animation-delay:1.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:8%;top:82%;width:5px;height:5px;animation-delay:2.1s"></span>
+        <span class="c3-particle" style="left:96%;top:56%;width:8px;height:8px;animation-delay:.7s"></span>
+        <span class="c3-particle" style="left:50%;top:2%;width:5px;height:5px;animation-delay:3s"></span>
+        <span class="c3-particle" style="left:30%;top:96%;width:5px;height:5px;animation-delay:.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:70%;top:96%;width:4px;height:4px;animation-delay:4.2s"></span>
+        <div class="fvx-rail">
+          <!-- the settlement / routing engine: ledger side (blue) → hub → wallet/stablecoin side (green) -->
+          <div class="fvx-core fvx-glass">
+            <div class="fvx-hd"><span class="dot"></span><b></b><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></span></div>
+            <div class="fvx-engine">
+              <span class="fvx-side in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-4 7 4v12"/><path d="M9 21v-6h6v6"/><path d="M4 9h16"/></svg></span>
+              <span class="fvx-hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14M14 5l3 3-3 3"/><path d="M21 16H7m3 3-3-3 3-3"/></svg></span>
+              <span class="fvx-side out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H17a2 2 0 0 1 2 2v1"/><path d="M3 7.5V17a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-2.5"/><path d="M21 9.5v5h-4a2.5 2.5 0 0 1 0-5z"/></svg></span>
+              <span class="fvx-ln e-c2 e-r1"></span>
+              <span class="fvx-ln e-c2 e-r2 l2"></span>
+              <span class="fvx-ln e-c2 e-r3 l3"></span>
+              <span class="fvx-ln out e-c4 e-r1"></span>
+              <span class="fvx-ln out e-c4 e-r2 l2"></span>
+              <span class="fvx-ln out e-c4 e-r3 l3"></span>
+            </div>
+            <div class="fvx-thru"><span class="tk"></span><span class="tt"><span class="tf"></span></span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

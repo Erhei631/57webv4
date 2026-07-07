@@ -26,6 +26,51 @@
   filter:blur(10px)}
 @keyframes htDrift{from{transform:translateX(3%) translateY(-1%)}to{transform:translateX(-3%) translateY(2%)}}
 @media(prefers-reduced-motion:reduce){.subhero.ht .ht-streaks{animation:none}}
+
+/* ----- Health hero signature: floating vitals monitor (abstract, homepage DNA) ----- */
+.subhero.ht.split{padding:150px 0 92px}
+.subhero.ht .dlv-art{max-width:540px;overflow:visible}
+.htx-scene{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;perspective:1300px}
+.htx-float{position:relative;width:60%;aspect-ratio:1.12/1;transform-style:preserve-3d;animation:htxFloat 8s ease-in-out infinite}
+@keyframes htxFloat{0%,100%{transform:rotateX(6deg) rotateY(-13deg) translateY(0)}50%{transform:rotateX(6deg) rotateY(13deg) translateY(-10px)}}
+.htx-card{position:absolute;inset:0;z-index:2;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px;
+  background:rgba(255,255,255,.42);
+  border:1px solid rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 40px 82px -46px rgba(40,90,170,.5)}
+.htx-under{position:absolute;inset:0;border-radius:16px;
+  background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.5)}
+.htx-under.u1{transform:translate(6%,5%) scale(.965);opacity:.7;z-index:1}
+.htx-under.u2{transform:translate(11.5%,9.5%) scale(.93);opacity:.42;z-index:0}
+.htx-hd{display:flex;align-items:center;gap:7px}
+.htx-hd .live{width:8px;height:8px;flex:none;border-radius:50%;background:#2FB98A;
+  box-shadow:0 0 0 0 rgba(47,185,138,.5);animation:htxPing 2s ease-out infinite}
+@keyframes htxPing{0%{box-shadow:0 0 0 0 rgba(47,185,138,.5)}70%{box-shadow:0 0 0 7px rgba(47,185,138,0)}100%{box-shadow:0 0 0 0 rgba(47,185,138,0)}}
+.htx-hd b{height:6px;flex:1;border-radius:3px;background:rgba(30,60,110,.16)}
+.htx-hd .sig{display:flex;align-items:flex-end;gap:2px;flex:none}
+.htx-hd .sig s{width:3px;border-radius:1px;background:rgba(62,134,224,.55)}
+.htx-hd .sig s:nth-child(1){height:5px}.htx-hd .sig s:nth-child(2){height:8px}.htx-hd .sig s:nth-child(3){height:11px}
+.htx-ecg{flex:1;display:flex;align-items:center;min-height:0}
+.htx-ecg svg{width:100%;height:100%;overflow:visible}
+.htx-ecg .trace{fill:none;stroke:url(#htxGrad);stroke-width:1;stroke-opacity:.9;stroke-linecap:round;stroke-linejoin:round}
+.htx-stats{display:flex;gap:8px}
+.htx-chip{flex:1;height:26px;border-radius:8px;display:flex;align-items:center;padding:0 8px;
+  background:rgba(62,134,224,.08);border:1px solid rgba(62,134,224,.16)}
+.htx-chip i{width:14px;height:6px;border-radius:3px;background:rgba(62,134,224,.4)}
+.htx-chip.g{background:rgba(47,185,138,.1);border-color:rgba(47,185,138,.2)}
+.htx-chip.g i{background:rgba(47,185,138,.5)}
+.htx-badge{position:absolute;right:-15px;bottom:-15px;z-index:6;transform:translateZ(50px);
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#2E74D6;
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 1px 0 rgba(255,255,255,.92) inset,0 20px 40px -20px rgba(40,90,170,.6),0 0 0 1px rgba(120,170,240,.16)}
+.htx-badge svg{width:28px;height:28px}
+.htx-ring{position:absolute;left:50%;top:50%;width:118%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  border:1px dashed rgba(40,90,170,.16);border-radius:50%;pointer-events:none;animation:ringSpin 62s linear infinite}
+.htx-ring.r2{width:150%;border-style:dotted;border-color:rgba(40,90,170,.1);animation:ringSpin 94s linear infinite reverse}
+@media(prefers-reduced-motion:reduce){.htx-float,.htx-ring,.htx-hd .live{animation:none}.htx-float{transform:rotateX(6deg) rotateY(-13deg)}}
+@media(max-width:768px){.subhero.ht .dlv-art{max-width:360px}.htx-scene{max-width:340px}.htx-float{width:68%}}
 </style>
 </head>
 <body class="subpage">
@@ -111,19 +156,58 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero ht" id="top">
+<header class="subhero ht split" id="top">
   <div class="subhero-bg">
     <div class="sh-dots"></div>
     <div class="ht-streaks"></div>
     <div class="ht-bloom"></div>
   </div>
   <div class="wrap">
-    <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Health</span></div>
-    <h1 class="rv rv-d1">Device-connected health platforms that clear the bar.</h1>
-    <p class="lead rv rv-d2">We build digital health, remote patient monitoring, and clinical workflow software where reliability, compliance, and clinician trust are not optional. The patterns below recur across the health platforms we deliver.</p>
-    <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Health</span></div>
+      <h1 class="rv rv-d1">Device-connected health platforms that clear the bar.</h1>
+      <p class="lead rv rv-d2">We build digital health, remote patient monitoring, and clinical workflow software where reliability, compliance, and clinician trust are not optional. The patterns below recur across the health platforms we deliver.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="htx-scene">
+        <div class="htx-ring"></div>
+        <div class="htx-ring r2"></div>
+        <span class="c3-glyph c3-glyph--acc" style="left:4%;top:58%;width:16px;height:16px;transform:rotate(18deg);animation-delay:.5s"></span>
+        <span class="c3-glyph" style="left:90%;top:74%;width:20px;height:20px;transform:rotate(-12deg);animation-delay:2.2s"></span>
+        <span class="c3-glyph" style="left:84%;top:12%;width:13px;height:13px;transform:rotate(32deg);animation-delay:3.4s"></span>
+        <span class="c3-glyph" style="left:16%;top:12%;width:17px;height:17px;transform:rotate(-22deg);animation-delay:1.2s"></span>
+        <span class="c3-particle" style="left:8%;top:26%;width:7px;height:7px;animation-delay:0s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:90%;top:34%;width:5px;height:5px;animation-delay:1.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:12%;top:76%;width:5px;height:5px;animation-delay:2.1s"></span>
+        <span class="c3-particle" style="left:92%;top:56%;width:8px;height:8px;animation-delay:.7s"></span>
+        <span class="c3-particle" style="left:50%;top:6%;width:5px;height:5px;animation-delay:3s"></span>
+        <span class="c3-particle" style="left:30%;top:92%;width:5px;height:5px;animation-delay:.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:70%;top:90%;width:4px;height:4px;animation-delay:4.2s"></span>
+        <div class="htx-float">
+          <div class="htx-under u2"></div>
+          <div class="htx-under u1"></div>
+          <div class="htx-card">
+            <div class="htx-hd"><span class="live"></span><b></b><span class="sig"><s></s><s></s><s></s></span></div>
+            <div class="htx-ecg">
+              <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                <defs><linearGradient id="htxGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4C94E8"/><stop offset=".55" stop-color="#6E8BEE"/><stop offset="1" stop-color="#8C7CF0"/></linearGradient></defs>
+                <path class="trace" d="M0 20 H26 l2.5 -2 2 5 2.5 -13 2.5 20 2 -10 H54 l2.5 -2 2 5 2.5 -13 2.5 20 2 -10 H100"/>
+                <circle r="1.5" fill="#7C7CF0"><animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite"/><animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M0 20 H26 l2.5 -2 2 5 2.5 -13 2.5 20 2 -10 H54 l2.5 -2 2 5 2.5 -13 2.5 20 2 -10 H100"/></circle>
+              </svg>
+            </div>
+            <div class="htx-stats">
+              <div class="htx-chip"><i></i></div>
+              <div class="htx-chip g"><i></i></div>
+              <div class="htx-chip"><i></i></div>
+            </div>
+          </div>
+          <div class="htx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.3 7-10V5.5l-7-2.5-7 2.5V11c0 5.7 7 10 7 10z"/><path d="M12 8.5v6M9 11.5h6"/></svg></div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

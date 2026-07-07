@@ -27,6 +27,57 @@
   filter:blur(10px)}
 @keyframes cpDrift{from{transform:translateX(3%) translateY(-1%)}to{transform:translateX(-3%) translateY(2%)}}
 @media(prefers-reduced-motion:reduce){.subhero.cp .cp-streaks{animation:none}}
+
+/* ----- Construction hero signature: floating iso building model (abstract, homepage DNA) ----- */
+.subhero.cp.split{padding:150px 0 92px}
+.subhero.cp .dlv-art{max-width:540px;overflow:visible}
+.cpx-scene{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;perspective:1300px}
+.cpx-float{position:relative;width:66%;aspect-ratio:1.2/1;transform-style:preserve-3d;animation:cpxFloat 8s ease-in-out infinite}
+@keyframes cpxFloat{0%,100%{transform:rotateX(5deg) rotateY(-12deg) translateY(0)}50%{transform:rotateX(5deg) rotateY(12deg) translateY(-10px)}}
+.cpx-panel{position:absolute;inset:0;z-index:2;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px;
+  background:rgba(255,255,255,.44);
+  border:1px solid rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 40px 82px -46px rgba(120,90,40,.48)}
+.cpx-under{position:absolute;inset:0;border-radius:16px;
+  background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.5)}
+.cpx-under.u1{transform:translate(6%,5%) scale(.965);opacity:.7;z-index:1}
+.cpx-under.u2{transform:translate(11.5%,9.5%) scale(.93);opacity:.42;z-index:0}
+.cpx-hd{display:flex;align-items:center;gap:7px}
+.cpx-hd .dot{width:8px;height:8px;flex:none;border-radius:50%;background:#B9822F;
+  box-shadow:0 0 0 0 rgba(185,130,47,.5);animation:cpxPing 2.4s ease-out infinite}
+@keyframes cpxPing{0%{box-shadow:0 0 0 0 rgba(185,130,47,.45)}70%{box-shadow:0 0 0 7px rgba(185,130,47,0)}100%{box-shadow:0 0 0 0 rgba(185,130,47,0)}}
+.cpx-hd b{height:6px;flex:1;border-radius:3px;background:rgba(90,68,40,.18)}
+.cpx-hd .mi{flex:none;color:#9A6F2C;display:grid;place-items:center}
+.cpx-hd .mi svg{width:15px;height:15px}
+.cpx-body{flex:1;display:flex;gap:9px;min-height:0}
+.cpx-side{width:27%;flex:none;border-radius:9px;padding:8px 7px;display:flex;flex-direction:column;gap:6px;
+  background:rgba(120,90,45,.05);border:1px solid rgba(150,110,60,.12)}
+.cpx-side i{height:6px;border-radius:3px;background:rgba(90,68,40,.14)}
+.cpx-side i.on{background:rgba(185,130,47,.42)}
+.cpx-side i.sp{margin-top:auto}
+.cpx-main{flex:1;display:flex;flex-direction:column;gap:6px;min-height:0}
+.cpx-row{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:8px;
+  background:rgba(255,255,255,.5);border:1px solid rgba(150,110,60,.12)}
+.cpx-row .rc{width:13px;height:13px;flex:none;border-radius:4px;background:rgba(120,90,45,.14)}
+.cpx-row .rb{height:5px;flex:1;border-radius:3px;background:rgba(90,68,40,.14)}
+.cpx-row .st{width:22px;height:9px;flex:none;border-radius:5px;background:rgba(120,90,45,.16)}
+.cpx-row .st.g{background:rgba(47,160,110,.5)}
+.cpx-row.on{background:rgba(185,130,47,.1);border-color:rgba(185,130,47,.32);animation:cpxAcc 3.6s var(--ease) infinite}
+.cpx-row.on .st{background:rgba(185,130,47,.55)}
+@keyframes cpxAcc{0%,100%{border-color:rgba(185,130,47,.24)}50%{border-color:rgba(185,130,47,.5)}}
+.cpx-badge{position:absolute;right:-15px;bottom:-15px;z-index:6;transform:translateZ(50px);
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#9A6F2C;
+  background:rgba(255,253,248,.9);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 1px 0 rgba(255,255,255,.92) inset,0 20px 40px -20px rgba(120,90,40,.55),0 0 0 1px rgba(180,140,80,.16)}
+.cpx-badge svg{width:28px;height:28px}
+.cpx-ring{position:absolute;left:50%;top:50%;width:118%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  border:1px dashed rgba(120,90,45,.16);border-radius:50%;pointer-events:none;animation:ringSpin 62s linear infinite}
+.cpx-ring.r2{width:150%;border-style:dotted;border-color:rgba(120,90,45,.1);animation:ringSpin 94s linear infinite reverse}
+@media(prefers-reduced-motion:reduce){.cpx-float,.cpx-ring,.cpx-hd .dot,.cpx-row.on{animation:none}.cpx-float{transform:rotateX(5deg) rotateY(-12deg)}}
+@media(max-width:768px){.subhero.cp .dlv-art{max-width:360px}.cpx-scene{max-width:340px}.cpx-float{width:78%}}
 </style>
 </head>
 <body class="subpage">
@@ -112,19 +163,61 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero cp" id="top">
+<header class="subhero cp split" id="top">
   <div class="subhero-bg">
     <div class="sh-dots"></div>
     <div class="cp-streaks"></div>
     <div class="cp-bloom"></div>
   </div>
   <div class="wrap">
-    <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Construction &amp; property</span></div>
-    <h1 class="rv rv-d1">Software that encodes<br>how your business works.</h1>
-    <p class="lead rv rv-d2">Field-heavy businesses in construction, property, and the trades have run on tribal knowledge, paper, and PDF binders for decades. We build software that captures that expertise and puts it in the hands of everyone on the team, from the site to the office.</p>
-    <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Construction &amp; property</span></div>
+      <h1 class="rv rv-d1">Software that encodes<br>how your business works.</h1>
+      <p class="lead rv rv-d2">Field-heavy businesses in construction, property, and the trades have run on tribal knowledge, paper, and PDF binders for decades. We build software that captures that expertise and puts it in the hands of everyone on the team, from the site to the office.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="cpx-scene">
+        <div class="cpx-ring"></div>
+        <div class="cpx-ring r2"></div>
+        <span class="c3-glyph c3-glyph--acc" style="left:4%;top:58%;width:16px;height:16px;transform:rotate(18deg);animation-delay:.5s"></span>
+        <span class="c3-glyph" style="left:90%;top:74%;width:20px;height:20px;transform:rotate(-12deg);animation-delay:2.2s"></span>
+        <span class="c3-glyph" style="left:84%;top:12%;width:13px;height:13px;transform:rotate(32deg);animation-delay:3.4s"></span>
+        <span class="c3-glyph" style="left:16%;top:12%;width:17px;height:17px;transform:rotate(-22deg);animation-delay:1.2s"></span>
+        <span class="c3-particle" style="left:8%;top:26%;width:7px;height:7px;animation-delay:0s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:90%;top:34%;width:5px;height:5px;animation-delay:1.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:12%;top:76%;width:5px;height:5px;animation-delay:2.1s"></span>
+        <span class="c3-particle" style="left:92%;top:56%;width:8px;height:8px;animation-delay:.7s"></span>
+        <span class="c3-particle" style="left:50%;top:6%;width:5px;height:5px;animation-delay:3s"></span>
+        <span class="c3-particle" style="left:30%;top:92%;width:5px;height:5px;animation-delay:.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:70%;top:90%;width:4px;height:4px;animation-delay:4.2s"></span>
+        <div class="cpx-float">
+          <div class="cpx-under u2"></div>
+          <div class="cpx-under u1"></div>
+          <div class="cpx-panel">
+            <div class="cpx-hd"><span class="dot"></span><b></b><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg></span></div>
+            <div class="cpx-body">
+              <div class="cpx-side">
+                <i class="on"></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i class="sp"></i>
+              </div>
+              <div class="cpx-main">
+                <div class="cpx-row"><span class="rc"></span><span class="rb"></span><span class="st g"></span></div>
+                <div class="cpx-row on"><span class="rc"></span><span class="rb"></span><span class="st"></span></div>
+                <div class="cpx-row"><span class="rc"></span><span class="rb"></span><span class="st"></span></div>
+                <div class="cpx-row"><span class="rc"></span><span class="rb"></span><span class="st g"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="cpx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6l7-3v18"/><path d="M11 8h6a2 2 0 0 1 2 2v11"/><path d="M2 21h20"/><path d="M7 8v0M7 12v0M7 16v0M15 12v0M15 16v0"/></svg></div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

@@ -26,6 +26,48 @@
   filter:blur(10px)}
 @keyframes cnDrift{from{transform:translateX(3%) translateY(-1%)}to{transform:translateX(-3%) translateY(2%)}}
 @media(prefers-reduced-motion:reduce){.subhero.cn .cn-streaks{animation:none}}
+
+/* ----- Consumer hero signature: floating app (abstract, homepage DNA) ----- */
+.subhero.cn.split{padding:150px 0 92px}
+.subhero.cn .dlv-art{max-width:540px;overflow:visible}
+.cnx-scene{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;perspective:1300px}
+.cnx-float{position:relative;width:43%;aspect-ratio:1/2;transform-style:preserve-3d;animation:cnxFloat 8s ease-in-out infinite}
+@keyframes cnxFloat{0%,100%{transform:rotateX(4deg) rotateY(-12deg) translateY(0)}50%{transform:rotateX(4deg) rotateY(12deg) translateY(-10px)}}
+.cnx-phone{position:absolute;inset:0;z-index:2;border-radius:22px;padding:12px 10px 13px;display:flex;flex-direction:column;gap:8px;
+  background:rgba(255,255,255,.44);
+  border:1px solid rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 40px 82px -46px rgba(20,110,105,.5)}
+.cnx-under{position:absolute;inset:0;border-radius:22px;background:rgba(255,255,255,.32);border:1px solid rgba(255,255,255,.5)}
+.cnx-under.u1{transform:translate(7%,5%) scale(.95);opacity:.6;z-index:1}
+.cnx-under.u2{transform:translate(13%,9%) scale(.9);opacity:.34;z-index:0}
+.cnx-notch{width:32%;height:4px;border-radius:3px;background:rgba(40,70,90,.16);margin:1px auto 4px}
+.cnx-uih{display:flex;align-items:center;gap:6px}
+.cnx-uih .live{width:8px;height:8px;flex:none;border-radius:50%;background:#14A89E;
+  box-shadow:0 0 0 0 rgba(20,168,158,.5);animation:cnxPing 2.2s ease-out infinite}
+@keyframes cnxPing{0%{box-shadow:0 0 0 0 rgba(20,168,158,.45)}70%{box-shadow:0 0 0 6px rgba(20,168,158,0)}100%{box-shadow:0 0 0 0 rgba(20,168,158,0)}}
+.cnx-uih b{height:6px;flex:1;border-radius:3px;background:rgba(40,70,90,.16)}
+.cnx-uir{height:9px;border-radius:5px;background:rgba(40,70,90,.09)}
+.cnx-uir.s{width:76%}
+.cnx-uir.acc{background:linear-gradient(90deg,rgba(20,168,158,.42),rgba(20,168,158,.1));width:66%;
+  animation:cnxAcc 3.6s var(--ease) infinite}
+@keyframes cnxAcc{0%,100%{opacity:.7}50%{opacity:1}}
+.cnx-tabs{display:flex;align-items:center;justify-content:space-around;gap:3px;margin-top:auto;padding-top:9px;border-top:1px solid rgba(40,70,90,.1)}
+.cnx-tab{display:grid;place-items:center;color:rgba(40,70,90,.3)}
+.cnx-tab svg{width:14px;height:14px}
+.cnx-tab.on{color:#14A89E}
+.cnx-badge{position:absolute;right:-16px;bottom:-14px;z-index:6;transform:translateZ(48px);
+  width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#128C84;
+  background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 1px 0 rgba(255,255,255,.92) inset,0 20px 40px -20px rgba(20,110,105,.55),0 0 0 1px rgba(30,160,150,.16)}
+.cnx-badge svg{width:26px;height:26px}
+.cnx-ring{position:absolute;left:50%;top:50%;width:88%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  border:1px dashed rgba(20,130,120,.16);border-radius:50%;pointer-events:none;animation:ringSpin 62s linear infinite}
+.cnx-ring.r2{width:112%;border-style:dotted;border-color:rgba(20,130,120,.1);animation:ringSpin 94s linear infinite reverse}
+@media(prefers-reduced-motion:reduce){.cnx-float,.cnx-ring,.cnx-uih .live,.cnx-uir.acc{animation:none}.cnx-float{transform:rotateX(4deg) rotateY(-12deg)}}
+@media(max-width:768px){.subhero.cn .dlv-art{max-width:360px}.cnx-scene{max-width:340px}.cnx-float{width:48%}}
 </style>
 </head>
 <body class="subpage">
@@ -111,19 +153,58 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="subhero cn" id="top">
+<header class="subhero cn split" id="top">
   <div class="subhero-bg">
     <div class="sh-dots"></div>
     <div class="cn-streaks"></div>
     <div class="cn-bloom"></div>
   </div>
   <div class="wrap">
-    <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Consumer</span></div>
-    <h1 class="rv rv-d1">Consumer apps and<br>platforms at scale.</h1>
-    <p class="lead rv rv-d2">We build consumer software: mobile apps, marketplaces, and high-traffic platforms, often as the whole engineering team. The patterns below recur across the consumer products we deliver.</p>
-    <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+    <div class="dlv-copy">
+      <div class="crumb rv"><a href="index.html#industries">Industries</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Consumer</span></div>
+      <h1 class="rv rv-d1">Consumer apps and<br>platforms at scale.</h1>
+      <p class="lead rv rv-d2">We build consumer software: mobile apps, marketplaces, and high-traffic platforms, often as the whole engineering team. The patterns below recur across the consumer products we deliver.</p>
+      <div class="hero-cta rv rv-d2">
+        <a class="btn btn-fill" href="contact.html"><s>Talk to our team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
+        <a class="btn" href="how-we-deliver.html"><s>How we deliver</s></a>
+      </div>
+    </div>
+    <div class="dlv-art rv rv-d3" aria-hidden="true">
+      <div class="cnx-scene">
+        <div class="cnx-ring"></div>
+        <div class="cnx-ring r2"></div>
+        <span class="c3-glyph c3-glyph--acc" style="left:4%;top:58%;width:16px;height:16px;transform:rotate(18deg);animation-delay:.5s"></span>
+        <span class="c3-glyph" style="left:90%;top:74%;width:20px;height:20px;transform:rotate(-12deg);animation-delay:2.2s"></span>
+        <span class="c3-glyph" style="left:84%;top:12%;width:13px;height:13px;transform:rotate(32deg);animation-delay:3.4s"></span>
+        <span class="c3-glyph" style="left:16%;top:12%;width:17px;height:17px;transform:rotate(-22deg);animation-delay:1.2s"></span>
+        <span class="c3-particle" style="left:8%;top:26%;width:7px;height:7px;animation-delay:0s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:90%;top:34%;width:5px;height:5px;animation-delay:1.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:12%;top:76%;width:5px;height:5px;animation-delay:2.1s"></span>
+        <span class="c3-particle" style="left:92%;top:56%;width:8px;height:8px;animation-delay:.7s"></span>
+        <span class="c3-particle" style="left:50%;top:6%;width:5px;height:5px;animation-delay:3s"></span>
+        <span class="c3-particle" style="left:30%;top:92%;width:5px;height:5px;animation-delay:.4s"></span>
+        <span class="c3-particle c3-particle--ink" style="left:70%;top:90%;width:4px;height:4px;animation-delay:4.2s"></span>
+        <div class="cnx-float">
+          <div class="cnx-under u2"></div>
+          <div class="cnx-under u1"></div>
+          <div class="cnx-phone">
+            <div class="cnx-notch"></div>
+            <div class="cnx-uih"><span class="live"></span><b></b></div>
+            <div class="cnx-uir"></div>
+            <div class="cnx-uir s"></div>
+            <div class="cnx-uir acc"></div>
+            <div class="cnx-uir"></div>
+            <div class="cnx-uir s"></div>
+            <div class="cnx-tabs">
+              <span class="cnx-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>
+              <span class="cnx-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg></span>
+              <span class="cnx-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.2-9C1.3 8.8 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 22.7 8.8 21.2 12 19 16.4 12 21 12 21z"/></svg></span>
+              <span class="cnx-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span>
+            </div>
+          </div>
+          <div class="cnx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M16.5 4.2a3.2 3.2 0 0 1 0 6.1"/><path d="M22 21v-2a4 4 0 0 0-3-3.86"/></svg></div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
