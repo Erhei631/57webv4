@@ -248,7 +248,7 @@ body:not(.subpage) .sec-head h2{max-width:none;text-wrap:balance}
 
 /* ---------- engine rows (static, always-open) ---------- */
 .acc{border-top:1px solid var(--line-2)}
-.acc-item{border-bottom:1px solid var(--line-2);
+.acc-item{border-bottom:1px solid var(--line-2);position:relative;
   display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.5fr) auto;
   align-items:center;gap:28px 48px;padding:40px 24px;margin:0 -24px;
   border-radius:16px;transition:background .25s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
@@ -261,6 +261,7 @@ body:not(.subpage) .sec-head h2{max-width:none;text-wrap:balance}
 .acc-item:hover .ti{color:var(--accent)}
 .acc-item p{font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:48ch}
 .acc-item .go{align-self:center;white-space:nowrap}
+.acc-item .go::after{content:"";position:absolute;inset:0;z-index:1}
 /* dark engine band — recolors via scoped variable overrides */
 #engine{background:#0B0B0D;color:#F3F3F5;
   --ink:#F3F3F5; --ink-soft:#BFBFC7; --muted:#8E8E97;
