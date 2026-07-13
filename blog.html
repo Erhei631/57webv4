@@ -54,7 +54,7 @@
 
 /* ---- featured (first) row: big image + copy, spans two rows ---- */
 .blog-row--feat{align-items:center;gap:28px}
-.blog-group:first-of-type .blog-row--feat{grid-row:span 2}
+.blog-row--feat{grid-column:1 / -1}
 .blog-row--feat:hover{padding-left:0;color:var(--ink)}
 .blog-row--feat:hover .blog-feat-body{transform:translateX(10px)}
 .blog-row--feat:hover .t{color:var(--accent)}
@@ -71,12 +71,12 @@
   .blog-row--feat{gap:18px}.blog-row--feat .blog-thumb{width:150px;height:92px}.blog-row--feat .t{font-size:16px}}
 
 /* ---- blog hero: editorial left-aligned ---- */
-.blog-hero{padding:128px 0 64px}
+.blog-hero{padding:128px 0 40px}
 .blog-hero .sh-ring{display:none}
 .blog-hero .sh-bloom{top:50%;width:min(760px,82%);height:420px}
 .blog-hero .wrap{text-align:left}
 .blog-hero .lbl{display:inline-flex;align-items:center;gap:9px;margin-bottom:clamp(22px,3vw,36px)}
-.blog-hero .lbl .dot{color:var(--accent);font-size:10px;line-height:1}
+.blog-hero .lbl .dot{color:var(--accent);font-size:12px;line-height:1}
 .blog-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:end}
 .blog-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
   font-size:var(--fs-h1);max-width:none;margin:0}
@@ -89,6 +89,25 @@
   .blog-hero h1{font-size:var(--fs-h1)}
   .blog-hero-aside{max-width:none;padding-bottom:0}
 }
+/* ---- search + filter controls (outlined pills, search left) ---- */
+.blog-hero + .sec{padding-top:40px}
+.blog-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px 12px;margin-bottom:clamp(28px,3.5vw,40px)}
+.blog-search{position:relative;flex:0 0 auto;width:min(320px,100%);order:1}
+.blog-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--muted);pointer-events:none}
+.blog-search input{width:100%;font-family:var(--font-m);font-size:12.5px;letter-spacing:.02em;color:var(--ink);
+  background:#e6e6ea;border:1px solid rgba(12,12,14,.08);border-radius:999px;padding:10px 16px 10px 36px;transition:border-color .2s,background .2s}
+.blog-search input::placeholder{color:var(--muted);letter-spacing:.02em}
+.blog-search input:focus{outline:none;background:#fff;border-color:var(--accent)}
+.blog-chips{display:flex;flex-wrap:wrap;gap:9px;order:2}
+.blog-chip{font-family:var(--font-m);font-size:12px;letter-spacing:.05em;color:var(--ink);
+  background:#e6e6ea;border:1px solid transparent;border-radius:999px;padding:9px 15px;cursor:pointer;
+  transition:color .18s var(--ease),background .18s var(--ease)}
+.blog-chip:hover{background:#dcdce1}
+.blog-chip.is-active{background:var(--accent);border-color:var(--accent);color:#fff}
+.blog-noresults{display:none;padding:56px 0;text-align:center;color:var(--muted);font-family:var(--font-m);font-size:13px;letter-spacing:.04em}
+.blog-noresults.show{display:block}
+
+@media(max-width:768px){.blog-search{width:100%}}
 </style>
 </head>
 <body class="subpage">
@@ -179,7 +198,7 @@
     <div class="blg-plume"></div>
   </div>
   <div class="wrap">
-    <div class="lbl rv"><span class="dot">✸</span> Thinking · Blog</div>
+    <div class="crumb rv"><a href="index.html#research">Thinking</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Blog</span></div>
     <div class="blog-hero-row">
       <h1 class="rv rv-d1">Twenty-nine pieces, organized by lens.</h1>
       <div class="blog-hero-aside rv rv-d2">
@@ -195,16 +214,95 @@
 <!-- ============ POSTS ============ -->
 <section class="sec">
   <div class="wrap">
+      <div class="blog-controls rv">
+        <div class="blog-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="search" id="blogSearch" placeholder="Search articles…" autocomplete="off" />
+        </div>
+        <div class="blog-chips" id="blogChips">
+          <button type="button" class="blog-chip is-active" data-cat="all">All</button>
+          <button type="button" class="blog-chip" data-cat="ai">AI &amp; Vector DBs</button>
+          <button type="button" class="blog-chip" data-cat="growth">App Growth &amp; Delivery</button>
+          <button type="button" class="blog-chip" data-cat="web3">Blockchain &amp; Web3</button>
+          <button type="button" class="blog-chip" data-cat="devtools">Developer Tools &amp; Performance</button>
+          <button type="button" class="blog-chip" data-cat="fintech">FinTech &amp; Payments</button>
+          <button type="button" class="blog-chip" data-cat="mgmt">Management</button>
+          <button type="button" class="blog-chip" data-cat="qa">QA &amp; Testing</button>
+        </div>
+      </div>
+      <div class="blog-noresults" id="blogNoResults">No articles match — try another tag or clear your search.</div>
       <div class="blog-group rv">
         <div class="blog-ghead">
-          <span class="blog-glabel">Engineering · Web3 and on-chain</span>
-          <span class="blog-gcount">10</span>
+          <span class="blog-glabel">AI &amp; Vector DBs</span>
+          <span class="blog-gcount">05</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/creative-digital-advertising.jpg">
+          <span class="blog-thumb"><img src="assets/blog/creative-digital-advertising.jpg" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t" data-cat="ai">The Rising Strategic Value of Creative in Digital Advertising</span>
+            <span class="blog-feat-desc">Why creative quality — not just targeting — is becoming the decisive lever for performance in digital advertising.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-new">New</span>
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/vector-database-pinecone-lancedb.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="ai">What Makes a Good Vector Database? Comparing Pinecone and LanceDB</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/llms-extract-document-info.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="ai">How to Use LLMs to Extract Document Information</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/image-search-ai-models.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="ai">Image Search with AI Models</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/image-quality-assessment-ml.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="ai">Image Quality Assessment Using Machine Learning</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">App Growth &amp; Delivery</span>
+          <span class="blog-gcount">02</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/drive-app-downloads-clip.png">
+          <span class="blog-thumb"><img src="assets/blog/drive-app-downloads-clip.png" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t" data-cat="growth">Drive App Downloads with Clip</span>
+            <span class="blog-feat-desc">Using App Clips to remove friction between discovery and first launch, turning more impressions into installs.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/programmatic-seo.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="growth">Boost Traffic and Leads with Programmatic SEO</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Blockchain &amp; Web3</span>
+          <span class="blog-gcount">09</span>
         </div>
         <div class="blog-list">
         <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/how-to-migrate-preamble.png">
           <span class="blog-thumb"><img src="assets/blog/how-to-migrate-preamble.png" alt="" loading="lazy" /></span>
           <span class="blog-feat-body">
-            <span class="t">How to Migrate an Ethereum Protocol to Solana — Preamble</span>
+            <span class="t" data-cat="web3">How to Migrate an Ethereum Protocol to Solana — Preamble</span>
             <span class="blog-feat-desc">A systematic introduction to the fundamental differences between Ethereum and Solana…</span>
             <span class="blog-feat-foot">
               <span class="blog-new">New</span>
@@ -214,161 +312,132 @@
         </a>
         <a class="blog-row" href="blog-post.html">
           <span class="blog-thumb"><img src="assets/blog/how-to-migrate-contracts-1.jpg" alt="" loading="lazy" /></span>
-          <span class="t">How to Migrate an Ethereum Protocol to Solana — Contracts (Part 1)</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/soroban-integration-testing.png" alt="" loading="lazy" /></span>
-          <span class="t">Soroban Integration Testing Best Practices (JS)</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/mastering-layer1-testing.png" alt="" loading="lazy" /></span>
-          <span class="t">Mastering Layer 1 Blockchain Testing: A Comprehensive Guide</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/deep-dive-resource-limitations.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Deep Dive into Resource Limitations in Solana Development — CU Edition</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/account-abstraction-ethereum.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Exploring Account Abstraction in Ethereum: Building and Optimizing Smart Wallets</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/blockchain-encryption.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Blockchain Encryption Technology: A Critical Defense for Protecting Digital Assets</span>
+          <span class="t" data-cat="web3">How to Migrate an Ethereum Protocol to Solana — Contracts (Part 1) <span class="blog-new">New</span></span>
           <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="blog-row" href="blog-post.html">
           <span class="blog-thumb"><img src="assets/blog/web3-intents-lifi.png" alt="" loading="lazy" /></span>
-          <span class="t">Web3 Intents-Based Systems and How LI.FI is Pushing Cross-Chain Swaps Evolution</span>
+          <span class="t" data-cat="web3">Web3 Intents-Based Systems and How LI.FI is Pushing Cross-Chain Swaps Evolution</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/soroban-integration-testing.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="web3">Soroban Integration Testing Best Practices (JS)</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/mastering-layer1-testing.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="web3">Mastering Layer 1 Blockchain Testing: A Comprehensive Guide</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/deep-dive-resource-limitations.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="web3">Deep Dive into Resource Limitations in Solana Development — CU Edition</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/account-abstraction-ethereum.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="web3">Exploring Account Abstraction in Ethereum: Building and Optimizing Smart Wallets</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/blockchain-encryption.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="web3">Blockchain Encryption Technology: A Critical Defense for Protecting Digital Assets</span>
           <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="blog-row" href="blog-post.html">
           <span class="blog-thumb"><img src="assets/blog/guide-web3-dapp-infra.png" alt="" loading="lazy" /></span>
-          <span class="t">Guide to Web3 and dApp Infrastructure</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/qa-smart-contracts.png" alt="" loading="lazy" /></span>
-          <span class="t">How to QA Smart Contracts on Blockchain</span>
+          <span class="t" data-cat="web3">Guide to Web3 and dApp Infrastructure</span>
           <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         </div>
       </div>
       <div class="blog-group rv">
         <div class="blog-ghead">
-          <span class="blog-glabel">Engineering · AI and data</span>
-          <span class="blog-gcount">04</span>
-        </div>
-        <div class="blog-list">
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/llms-extract-document-info.jpg" alt="" loading="lazy" /></span>
-          <span class="t">How to Use LLMs to Extract Document Information</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/vector-database-pinecone-lancedb.jpg" alt="" loading="lazy" /></span>
-          <span class="t">What Makes a Good Vector Database? Comparing Pinecone and LanceDB</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/image-search-ai-models.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Image Search with AI Models</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/image-quality-assessment-ml.png" alt="" loading="lazy" /></span>
-          <span class="t">Image Quality Assessment Using Machine Learning</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        </div>
-      </div>
-      <div class="blog-group rv">
-        <div class="blog-ghead">
-          <span class="blog-glabel">Engineering · craft and delivery</span>
+          <span class="blog-glabel">Developer Tools &amp; Performance</span>
           <span class="blog-gcount">08</span>
         </div>
         <div class="blog-list">
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/inside-story-qa.png" alt="" loading="lazy" /></span>
-          <span class="t">Inside Story: How We Approach QA</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/shipping-as-small-as-possible.png" alt="" loading="lazy" /></span>
-          <span class="t">Make Releases Manageable with “Shipping As Small As Possible”</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/modern-frontend-build-pipelines.png" alt="" loading="lazy" /></span>
-          <span class="t">Our Guide to Modern Front-End Build Pipelines</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/frontend-performance-optimization.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Frontend Performance Optimization</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/gradle-android-development.png" alt="" loading="lazy" /></span>
-          <span class="t">How to Use Gradle to Optimize Android Development</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/reactive-programming-getting-started.png" alt="" loading="lazy" /></span>
-          <span class="t">Getting Started with Reactive Programming</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/reactive-programming-tokenpad-part2.png" alt="" loading="lazy" /></span>
-          <span class="t">Reactive Programming in Tokenpad (Part 2)</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
+        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/threejs-custom-meshes-buffergeometry.png">
           <span class="blog-thumb"><img src="assets/blog/threejs-custom-meshes-buffergeometry.png" alt="" loading="lazy" /></span>
-          <span class="t">Improve Performance on Three.js Scenes Using Custom Meshes and BufferGeometry</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        </div>
-      </div>
-      <div class="blog-group rv">
-        <div class="blog-ghead">
-          <span class="blog-glabel">Engineering · payments</span>
-          <span class="blog-gcount">01</span>
-        </div>
-        <div class="blog-list">
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/payments-integration-key-components.jpg" alt="" loading="lazy" /></span>
-          <span class="t">What It Takes to Build a Payments Integration: Key Components and Considerations</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        </div>
-      </div>
-      <div class="blog-group rv">
-        <div class="blog-ghead">
-          <span class="blog-glabel">Strategy</span>
-          <span class="blog-gcount">03</span>
-        </div>
-        <div class="blog-list">
-        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/creative-digital-advertising.jpg">
-          <span class="blog-thumb"><img src="assets/blog/creative-digital-advertising.jpg" alt="" loading="lazy" /></span>
           <span class="blog-feat-body">
-            <span class="t">The Rising Strategic Value of Creative in Digital Advertising</span>
-            <span class="blog-feat-desc">Why creative quality — not just targeting — is becoming the decisive lever for performance in digital advertising.</span>
+            <span class="t" data-cat="devtools">Improve Performance on Three.js Scenes Using Custom Meshes and BufferGeometry</span>
+            <span class="blog-feat-desc">Cutting draw calls and memory by hand-building geometry — practical techniques for smoother WebGL scenes.</span>
             <span class="blog-feat-foot">
-              <span class="blog-new">New</span>
               <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </span>
           </span>
         </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/reactive-programming-tokenpad-part2.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Reactive Programming in Tokenpad (Part 2)</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/frontend-performance-optimization.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Frontend Performance Optimization</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/print-quote-in-seconds.jpg" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Get a Print Quote in Seconds — Not Weeks</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/gradle-android-development.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">How to Use Gradle to Optimize Android Development</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/shipping-as-small-as-possible.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Make Releases Manageable with “Shipping As Small As Possible”</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/modern-frontend-build-pipelines.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Our Guide to Modern Front-End Build Pipelines</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/reactive-programming-getting-started.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="devtools">Getting Started with Reactive Programming</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">FinTech &amp; Payments</span>
+          <span class="blog-gcount">02</span>
+        </div>
+        <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/payments-integration-key-components.jpg">
+          <span class="blog-thumb"><img src="assets/blog/payments-integration-key-components.jpg" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t" data-cat="fintech">What It Takes to Build a Payments Integration: Key Components and Considerations</span>
+            <span class="blog-feat-desc">The moving parts behind a production payments flow — gateways, reconciliation, retries and failure handling.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
+        <a class="blog-row" href="blog-post.html">
+          <span class="blog-thumb"><img src="assets/blog/code-to-cash-payments-landscape.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="fintech">Code to Cash: The Evolving Landscape of Payments</span>
+          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+      <div class="blog-group rv">
+        <div class="blog-ghead">
+          <span class="blog-glabel">Management</span>
+          <span class="blog-gcount">01</span>
+        </div>
+        <div class="blog-list">
         <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/startup-distributed-teams.png">
           <span class="blog-thumb"><img src="assets/blog/startup-distributed-teams.png" alt="" loading="lazy" /></span>
           <span class="blog-feat-body">
-            <span class="t">The Architecture of Startup Distributed Teams</span>
+            <span class="t" data-cat="mgmt">The Architecture of Startup Distributed Teams</span>
             <span class="blog-feat-desc">How early-stage teams structure people, ownership and communication to ship quickly across time zones.</span>
             <span class="blog-feat-foot">
               <span class="blog-new">New</span>
@@ -376,32 +445,27 @@
             </span>
           </span>
         </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/code-to-cash-payments-landscape.png" alt="" loading="lazy" /></span>
-          <span class="t">Code to Cash: The Evolving Landscape of Payments</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
         </div>
       </div>
       <div class="blog-group rv">
         <div class="blog-ghead">
-          <span class="blog-glabel">Product and growth</span>
-          <span class="blog-gcount">03</span>
+          <span class="blog-glabel">QA &amp; Testing</span>
+          <span class="blog-gcount">02</span>
         </div>
         <div class="blog-list">
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/drive-app-downloads-clip.png" alt="" loading="lazy" /></span>
-          <span class="t">Drive App Downloads with Clip</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/inside-story-qa.png">
+          <span class="blog-thumb"><img src="assets/blog/inside-story-qa.png" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t" data-cat="qa">Inside Story: How We Approach QA</span>
+            <span class="blog-feat-desc">How our teams fold testing into delivery — the mindset, tooling and habits that keep quality shippable.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
         </a>
         <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/print-quote-in-seconds.jpg" alt="" loading="lazy" /></span>
-          <span class="t">Get a Print Quote in Seconds — Not Weeks</span>
-          <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-        <a class="blog-row" href="blog-post.html">
-          <span class="blog-thumb"><img src="assets/blog/programmatic-seo.png" alt="" loading="lazy" /></span>
-          <span class="t">Boost Traffic and Leads with Programmatic SEO</span>
+          <span class="blog-thumb"><img src="assets/blog/qa-smart-contracts.png" alt="" loading="lazy" /></span>
+          <span class="t" data-cat="qa">How to QA Smart Contracts on Blockchain</span>
           <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         </div>
@@ -499,7 +563,50 @@
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
-  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){if(s.getBoundingClientRect().top<innerHeight){return;}s.classList.add('sec-reveal');io.observe(s);});
+})();
+</script>
+<script>
+(function(){
+  var search=document.getElementById('blogSearch');
+  var chips=document.getElementById('blogChips');
+  var noRes=document.getElementById('blogNoResults');
+  if(!search||!chips) return;
+  var rows=[].slice.call(document.querySelectorAll('.blog-row'));
+  var groups=[].slice.call(document.querySelectorAll('.blog-group'));
+  groups.forEach(function(g){var c=g.querySelector('.blog-gcount'); if(c) c.setAttribute('data-orig',c.textContent);});
+  var activeCat='all';
+  function pad(n){return n<10?'0'+n:''+n;}
+  function apply(){
+    var q=search.value.trim().toLowerCase();
+    var anyVisible=false;
+    rows.forEach(function(r){
+      var tEl=r.querySelector('.t');
+      var cat=(tEl&&tEl.getAttribute('data-cat'))||'';
+      var title=(tEl?tEl.textContent:'').toLowerCase();
+      var catOk=activeCat==='all'||cat.split(/\s+/).indexOf(activeCat)>-1;
+      var qOk=!q||title.indexOf(q)>-1;
+      var show=catOk&&qOk;
+      r.style.display=show?'':'none';
+      if(show) anyVisible=true;
+    });
+    var filtering=activeCat!=='all'||!!q;
+    groups.forEach(function(g){
+      var n=0;
+      g.querySelectorAll('.blog-row').forEach(function(r){if(r.style.display!=='none')n++;});
+      g.style.display=n?'':'none';
+      var c=g.querySelector('.blog-gcount');
+      if(c) c.textContent = filtering ? pad(n) : c.getAttribute('data-orig');
+    });
+    if(noRes) noRes.classList.toggle('show',!anyVisible);
+  }
+  search.addEventListener('input',apply);
+  chips.addEventListener('click',function(e){
+    var b=e.target.closest('.blog-chip'); if(!b) return;
+    activeCat=b.getAttribute('data-cat');
+    chips.querySelectorAll('.blog-chip').forEach(function(x){x.classList.toggle('is-active',x===b);});
+    apply();
+  });
 })();
 </script>
 </body>

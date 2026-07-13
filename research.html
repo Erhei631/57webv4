@@ -27,7 +27,7 @@
 .rs-hero{padding:128px 0 64px}
 .rs-hero .wrap{text-align:left}
 .rs-hero .lbl{display:inline-flex;align-items:center;gap:9px;margin-bottom:clamp(22px,3vw,36px)}
-.rs-hero .lbl .dot{color:var(--accent);font-size:10px;line-height:1}
+.rs-hero .lbl .dot{color:var(--accent);font-size:12px;line-height:1}
 .rs-hero-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:center}
 .rs-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.0;
   font-size:var(--fs-h1);max-width:none;margin:0}
@@ -38,6 +38,8 @@
   .rs-hero-row{grid-template-columns:1fr;gap:26px;align-items:start}
   .rs-hero h1{font-size:var(--fs-h1)}
   .rs-hero-aside{max-width:none;padding-bottom:0;transform:none}
+  .rs-hero{padding-bottom:24px}
+  .rs-hero + .sec{padding-top:36px}
 }
 /* ---- paper groups ---- */
 .rs-group{margin-top:clamp(40px,5vw,68px)}
@@ -167,7 +169,7 @@
     <div class="rs-plume"></div>
   </div>
   <div class="wrap">
-    <div class="lbl rv"><span class="dot">✸</span> Thinking · Research</div>
+    <div class="crumb rv"><a href="index.html#research">Thinking</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>Research</span></div>
     <div class="rs-hero-row">
       <h1 class="rv rv-d1">Papers from the team.</h1>
       <div class="rs-hero-aside rv rv-d2">
@@ -305,7 +307,7 @@
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
-  document.querySelectorAll('section.sec, .rs-group, .rs-also, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  document.querySelectorAll('section.sec, .rs-group, .rs-also, .final, footer').forEach(function(s){if(s.getBoundingClientRect().top<innerHeight){return;}s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>
 </body>

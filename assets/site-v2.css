@@ -241,7 +241,7 @@ body:not(.subpage) .sec-head h2{max-width:none;text-wrap:balance}
 .marquee .it{display:inline-flex;align-items:center;padding-right:64px;font-family:var(--font-d);font-weight:500;font-size:26px;letter-spacing:-.02em;color:var(--ink)}
 .marquee .it::after{content:none}
 @keyframes march{to{transform:translateX(-50%)}}
-.marquee .it img{height:40px;width:auto;display:block;mix-blend-mode:multiply;opacity:.85}
+.marquee .it img{height:40px;width:auto;aspect-ratio:702/192;display:block;mix-blend-mode:multiply;opacity:.85}
 
 /* big kinetic statement marquee (dark) */
 .statement{background:var(--ink);color:var(--paper);padding:60px 0;overflow:hidden}
@@ -453,7 +453,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   .foot-cols-spacer{display:none}
 }
 @media(max-width:1024px){
-  .wrap{padding:0 22px}.nav-in{padding:0 22px}
+  .wrap{padding:0 40px}.nav-in{padding:0 40px}
   .nav-burger{display:flex}
   /* unify the top bar with the drawer when open: white + blur */
   .nav.nav-open .nav-bg{opacity:1;background:rgba(255,255,255,.82)}
@@ -494,6 +494,9 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   /* trusted-by marquee logos: smaller on mobile */
   .marquee .it img{height:30px}
   .marquee .it{padding-right:32px}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}.nav-in{padding:0 20px}
 }
 @media(prefers-reduced-motion:reduce){
   .line>span{transform:none!important}
@@ -962,6 +965,8 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   .subhero.split .hero-cta{justify-content:center}.subhero.split .crumb{margin-left:auto;margin-right:auto}
   .dlv-art{margin-top:18px;max-width:380px}
   .subhero.split + .sec{padding-top:48px}
+  .hm-hero{padding-bottom:24px}
+  .hm-hero + .sec{padding-top:40px !important}
   .dlv-art .dlv-badge{right:14px;bottom:-18px;left:auto;top:auto;margin:0;animation:none}}
 
 /* ===== AI capability page ===== */

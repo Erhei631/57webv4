@@ -22,6 +22,9 @@
 .feat-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:600;font-size:14px;color:var(--accent);text-decoration:none;transition:gap .25s var(--ease)}
 .feat-link svg{width:14px;height:14px}
 .feat-link:hover{gap:10px}
+/* pin the external links to the card bottom so they align across the row */
+.feat-grid.four .feat{display:flex;flex-direction:column}
+.feat-grid.four .feat-link{margin-top:auto;padding-top:16px}
 @media(max-width:768px){.trust .marquee .it img{height:30px}.trust .marquee .it{padding-right:32px}}
 /* ----- partnerships card grid ----- */
 .pt-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
@@ -68,6 +71,8 @@
 @media(max-width:768px){
   .stack-row{grid-template-columns:54px 1fr;gap:14px 18px}
   .stack-row .swork{grid-column:2;justify-self:start;margin-top:14px}
+  .stack-row .swork-logos{flex-wrap:nowrap;justify-content:flex-start;gap:16px;max-width:100%}
+  .stack-row .swork-logos img{height:26px;width:auto;max-width:none}
 }
 
 /* ----- selected work cards (match work.html sizing) ----- */
@@ -426,6 +431,7 @@
         <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.3"/><circle cx="12" cy="4" r="1.8"/><circle cx="12" cy="20" r="1.8"/><circle cx="4.6" cy="8" r="1.8"/><circle cx="19.4" cy="8" r="1.8"/><path d="M12 6.1v3.6M12 14.3v3.9M10.1 11.1 6.2 8.9M13.9 11.1l3.9-2.2"/></svg></div>
         <h4>EVM · Solana · Cosmos · Sui</h4>
         <p>Production code on every chain our clients run on, with ChainSmith automating Cosmos EVM testing. Smart contract development, pre-audit, vaults design, issuance, RWA &amp; Tokenization.</p>
+        <a class="feat-link" href="https://www.chainsmith.xyz/" target="_blank" rel="noopener">chainsmith.xyz<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
       </article>
       <article class="feat feat--static">
         <div class="ficon"><img src="assets/logos/blocksmith-icon.png" alt="BlockSmith" /></div>
@@ -625,7 +631,7 @@
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
-  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){if(s.getBoundingClientRect().top<innerHeight){return;}s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>
 </body>

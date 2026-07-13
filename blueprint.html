@@ -20,7 +20,7 @@
   animation:bpDrift 18s ease-in-out infinite alternate}
 @keyframes bpDrift{from{transform:translate(-52%,-50%) scale(1)}to{transform:translate(-48%,-50%) scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.bp-clouds{animation:none}}
-.bp-why{display:grid;grid-template-columns:minmax(0,670px) 1fr;gap:clamp(36px,4.5vw,72px);align-items:start}
+.bp-why{display:grid;grid-template-columns:minmax(0,670px) minmax(460px,1fr);gap:clamp(36px,4.5vw,72px);align-items:start}
 .bp-why .lbl{margin-bottom:22px}
 .bp-why h2{font-size:var(--fs-h2);line-height:1.02;letter-spacing:-.03em;font-weight:600}
 .bp-copy{margin-top:30px;max-width:670px}
@@ -419,7 +419,7 @@
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px 8% 0px'});
-  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){s.classList.add('sec-reveal');io.observe(s);});
+  document.querySelectorAll('section.sec, .final, footer').forEach(function(s){if(s.getBoundingClientRect().top<innerHeight){return;}s.classList.add('sec-reveal');io.observe(s);});
 })();
 </script>
 </body>
