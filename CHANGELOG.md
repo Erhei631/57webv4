@@ -5,7 +5,35 @@ files touched.
 
 ---
 
-## Round 5 — Global map expansion & homepage marquee (latest)
+## Round 6 — About page story/values & Work Brale card (latest)
+
+### About (`about.html`)
+- **Map section reworked:** heading changed to "One team, nine countries." on a
+  single line; removed the sub-lead and the bottom country/city hub-card list;
+  balanced the section's top/bottom padding.
+- **New "Our story" section** below the map — a vertical timeline (The team →
+  Fifty-seven → 2018 → Today) with the phase label stacked above each entry's
+  heading and copy, a sticky section heading on the left, and a pull-out summary
+  line ("Fifty-seven startups, building in blocks. That is the name.").
+- **New "What guides us — Four values, held daily." section** — a 2×2 grid of
+  value cards (Reliable / Responsive / Flexible / High quality), each with an
+  icon in a rounded tile; uses the site's standard `.feat` card hover (lift +
+  violet border, icon fills on hover).
+- Removed the old "Who we are" intro block; hero top/bottom padding aligned with
+  the Ventures hero.
+
+### Work (`work.html`)
+- Added a **Brale** card to the Blockchain group — wordmark logo with a dark
+  hover cover; no case-study link.
+
+### Industries — Construction & property (`construction-property.html`)
+- Standardized the Offerings section heading to "Lead with the solution, pair
+  with the offer." (was "Build, rebuild, or embed."), matching the other
+  Industries subpages.
+
+---
+
+## Round 5 — Global map expansion & homepage marquee
 
 ### About / world map (`about.html`)
 - **Added 5 new locations across 4 new countries:** Toronto (Canada),
