@@ -247,9 +247,9 @@ body:not(.subpage) .sec-head h2{max-width:none;text-wrap:balance}
 .statement{background:var(--ink);color:var(--paper);padding:60px 0;overflow:hidden}
 .statement .row{display:flex;width:max-content;animation:march 30s linear infinite;animation-play-state:paused}
 .statement.go .row{animation-play-state:running}
-.statement .row span{font-family:var(--font-d);font-weight:600;font-size:clamp(44px,6.5vw,92px);letter-spacing:-.04em;
+.statement .row span{font-family:'Space Grotesk',var(--font-d);font-weight:600;font-size:clamp(44px,6.5vw,92px);letter-spacing:-.01em;
   padding-right:.5em;white-space:nowrap;-webkit-text-stroke:1px var(--paper);color:transparent}
-.statement .row span.fill{color:var(--paper);-webkit-text-stroke:0}
+.statement .row span.fill{color:var(--paper);-webkit-text-stroke:0;letter-spacing:-.04em;font-family:'Space Grotesk',var(--font-d)}
 
 /* ---------- engine rows (static, always-open) ---------- */
 .acc{border-top:1px solid var(--line-2)}

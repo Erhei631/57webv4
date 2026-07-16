@@ -29,9 +29,9 @@
 .blog-glabel{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .blog-gcount{font-family:var(--font-m);font-size:12px;letter-spacing:.06em;color:var(--muted)}
 .blog-list{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
-.blog-row{display:flex;align-items:center;gap:18px;min-height:96px;padding:18px 0;border-bottom:1px solid var(--line);color:var(--ink);transition:padding-left .22s var(--ease),color .18s var(--ease)}
+.blog-row{display:flex;align-items:center;gap:20px;min-height:112px;padding:18px 0;border-bottom:1px solid var(--line);color:var(--ink);transition:padding-left .22s var(--ease),color .18s var(--ease)}
 .blog-row::after{display:none}
-.blog-thumb{flex:0 0 auto;max-width:96px;height:60px;border-radius:9px;overflow:hidden;position:relative;
+.blog-thumb{flex:0 0 auto;max-width:128px;height:80px;border-radius:10px;overflow:hidden;position:relative;
   background:var(--paper-2);box-shadow:0 1px 0 rgba(12,12,18,.05);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .blog-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease)}
 .blog-thumb--ph{background:
@@ -457,9 +457,20 @@
       <div class="blog-group rv">
         <div class="blog-ghead">
           <span class="blog-glabel">Management</span>
-          <span class="blog-gcount">01</span>
+          <span class="blog-gcount">02</span>
         </div>
         <div class="blog-list">
+        <a class="blog-row blog-row--feat" href="blog-our-ai-transformation.html" data-img="assets/blog/our-ai-transformation.png">
+          <span class="blog-thumb"><img src="assets/blog/our-ai-transformation.png" alt="" loading="lazy" /></span>
+          <span class="blog-feat-body">
+            <span class="t" data-cat="mgmt">Our Own AI Transformation</span>
+            <span class="blog-feat-desc">What we learned becoming our own first customer — running the same AI transformation on ourselves that we run for clients, with real revenue on the line.</span>
+            <span class="blog-feat-foot">
+              <span class="blog-new">New</span>
+              <span class="blog-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </span>
+          </span>
+        </a>
         <a class="blog-row blog-row--feat" href="blog-post.html" data-img="assets/blog/startup-distributed-teams.png">
           <span class="blog-thumb"><img src="assets/blog/startup-distributed-teams.png" alt="" loading="lazy" /></span>
           <span class="blog-feat-body">

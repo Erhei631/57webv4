@@ -5,7 +5,66 @@ files touched.
 
 ---
 
-## Round 3 — Responsive & mobile polish (latest)
+## Round 5 — Global map expansion & homepage marquee (latest)
+
+### About / world map (`about.html`)
+- **Added 5 new locations across 4 new countries:** Toronto (Canada),
+  Monterrey (Mexico), Buenos Aires (Argentina), Ljubljana (Slovenia), and
+  São Paulo (added to the existing Brazil). Each has a map pin + label and a
+  bottom hub-card entry.
+- **Country hover-highlight for the new countries** was generated from
+  `countries.geo.json`, projected to the map's equirectangular projection
+  (derived from the existing pins). Highlight lights up dot clusters (same
+  effect as existing countries), not a flat fill — dots are grid-sampled inside
+  each country outline to match the baked dot-map texture.
+- **Hovering any pin** now shows its country name and highlights that country
+  (previously only hovering the country shape did).
+- **Hub-card list** switched to a single 9-across row on wide screens
+  (responsive fallback to 5 / 2 / 1 columns); fixed left-alignment so wrapped
+  rows line up column-for-column with the row above.
+
+### Homepage kinetic marquee (`index.html`, `assets/site-v2.css`)
+- Fixed the outlined (`-webkit-text-stroke`) statement text where tight letter
+  spacing made adjacent letters' strokes overlap — loosened the stroked spans'
+  letter-spacing (−.04em → −.01em) while keeping the solid words tight.
+- Display font for the marquee set to **Space Grotesk** (its geometric letters
+  keep the outlined strokes cleaner than Geist). Loaded via the existing Google
+  Fonts link; solid and outlined words share the family.
+
+### "How we deliver" panel (`blueprint.html`, `agentic-builder.html`, `compass.html`, `excavator.html`)
+- Added the "One stage of the harness." engage panel to Agentic Builder,
+  Compass, and Excavator (previously only on Blueprint), each linking across all
+  four harness stages with a fitting one-line description.
+- On every stage page the current stage's tag is now a non-clickable, dimmed
+  `is-current` state (matching the create.html pattern) instead of a live link —
+  including Blueprint, which was previously still linking to itself.
+
+---
+
+## Round 4 — Blog layout polish & Financial Services link
+
+### Blog (`blog.html`)
+- **Featured cards are now layout-driven, not tag-driven.** Previously only
+  articles carrying a "New" badge were shown as big featured cards; every
+  category now defaults to its **first two articles as featured cards** (image +
+  title + one-line description + Read), with any remaining articles in the
+  small-row list. This fixes sparse categories (App Growth, FinTech, QA — 2
+  articles each), which no longer show an awkward "1 big + 1 lonely small row."
+  Management (1 article) is a single featured card.
+- **Small (list) thumbnails enlarged** from 96×60 to 128×80 (matching the
+  featured cards' 16:10 ratio) so the size gap between featured and list cards
+  is less jarring; row min-height bumped 96→112px to suit.
+
+### Financial Services (`financial-services.html`)
+- Added an external link **chainsmith.xyz → https://www.chainsmith.xyz/** on the
+  "EVM · Solana · Cosmos · Sui" chain card, styled to match the existing
+  blocksmith.co link (new tab, `rel="noopener"`).
+- The two chain-card external links are now bottom-aligned across the row
+  (pinned to the card bottom regardless of body-copy length).
+
+---
+
+## Round 3 — Responsive & mobile polish
 
 Started from the feedback: *"this size's left/right screen margin is too small."*
 Focus: tablet + phone layout correctness across the site.
