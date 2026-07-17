@@ -84,7 +84,7 @@
 .subhero.fs.split{padding:150px 0 92px}
 .subhero.fs.split .wrap{grid-template-columns:1fr minmax(0,560px)}
 .subhero.fs .dlv-art{max-width:560px;overflow:visible}
-.fvx-scene{position:relative;width:100%;max-width:548px;aspect-ratio:1/.82;margin:0 auto;
+.fvx-scene{position:relative;width:100%;max-width:548px;aspect-ratio:auto;margin:0 auto;
   display:flex;align-items:center;justify-content:center}
 .fvx-rail{position:relative;z-index:2;width:100%;display:flex;align-items:center;justify-content:center;gap:0;
   animation:fvxFloat 8s ease-in-out infinite}
@@ -140,8 +140,141 @@
 .fvx-ring.r2{width:128%;border-style:dotted;border-color:rgba(40,80,180,.1);animation:ringSpin 94s linear infinite reverse}
 @media(prefers-reduced-motion:reduce){.fvx-rail,.fvx-ring,.fvx-hd .dot,.fvx-ln::after,.fvx-hub::after,.fvx-thru .tf{animation:none}}
 @media(max-width:768px){.subhero.fs.split{padding-bottom:26px}.subhero.fs.split .wrap{grid-template-columns:1fr}.subhero.fs .dlv-art{max-width:340px}
-  .fvx-scene{max-width:340px;aspect-ratio:1/1}.fvx-ring.r2{width:116%}.fvx-core{width:min(78%,260px);min-height:250px}}
+  .fvx-scene{max-width:340px;aspect-ratio:auto}.fvx-ring.r2{width:116%}.fvx-core{width:min(78%,260px);min-height:250px}}
 @media(max-width:420px){.fvx-core{padding:16px;min-height:236px}}
+/* ----- FS hero: layered financial stack (product on top, infra beneath) ----- */
+.fstk{position:relative;z-index:2;width:min(94%,380px);margin:0 auto;display:flex;flex-direction:column;animation:fvxFloat 8s ease-in-out infinite}
+.fstk-prod{position:relative;border-radius:16px;padding:15px 16px;background:linear-gradient(158deg,rgba(62,107,255,.2),rgba(255,255,255,.66));border:1px solid rgba(62,107,255,.32);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 28px 54px -30px rgba(30,50,120,.6)}
+.fstk-ph{display:flex;align-items:center;gap:7px;margin-bottom:13px}
+.fstk-ph .dot{width:8px;height:8px;flex:none;border-radius:50%;background:#2FB98A;animation:fvxPing 2.2s ease-out infinite}
+.fstk-ph b{height:6px;width:52px;border-radius:3px;background:rgba(30,60,110,.16)}
+.fstk-tag{margin-left:auto;font-family:var(--font-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#2E56C6;background:rgba(62,107,255,.13);border:1px solid rgba(62,107,255,.26);padding:3px 9px;border-radius:999px}
+.fstk-title{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:-.02em;color:var(--ink);margin-bottom:13px}
+.fstk-line{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.fstk-line i{width:24px;height:24px;flex:none;border-radius:7px;background:linear-gradient(135deg,rgba(62,107,255,.18),rgba(62,107,255,.06));border:1px solid rgba(62,107,255,.2)}
+.fstk-line b{flex:1;height:7px;border-radius:4px;background:rgba(30,60,110,.13)}
+.fstk-line.l2 b{max-width:62%}
+.fstk-btn{margin-top:13px;margin-left:auto;width:40%;height:25px;border-radius:8px;background:linear-gradient(135deg,#3E6BFF,#2E56C6);box-shadow:0 8px 16px -8px rgba(46,86,198,.75)}
+.fstk-link{position:relative;width:2px;height:22px;margin:10px auto;border-radius:2px;background:linear-gradient(180deg,rgba(62,107,255,.42),rgba(62,107,255,.12));overflow:hidden}
+.fstk-link::after{content:"";position:absolute;left:-3px;top:-45%;width:8px;height:45%;border-radius:4px;background:radial-gradient(circle at 50% 40%,#3E6BFF,rgba(62,107,255,0) 70%);animation:fstkDrop 1.7s linear infinite}
+@keyframes fstkDrop{0%{top:-45%}100%{top:100%}}
+.fstk-infra{position:relative;display:flex;flex-direction:column;gap:8px}
+.fstk-layer{position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.7);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 3px 0 -1px rgba(46,86,150,.12),0 16px 30px -24px rgba(30,50,120,.55)}
+.fstk-layer .ic{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;color:#2E56C6;background:linear-gradient(135deg,rgba(62,107,255,.17),rgba(62,107,255,.05));border:1px solid rgba(62,107,255,.24)}
+.fstk-layer .ic svg{width:19px;height:19px}
+.fstk-txt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;flex:1;text-align:left}
+.fstk-txt .lab{font-family:var(--font-d);font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
+.fstk-txt .sub{font-family:var(--font-m);font-size:10.5px;letter-spacing:.01em;color:var(--muted)}
+.fstk-rail{margin-left:auto;width:40px;height:5px;flex:none;border-radius:3px;background:rgba(30,60,110,.1);overflow:hidden;position:relative}
+.fstk-rail::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:3px;background:linear-gradient(90deg,transparent,#3E6BFF,transparent);animation:fvxShift 2.3s linear infinite}
+.fstk-layer:nth-child(2) .fstk-rail::after{animation-delay:.45s}
+.fstk-layer:nth-child(3) .fstk-rail::after{animation-delay:.9s}
+.fstk-layer:nth-child(4) .fstk-rail::after{animation-delay:1.35s}
+.fstk-layer.safe .ic{color:#1f8a5b;background:linear-gradient(135deg,rgba(47,160,110,.17),rgba(47,160,110,.05));border-color:rgba(47,160,110,.26)}
+.fstk-layer.safe .fstk-rail::after{background:linear-gradient(90deg,transparent,#2FA06E,transparent)}
+@media(prefers-reduced-motion:reduce){.fstk,.fstk-ph .dot,.fstk-link::after,.fstk-rail::after{animation:none}}
+@media(max-width:768px){.fstk{width:min(96%,320px)}.fstk-layer{justify-content:flex-start}.fstk-txt{flex:1;align-items:flex-start;text-align:left}}
+/* ----- FS hero variant B: card stack (Apple-Wallet style deck) ----- */
+.fstk,.cstk,.gstk,.fov{display:none}
+.dlv-art[data-illo="stack"] .fstk{display:flex}
+.dlv-art[data-illo="cards"] .cstk{display:block}
+.dlv-art[data-illo="glass"] .gstk{display:block}
+.dlv-art[data-illo="full"] .fov{display:block}
+.cstk{position:relative;z-index:2;width:min(92%,362px);margin:0 auto;padding-top:118px;animation:fvxFloat 8s ease-in-out infinite}
+.cstk-peek{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:flex-start;gap:10px;padding:9px 15px 40px;border-radius:16px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.72);-webkit-backdrop-filter:blur(14px) saturate(1.35);backdrop-filter:blur(14px) saturate(1.35);box-shadow:0 1px 0 rgba(255,255,255,.82) inset,0 16px 28px -22px rgba(30,50,120,.5)}
+.cstk-peek .cic{width:24px;height:24px;flex:none;border-radius:8px;display:grid;place-items:center;color:#2E56C6;background:linear-gradient(135deg,rgba(62,107,255,.17),rgba(62,107,255,.05));border:1px solid rgba(62,107,255,.24)}
+.cstk-peek .cic svg{width:16px;height:16px}
+.cstk-peek .cic.safe{color:#1f8a5b;background:linear-gradient(135deg,rgba(47,160,110,.17),rgba(47,160,110,.05));border-color:rgba(47,160,110,.26)}
+.cstk-peek .clab{font-family:var(--font-d);font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);line-height:24px}
+.cstk-peek.p1{width:70%;top:0;z-index:1}
+.cstk-peek.p2{width:78%;top:30px;z-index:2}
+.cstk-peek.p3{width:86%;top:60px;z-index:3}
+.cstk-peek.p4{width:94%;top:90px;z-index:4}
+.cstk-front{position:relative;z-index:5;border-radius:16px;padding:15px 16px;background:linear-gradient(158deg,rgba(62,107,255,.2),rgba(255,255,255,.66));border:1px solid rgba(62,107,255,.32);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 56px -30px rgba(30,50,120,.62)}
+.cstk-ph{display:flex;align-items:center;gap:7px;margin-bottom:13px}
+.cstk-ph .dot{width:8px;height:8px;flex:none;border-radius:50%;background:#2FB98A;animation:fvxPing 2.2s ease-out infinite}
+.cstk-ph b{height:6px;width:52px;border-radius:3px;background:rgba(30,60,110,.16)}
+.cstk-tag{margin-left:auto;font-family:var(--font-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#2E56C6;background:rgba(62,107,255,.13);border:1px solid rgba(62,107,255,.26);padding:3px 9px;border-radius:999px}
+.cstk-title{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:-.02em;color:var(--ink);margin-bottom:13px}
+.cstk-line{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.cstk-line i{width:24px;height:24px;flex:none;border-radius:7px;background:linear-gradient(135deg,rgba(62,107,255,.18),rgba(62,107,255,.06));border:1px solid rgba(62,107,255,.2)}
+.cstk-line b{flex:1;height:7px;border-radius:4px;background:rgba(30,60,110,.13)}
+.cstk-line.l2 b{max-width:62%}
+.cstk-btn{margin-top:13px;margin-left:auto;width:40%;height:25px;border-radius:8px;background:linear-gradient(135deg,#3E6BFF,#2E56C6);box-shadow:0 8px 16px -8px rgba(46,86,198,.75)}
+@media(prefers-reduced-motion:reduce){.cstk,.cstk-ph .dot{animation:none}}
+@media(max-width:768px){.cstk{width:min(96%,320px)}}
+/* ----- FS hero variant C: isometric labeled layer stack ----- */
+.gstk{position:relative;z-index:2;width:min(100%,428px);margin:2px auto 0;animation:fvxFloat 8s ease-in-out infinite}
+.gstk-in{position:relative;width:428px;height:366px;margin:0 auto}
+.gplate{position:absolute;left:132px;top:24px;width:182px;height:182px;margin-left:-91px;border-radius:36px;transform:translateY(var(--y)) rotateX(61deg) rotateZ(45deg);background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.74);box-shadow:0 2px 0 rgba(255,255,255,.85) inset,0 34px 42px -26px rgba(60,90,170,.5)}
+.gcalls{position:absolute;inset:0;pointer-events:none}
+.gcall{position:absolute;left:262px;transform:translateY(-50%);display:flex;align-items:center}
+.gc-line{width:26px;height:1.5px;flex:none;position:relative;background:linear-gradient(90deg,rgba(62,107,255,.12),rgba(62,107,255,.6))}
+.gc-line::after{content:"";position:absolute;left:0;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:#3E6BFF;box-shadow:0 0 0 3px rgba(62,107,255,.16)}
+.gc-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-m);font-size:13.5px;letter-spacing:-.01em;color:var(--ink);background:rgba(255,255,255,.92);border:1px solid rgba(20,30,60,.09);border-radius:10px;padding:6px 11px;box-shadow:0 10px 22px -12px rgba(30,50,120,.5);white-space:nowrap}
+.gc-chip svg{width:16px;height:16px;flex:none;color:#2E56C6}
+.gcall.safe .gc-chip svg{color:#1f8a5b}
+.gplate.top{background:linear-gradient(135deg,#7a67f2,#3E6BFF);border-color:rgba(255,255,255,.5);box-shadow:0 2px 0 rgba(255,255,255,.4) inset,0 42px 48px -24px rgba(46,66,150,.6)}
+.gplate.top .glab{color:#fff;font-size:16px}
+.gplate.safe{background:linear-gradient(135deg,rgba(200,233,214,.74),rgba(210,236,222,.52));border-color:rgba(150,208,178,.7)}
+.gplate.safe .glab{color:#1c6b48}
+@media(prefers-reduced-motion:reduce){.gstk{animation:none}}
+@media(max-width:768px){.gstk{width:96%}.gstk-in{transform:scale(.68);transform-origin:top center}}
+/* ----- FS hero variant D: product + layered infra + compliance boundary ----- */
+.fov{position:relative;z-index:2;width:min(100%,520px);margin:0 auto;animation:fvxFloat 8s ease-in-out infinite}
+.fov-win{position:relative;z-index:3;border-radius:18px;padding:15px 17px 17px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.66);-webkit-backdrop-filter:blur(26px) saturate(1.6);backdrop-filter:blur(26px) saturate(1.6);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 60px -30px rgba(30,50,120,.55)}
+.fov-bar{display:flex;align-items:center;gap:7px;margin-bottom:14px}
+.fov-bar .d{width:10px;height:10px;border-radius:50%}
+.fov-bar .d1{background:#3fbb7f}.fov-bar .d2{background:#f0846a}.fov-bar .d3{background:#c2bfce}
+.fov-tag{margin-left:auto;font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#3E6BFF;background:rgba(62,107,255,.1);border:1px solid rgba(62,107,255,.22);padding:4px 11px;border-radius:999px}
+.fov-title{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.fov-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.fov-mc{min-width:0;border-radius:12px;padding:12px 10px;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.6);-webkit-backdrop-filter:blur(10px) saturate(1.35);backdrop-filter:blur(10px) saturate(1.35);box-shadow:0 1px 0 rgba(255,255,255,.72) inset}
+.fov-mc-hd{display:flex;align-items:center;gap:6px;margin-bottom:0}
+.fov-mc-hd .fov-mci{align-self:center}
+.fov-mci{width:22px;height:22px;flex:none;border-radius:7px;display:grid;place-items:center;color:#2E56C6;background:linear-gradient(135deg,rgba(62,107,255,.16),rgba(62,107,255,.05));border:1px solid rgba(62,107,255,.2)}
+.fov-mci svg{width:13px;height:13px}
+.fov-mt{min-width:0}
+.fov-mc .k{font-family:var(--font-m);font-size:9px;letter-spacing:0;color:var(--muted);display:block;line-height:1.3;white-space:nowrap}
+.fov-mc .v{font-family:var(--font-d);font-weight:600;font-size:13.5px;color:var(--ink);letter-spacing:-.02em;display:block;white-space:nowrap}
+.fov-mc.up .v{color:#1f8a5b}
+.fov-mc .spk{display:block;width:100%;height:24px}
+.fov-mc .spk polyline{fill:none;stroke:rgba(62,107,255,.5);stroke-width:2;vector-effect:non-scaling-stroke}
+.fov-mc.up .spk polyline{stroke:rgba(47,160,110,.6)}
+.fov-stackwrap{position:relative;margin-top:13px}
+.fov-beam{position:absolute;left:47%;top:-13px;bottom:8px;width:2px;transform:translateX(-50%);z-index:4;pointer-events:none;background:linear-gradient(180deg,rgba(47,185,138,0),rgba(47,185,138,.55) 22%,rgba(62,107,255,.45))}
+.fov-beam::before{content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:8px solid #2FA06E}
+.fov-encl{position:relative;border:1.5px dashed rgba(47,160,110,.42);border-radius:26px;padding:15px 14px;display:flex;flex-direction:column;gap:0}
+.fov-encl .fov-layer:not(:first-child){margin-top:-12px}
+.fov-encl{align-items:center}
+.fov-encl .fov-layer{width:100%}
+.fov-encl .fov-layer:nth-child(1){z-index:4;width:85%}.fov-encl .fov-layer:nth-child(2){z-index:3;width:90%}.fov-encl .fov-layer:nth-child(3){z-index:2;width:95%}.fov-encl .fov-layer:nth-child(4){z-index:1;width:100%}
+.fov-layer{position:relative;display:flex;align-items:center;gap:12px;padding:14px 19px;border-radius:16px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.55);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 3px 0 -1px rgba(46,86,150,.1),0 16px 28px -22px rgba(30,50,120,.5)}
+.fov-layer.blue{background:linear-gradient(120deg,rgba(214,226,255,.26),rgba(255,255,255,.1))}
+.fov-layer.safe{background:linear-gradient(120deg,rgba(198,234,215,.28),rgba(240,250,244,.1));border-color:rgba(150,208,178,.5)}
+.fic{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;color:#2E56C6;background:transparent;border:0;box-shadow:none}
+.fic svg{width:20px;height:20px}
+.fov-layer.safe .fic{color:#1f8a5b;border-color:rgba(47,160,110,.2)}
+.flb{font-family:var(--font-d);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+.fov-layer.safe .flb{color:#1c6b48}
+.fdiv{display:none}
+.fnode{position:absolute;left:47%;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#2FB98A;box-shadow:0 0 0 4px rgba(47,185,138,.15),0 0 12px 2px rgba(47,185,138,.5);z-index:3}
+.fds{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--font-m);font-size:11px;letter-spacing:.01em;color:var(--muted);white-space:nowrap;text-align:right}
+.fov-comp{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:15px}
+.fov-comp .fic{width:46px;height:46px;color:#1f8a5b;background:#fff;border:1px solid rgba(47,160,110,.22);box-shadow:0 6px 14px -8px rgba(30,50,120,.4)}
+.fov-comp .fic svg{width:23px;height:23px}
+.fov-comp .ct{display:flex;flex-direction:column;gap:2px}
+.fov-comp .ct .l{font-family:var(--font-d);font-weight:600;font-size:17px;color:#1c6b48;letter-spacing:-.01em}
+.fov-comp .ct .s{font-family:var(--font-m);font-size:11.5px;letter-spacing:.02em;color:#4e8f70}
+@media(prefers-reduced-motion:reduce){.fov{animation:none}}
+@media(max-width:768px){.fov{width:100%}.fov-title{font-size:18px}.fov-metrics{gap:6px}.fov-mc{padding:8px}.fds{font-size:11px}}
+/* ----- tweaks panel ----- */
+.tw-panel{position:fixed;left:18px;bottom:18px;z-index:9999;display:flex;flex-direction:column;gap:8px;padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.86);border:1px solid rgba(20,30,60,.1);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 18px 42px -20px rgba(20,30,70,.4)}
+.tw-panel .tw-h{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tw-seg{display:flex;flex-wrap:wrap;gap:4px;background:rgba(20,30,60,.06);border-radius:10px;padding:3px}
+.tw-seg button{appearance:none;border:0;cursor:pointer;font-family:var(--font-m);font-size:12px;letter-spacing:-.01em;padding:6px 12px;border-radius:8px;color:var(--ink-soft);background:transparent;transition:background .2s,color .2s}
+.tw-seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 2px 6px -2px rgba(20,30,70,.25)}
+@media(max-width:768px){.tw-panel{left:12px;bottom:12px;padding:10px 11px}}
 </style>
 </head>
 <body class="subpage">
@@ -243,10 +376,8 @@
         <a class="btn" href="work.html"><s>See our work</s></a>
       </div>
     </div>
-    <div class="dlv-art rv rv-d3" aria-hidden="true">
+    <div class="dlv-art rv rv-d3" id="fsArt" data-illo="stack" aria-hidden="true">
       <div class="fvx-scene">
-        <div class="fvx-ring"></div>
-        <div class="fvx-ring r2"></div>
         <span class="c3-glyph c3-glyph--acc" style="left:2%;top:60%;width:16px;height:16px;transform:rotate(18deg);animation-delay:.5s"></span>
         <span class="c3-glyph" style="left:94%;top:74%;width:20px;height:20px;transform:rotate(-12deg);animation-delay:2.2s"></span>
         <span class="c3-glyph" style="left:88%;top:8%;width:13px;height:13px;transform:rotate(32deg);animation-delay:3.4s"></span>
@@ -258,23 +389,70 @@
         <span class="c3-particle" style="left:50%;top:2%;width:5px;height:5px;animation-delay:3s"></span>
         <span class="c3-particle" style="left:30%;top:96%;width:5px;height:5px;animation-delay:.4s"></span>
         <span class="c3-particle c3-particle--ink" style="left:70%;top:96%;width:4px;height:4px;animation-delay:4.2s"></span>
-        <div class="fvx-rail">
-          <!-- the settlement / routing engine: ledger side (blue) → hub → wallet/stablecoin side (green) -->
-          <div class="fvx-core fvx-glass">
-            <div class="fvx-hd"><span class="dot"></span><b></b><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></span></div>
-            <div class="fvx-engine">
-              <span class="fvx-side in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-4 7 4v12"/><path d="M9 21v-6h6v6"/><path d="M4 9h16"/></svg></span>
-              <span class="fvx-hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14M14 5l3 3-3 3"/><path d="M21 16H7m3 3-3-3 3-3"/></svg></span>
-              <span class="fvx-side out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H17a2 2 0 0 1 2 2v1"/><path d="M3 7.5V17a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-2.5"/><path d="M21 9.5v5h-4a2.5 2.5 0 0 1 0-5z"/></svg></span>
-              <span class="fvx-ln e-c2 e-r1"></span>
-              <span class="fvx-ln e-c2 e-r2 l2"></span>
-              <span class="fvx-ln e-c2 e-r3 l3"></span>
-              <span class="fvx-ln out e-c4 e-r1"></span>
-              <span class="fvx-ln out e-c4 e-r2 l2"></span>
-              <span class="fvx-ln out e-c4 e-r3 l3"></span>
-            </div>
-            <div class="fvx-thru"><span class="tk"></span><span class="tt"><span class="tf"></span></span></div>
+        <div class="fstk">
+          <div class="fstk-prod">
+            <div class="fstk-ph"><span class="dot"></span><b></b><span class="fstk-tag">Product</span></div>
+            <div class="fstk-title">Financial product</div>
+            <div class="fstk-line"><i></i><b></b></div>
+            <div class="fstk-line l2"><i></i><b></b></div>
+            <div class="fstk-btn"></div>
           </div>
+          <div class="fstk-link"></div>
+          <div class="fstk-infra">
+            <div class="fstk-layer"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h11"/><path d="M19 7H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><circle cx="16" cy="13" r="1.2"/></svg></span><div class="fstk-txt"><span class="lab">Wallet</span><span class="sub">Custody &amp; balances</span></div><span class="fstk-rail"></span></div>
+            <div class="fstk-layer"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14l-3.5-3.5"/><path d="M21 16H7l3.5 3.5"/></svg></span><div class="fstk-txt"><span class="lab">Payments</span><span class="sub">In &amp; out rails</span></div><span class="fstk-rail"></span></div>
+            <div class="fstk-layer"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M4 12h9M4 18h5"/><path d="m15.5 15.5 2.5 2.5 3.5-3.5"/></svg></span><div class="fstk-txt"><span class="lab">Settlement</span><span class="sub">Clearing &amp; reconciliation</span></div><span class="fstk-rail"></span></div>
+            <div class="fstk-layer safe"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg></span><div class="fstk-txt"><span class="lab">Compliance</span><span class="sub">KYC · AML · audit</span></div><span class="fstk-rail"></span></div>
+          </div>
+        </div>
+        <div class="cstk">
+          <div class="cstk-peek p1"><span class="cic safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg></span><span class="clab">Compliance</span></div>
+          <div class="cstk-peek p2"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M4 12h9M4 18h5"/><path d="m15.5 15.5 2.5 2.5 3.5-3.5"/></svg></span><span class="clab">Settlement</span></div>
+          <div class="cstk-peek p3"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14l-3.5-3.5"/><path d="M21 16H7l3.5 3.5"/></svg></span><span class="clab">Payments</span></div>
+          <div class="cstk-peek p4"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h11"/><path d="M19 7H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><circle cx="16" cy="13" r="1.2"/></svg></span><span class="clab">Wallet</span></div>
+          <div class="cstk-front">
+            <div class="cstk-ph"><span class="dot"></span><b></b><span class="cstk-tag">Product</span></div>
+            <div class="cstk-title">Customer product</div>
+            <div class="cstk-line"><i></i><b></b></div>
+            <div class="cstk-line l2"><i></i><b></b></div>
+            <div class="cstk-btn"></div>
+          </div>
+        </div>
+        <div class="gstk">
+          <div class="gstk-in">
+            <div class="gplate safe" style="--y:212px"></div>
+            <div class="gplate" style="--y:159px"></div>
+            <div class="gplate" style="--y:106px"></div>
+            <div class="gplate" style="--y:53px"></div>
+            <div class="gplate top" style="--y:0px"></div>
+            <div class="gcalls">
+              <div class="gcall" style="top:115px"><span class="gc-line"></span><span class="gc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/></svg>Product</span></div>
+              <div class="gcall" style="top:168px"><span class="gc-line"></span><span class="gc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h11"/><path d="M19 7H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><circle cx="16" cy="13" r="1.2"/></svg>Wallet</span></div>
+              <div class="gcall" style="top:221px"><span class="gc-line"></span><span class="gc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14l-3.5-3.5"/><path d="M21 16H7l3.5 3.5"/></svg>Payments</span></div>
+              <div class="gcall" style="top:274px"><span class="gc-line"></span><span class="gc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M4 12h9M4 18h5"/><path d="m15.5 15.5 2.5 2.5 3.5-3.5"/></svg>Settlement</span></div>
+              <div class="gcall safe" style="top:327px"><span class="gc-line"></span><span class="gc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg>Compliance</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="fov">
+          <div class="fov-win">
+            <div class="fov-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span></div>
+            <div class="fov-title">Financial product</div>
+            <div class="fov-metrics">
+              <div class="fov-mc"><div class="fov-mc-hd"><span class="fov-mci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M2.5 10h19"/><path d="M6 14h4"/></svg></span><span class="fov-mt"><span class="k">Accounts &amp; cards</span><span class="v">$12,340.00</span></span></div></div>
+              <div class="fov-mc up"><div class="fov-mc-hd"><span class="fov-mci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l3 3-3 3"/><path d="M20 7H8"/><path d="M7 20l-3-3 3-3"/><path d="M4 17h12"/></svg></span><span class="fov-mt"><span class="k">Transactions</span><span class="v">+2,430.00</span></span></div></div>
+              <div class="fov-mc up"><div class="fov-mc-hd"><span class="fov-mci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12V3"/><path d="M12 12l7.8 4.5"/></svg></span><span class="fov-mt"><span class="k">Investments</span><span class="v">+8.21%</span></span></div></div>
+            </div>
+          </div>
+          <div class="fov-stackwrap">
+            <div class="fov-encl">
+              <div class="fov-layer blue"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h11"/><path d="M19 7H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><circle cx="16" cy="13" r="1.2"/></svg></span><span class="flb">Wallet</span><span class="fdiv"></span><span class="fds">Custody &amp; balances</span></div>
+              <div class="fov-layer blue"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14l-3.5-3.5"/><path d="M21 16H7l3.5 3.5"/></svg></span><span class="flb">Payments</span><span class="fdiv"></span><span class="fds">In &amp; out rails</span></div>
+              <div class="fov-layer blue"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M12 3 3.5 8h17z"/><path d="M9.5 21v-6h5v6"/></svg></span><span class="flb">Settlement</span><span class="fdiv"></span><span class="fds">Clearing &amp; reconciliation</span></div>
+              <div class="fov-layer safe"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6"/><path d="M4.5 11.5v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6"/></svg></span><span class="flb">Infrastructure</span><span class="fdiv"></span><span class="fds">Secure · Scalable · Reliable</span></div>
+            </div>
+          </div>
+          <div class="fov-comp"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg></span><div class="ct"><span class="l">Compliance</span><span class="s">KYC · AML · Audit</span></div></div>
         </div>
       </div>
     </div>

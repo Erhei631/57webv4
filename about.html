@@ -39,6 +39,7 @@
 .about-hero .crumb{justify-content:center}
 .about-hero h1{font-family:var(--font-d);font-weight:700;letter-spacing:-.045em;line-height:1.02;
   font-size:var(--fs-h1);max-width:1000px;margin:0 auto}
+.about-hero .about-sub{max-width:62ch;margin:clamp(20px,2.4vw,30px) auto 0;font-size:clamp(16px,1.15vw,18px);line-height:1.62;color:var(--ink-soft);text-wrap:pretty}
 .about-hero .hero-cta{justify-content:center;margin:clamp(30px,3.4vw,44px) 0 0;flex-wrap:wrap;gap:14px 16px}
 @media(max-width:768px){
   .about-hero .hero-cta{justify-content:center;margin-top:26px}
@@ -129,6 +130,7 @@
 }
 @keyframes pinpulse{0%{box-shadow:0 0 0 0 rgba(139,114,255,.6)}70%{box-shadow:0 0 0 8px rgba(139,114,255,0)}100%{box-shadow:0 0 0 0 rgba(139,114,255,0)}}
 @media(max-width:1100px){.hubs{grid-template-columns:repeat(5,1fr)}.hub-card:nth-child(5n+1){padding-left:0}.hub-card .cc{font-size:12px;letter-spacing:.14em}.hub-card li{font-size:15px}}
+@media(max-width:1100px){.plab{font-size:11px;padding:3px 8px}}
 @media(max-width:768px){
   .hubs{grid-template-columns:repeat(2,1fr);border-top:0;column-gap:32px}
   .hub-card{border-right:0;border-top:1px solid var(--line);padding:22px 0 4px}
@@ -320,8 +322,8 @@
     <div class="stats">
       <div class="stat rv"><div class="n"><span data-count="200" data-suffix="+">0</span></div><div class="d">Engineers</div></div>
       <div class="stat rv rv-d1"><div class="n"><span data-count="150" data-suffix="+">0</span></div><div class="d">MVPs and products</div></div>
-      <div class="stat rv rv-d2"><div class="n"><span data-count="5">0</span></div><div class="d">Global hubs</div></div>
-      <div class="stat rv rv-d3"><div class="n"><span data-count="2018">0</span></div><div class="d">Spun out of Adobe</div></div>
+      <div class="stat rv rv-d2"><div class="n"><span data-count="9">0</span></div><div class="d">Countries</div></div>
+      <div class="stat rv rv-d3"><div class="n"><span data-count="2018">0</span></div><div class="d">Founded</div></div>
     </div>
   </div>
 </section>
@@ -419,7 +421,7 @@
       <div class="value-card rv">
         <span class="value-idx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg></span>
         <h3>Reliable</h3>
-        <p><span class="zh">言行一致</span>, words and actions align. We do what we said we would do, in the way we said we would do it. Every durable client relationship we have was built this way, one kept commitment at a time. In a services business, reliability is not a virtue on top of the work. It is the work.</p>
+        <p>Words and actions align. We do what we said we would do, in the way we said we would do it. Every durable client relationship we have was built this way, one kept commitment at a time. In a services business, reliability is not a virtue on top of the work. It is the work.</p>
       </div>
       <div class="value-card rv rv-d1">
         <span class="value-idx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z"/><path d="M8 10h8M8 13.5h5"/></svg></span>
@@ -461,12 +463,12 @@
       <div class="tm">
         <img class="tm-photo" src="assets/team/team-3.webp" alt="Kevin Wang" />
         <div class="tm-name">Kevin Wang</div>
-        <div class="tm-role">Managing Partner</div>
+        <div class="tm-role">General Partner, 57b Capital</div>
       </div>
       <div class="tm">
         <img class="tm-photo" src="assets/team/team-4.webp" alt="Kamil Krupa" />
         <div class="tm-name">Kamil Krupa</div>
-        <div class="tm-role">GTM Lead, Europe</div>
+        <div class="tm-role">Web3 Lead, Europe</div>
       </div>
       <div class="tm">
         <img class="tm-photo" src="assets/team/team-5.webp" alt="Juan E Quintero" />

@@ -34,6 +34,9 @@
   background-image:radial-gradient(135% 120% at 38% -8%, #b79cf8 0%, #9d80f5 28%, #8569f2 50%, #7058ee 74%, #6650ec 100%);
   border-color:#6f5cf0}
 .plan.feat .pk{color:rgba(255,255,255,.62)}
+.plan .model{display:flex;flex-direction:column;align-items:flex-start;gap:11px}
+.mtag{font-family:var(--font-m);font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--ink-soft);background:rgba(111,92,240,.09);border:1px solid rgba(111,92,240,.26);padding:5px 12px;border-radius:999px}
+.plan.feat .mtag{color:#e9e7ff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
 .plan.feat .model em{color:#c9ccff}
 .plan.feat li svg{color:#c9ccff}
 @media(min-width:769px){.plans-2{grid-template-columns:repeat(2,1fr)}}
@@ -183,7 +186,7 @@
       <div class="plan">
         <div class="pk">Engineering subscription</div>
         <h3>Forward-deployed engineer</h3>
-        <div class="model"><em>Fixed monthly fee</em> · one senior engineer</div>
+        <div class="model"><em>Fixed monthly fee</em><span class="mtag">One senior engineer</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Embedded in your team, stack, and delivery rituals</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Capacity-based fee, not hours billed</li>
@@ -195,7 +198,7 @@
       <div class="plan feat" style="border-style: none">
         <div class="pk">Engineering subscription</div>
         <h3>Delivery pod</h3>
-        <div class="model"><em>Fixed monthly fee</em> · a small team</div>
+        <div class="model"><em>Fixed monthly fee</em><span class="mtag">A small team</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>One release per sprint, cadence we own</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Quality gates: acceptance and crash-free rate</li>
