@@ -51,7 +51,7 @@ img{max-width:100%;display:block}
 .lbl .dot{color:var(--accent)}
 
 /* ---------- buttons (pill, fill-swipe) ---------- */
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;
+.btn{position:relative;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(#fff,#000);display:inline-flex;align-items:center;gap:10px;
   font-family:var(--font-b);font-weight:500;font-size:15px;letter-spacing:.01em;
   padding:15px 26px;border-radius:999px;border:1px solid var(--ink);cursor:pointer;
   background:transparent;color:var(--ink);transition:color .4s var(--ease),border-color .4s var(--ease)}
@@ -120,10 +120,12 @@ img{max-width:100%;display:block}
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav-right{display:flex;align-items:center;gap:14px}
 .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0;border:none;background:transparent;cursor:pointer;position:relative;z-index:5}
-.nav-burger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--ink);margin:0 auto;transition:transform .32s var(--ease),opacity .2s}
-.nav.nav-open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger span{position:absolute;left:50%;top:50%;width:22px;height:2px;margin:-1px 0 0 -11px;border-radius:2px;background:var(--ink);transition:transform .32s var(--ease),opacity .2s;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.nav-burger span:nth-child(1){transform:translateY(-6px)}
+.nav-burger span:nth-child(3){transform:translateY(6px)}
+.nav.nav-open .nav-burger span:nth-child(1){transform:rotate(45deg)}
 .nav.nav-open .nav-burger span:nth-child(2){opacity:0}
-.nav.nav-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav.nav-open .nav-burger span:nth-child(3){transform:rotate(-45deg)}
 .nav-links a.nav-cta-m{display:none}
 body.nav-locked{overflow:hidden}
 
@@ -488,7 +490,7 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
   .cards,.papers{grid-template-columns:1fr}
   .reels{grid-template-columns:1fr}.reel:nth-child(2){display:none}
   .work-grid{grid-template-columns:1fr}
-  .acc-item{grid-template-columns:1fr;gap:14px;padding:30px 0;margin:0}
+  .acc-item{grid-template-columns:1fr;gap:14px;padding:28px 20px;margin:0}
   .acc-item p{max-width:none}
   .foot-sub-grid{grid-template-columns:1fr 1fr}
   /* trusted-by marquee logos: smaller on mobile */
@@ -1105,8 +1107,13 @@ footer{background:var(--paper);padding:90px 0 40px;border-top:1px solid rgba(12,
 @media(max-width:768px){
   .svc-tabs{grid-template-columns:1fr}
   .svc-cards{min-height:0}
-  .svc-card{position:relative;display:none;transform:none}
+  .svc-cards:empty{display:none}
+  .svc-card{position:relative;display:none;transform:none;border-radius:18px;margin:16px 0 14px}
   .svc-card.is-active{display:flex}
+  .svc-row{padding:18px 8px 18px 16px;gap:14px}
+  .svc-row .svc-ic{width:40px;height:40px}
+  .svc-ti{font-size:19px}
+  .svc-row.is-active .svc-arrow{transform:rotate(90deg)}
 }
 
 /* agentic applications — agent orchestration graph */

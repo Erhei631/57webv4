@@ -138,6 +138,16 @@
   .plab{font-size:11px;padding:4px 8px}
   .dotmap-plane{--tilt:24deg}
 }
+@media(max-width:640px){
+  .plab{display:none}
+  .pdot{width:6px;height:6px;box-shadow:0 0 6px 1px rgba(139,114,255,.6)}
+  .pin.hub .pdot{width:8px;height:8px;box-shadow:0 0 8px 1px rgba(139,114,255,.7)}
+  .pin.show-label .plab{display:block;z-index:7}
+  .country-names{display:none}
+  .countries-svg .ctry:hover,.countries-svg .ctry.hl{filter:none}
+  .countries-svg .ctry:hover .hit,.countries-svg .ctry.hl .hit{fill:transparent}
+  .countries-svg .ctry:hover circle,.countries-svg .ctry.hl circle{fill:#6f778f}
+}
 @media(max-width:480px){.hubs{grid-template-columns:1fr}}
 /* ---- about intro narrative ---- */
 .about-intro{padding:clamp(56px,6vw,88px) 0}
@@ -306,11 +316,8 @@
   </div>
   <div class="wrap">
     <div class="crumb rv"><a href="index.html">Company</a> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> <span>About</span></div>
-    <h1 class="rv rv-d1">A sovereign, vertically<br>integrated frontier<br>tech company.</h1>
-    <div class="hero-cta rv rv-d2">
-      <a class="btn btn-fill" href="work.html"><s>See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></s></a>
-      <a class="btn" href="research.html"><s>Read our research</s></a>
-    </div>
+    <h1 class="rv rv-d1">An AI-native technology<br>services firm.</h1>
+    <p class="about-sub rv rv-d2">57Blocks is an AI-native technology services firm, spun out of Adobe in 2018. Around 200 engineers work as one distributed team across nine countries in the Americas, Europe, and Asia. We build, we invest, and we operate.</p>
   </div>
 </header>
 
@@ -421,7 +428,7 @@
       <div class="value-card rv">
         <span class="value-idx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.2 2.9 7.6 7 8.6 4.1-1 7-4.4 7-8.6V6l-7-3Z"/><path d="m9.2 11.8 1.9 1.9 3.7-3.9"/></svg></span>
         <h3>Reliable</h3>
-        <p>Words and actions align. We do what we said we would do, in the way we said we would do it. Every durable client relationship we have was built this way, one kept commitment at a time. In a services business, reliability is not a virtue on top of the work. It is the work.</p>
+        <p>言行一致, words and actions align. We do what we said we would do, in the way we said we would do it. Every durable client relationship we have was built this way, one kept commitment at a time. In a services business, reliability is not a virtue on top of the work. It is the work.</p>
       </div>
       <div class="value-card rv rv-d1">
         <span class="value-idx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2Z"/><path d="M8 10h8M8 13.5h5"/></svg></span>
@@ -435,8 +442,8 @@
       </div>
       <div class="value-card rv rv-d2">
         <span class="value-idx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 14.3 9l5.9.3-4.6 3.7 1.6 5.8L12 15.6 6.8 18.8l1.6-5.8L3.8 9.3 9.7 9 12 3.2Z"/></svg></span>
-        <h3>High quality</h3>
-        <p>In the AI era, when anyone can generate output, taste and judgment are the differentiators. We hold ourselves to a standard the tools alone cannot reach: knowing what good looks like, and refusing to ship what falls short.</p>
+        <h3>Craft</h3>
+        <p>Craft is holding ourselves to a high standard and refusing to ship what falls short. It is also the push to keep expanding what we are capable of, because the standard should never stand still. Taste and judgment are what separate work that functions from work that lasts.</p>
       </div>
     </div>
   </div>
@@ -587,6 +594,9 @@
 <script>(function(){var gs=document.querySelectorAll(".countries-svg .ctry");var ns=document.querySelectorAll(".country-names .cname-html");gs.forEach(function(g,i){g.addEventListener("mouseenter",function(){if(ns[i])ns[i].classList.add("on");});g.addEventListener("mouseleave",function(){if(ns[i])ns[i].classList.remove("on");});});
 var pinCountry={"San Francisco":0,"Seattle":0,"Washington, D.C.":0,"Bogotá":1,"Medellín":1,"Rio de Janeiro":2,"São Paulo":2,"Wrocław":3,"Chengdu":4,"Beijing":4,"Shanghai":4,"Monterrey":5,"Buenos Aires":6,"Ljubljana":7,"Toronto":8};
 document.querySelectorAll(".dotmap-plane .pin").forEach(function(pin){var lab=pin.querySelector(".plab");if(!lab)return;var i=pinCountry[lab.textContent.trim()];if(i==null)return;pin.addEventListener("mouseenter",function(){if(ns[i])ns[i].classList.add("on");if(gs[i])gs[i].classList.add("hl");});pin.addEventListener("mouseleave",function(){if(ns[i])ns[i].classList.remove("on");if(gs[i])gs[i].classList.remove("hl");});});
+var isTouch=matchMedia("(max-width:640px)");
+document.querySelectorAll(".dotmap-plane .pin").forEach(function(pin){pin.addEventListener("click",function(e){if(!isTouch.matches)return;e.stopPropagation();var open=pin.classList.contains("show-label");document.querySelectorAll(".dotmap-plane .pin.show-label").forEach(function(p){p.classList.remove("show-label");});if(!open)pin.classList.add("show-label");});});
+document.addEventListener("click",function(){document.querySelectorAll(".dotmap-plane .pin.show-label").forEach(function(p){p.classList.remove("show-label");});});
 })();</script>
 </body>
 </html>

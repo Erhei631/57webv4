@@ -5,7 +5,114 @@ files touched.
 
 ---
 
-## Round 6 — About page story/values & Work Brale card (latest)
+## Round 8 — Button rendering, logo swaps, mobile polish (latest)
+
+### Buttons (`assets/site-v2.css`)
+- **Fixed the low-res / jagged pill outline** on `.btn`. The rounded-corner clip
+  used for the hover fill-swipe was aliasing on its composited layer; added the
+  `-webkit-mask-image:-webkit-radial-gradient(#fff,#000)` clip so the corners
+  antialias crisply, keeping the original slide-up hover animation.
+
+### Logos
+- **Home trusted-by marquee (`index.html`):** LI.FI → Rain, Story Protocol →
+  Brale (images + alt text).
+- **Work partner marquee (`work.html`):** replaced the Lightspeed and Foothill
+  Ventures logos with new artwork.
+
+### About (`about.html`)
+- **Hero:** removed the two hero buttons ("See our work" / "Read our research").
+- **Values — Reliable:** copy now opens "言行一致, words and actions align. …".
+- **Values — "High quality" → "Craft":** retitled and rewritten around holding a
+  high standard, expanding capability, and taste/judgment.
+- **Global-presence map, mobile (≤640px):** shrank the glowing location dots and
+  their halos; tapping a dot now reveals its city label (one at a time, tap
+  elsewhere to dismiss); removed the country hover/tap fill on mobile.
+
+### Work (`work.html`)
+- **No-detail cards** (rendered as `<div class="case">` rather than `<a>`) no
+  longer lift on hover, keep the default cursor, and don't turn their border
+  accent — visually distinguishing them from clickable case cards.
+- **Mobile card height** unified to 225px so cards in a column match.
+
+### Engine cards (`assets/site-v2.css`)
+- **`.acc-item` on mobile** gained horizontal padding so the icon and text no
+  longer sit flush against the hover fill edge.
+
+### AI & Blockchain services (`ai.html`, `blockchain.html`, `assets/site-v2.css`)
+- **"Four capability lines" on mobile** is now an accordion: each detail card
+  moves directly beneath its own row, so switching a line shows the change right
+  there instead of at the bottom of the list. Row title size reduced, the active
+  row's arrow rotates to point down, and the open card has wider top spacing.
+  Desktop keeps the two-column hover-switch behavior.
+
+### Enterprise AI (`enterprise-ai.html`)
+- **Hero sub-lead reworded** to avoid a single dangling word on the last line
+  (no em-dashes): shortened the tail to "…delivers software you own."
+
+### Mobile nav (`assets/site-v2.css`)
+- **Burger → X animation fixed for Safari.** The bars are now absolutely centered
+  and rotate from a shared center (instead of flex-gap + translateY math), with
+  `backface-visibility:hidden` to remove Safari rendering artifacts.
+
+### Note
+- All changes mirrored into the `package/` snapshot; `package/about.html` was
+  stale and was re-synced to the current version.
+
+---
+
+## Round 7 — About/team copy, Financial Services hero illustration
+
+### About (`about.html`)
+- **Hero title** now reads "An AI-native technology services firm."
+- **Hero sub-lead added** below the title: "57Blocks is an AI-native technology
+  services firm, spun out of Adobe in 2018. Around 200 engineers work as one
+  distributed team across nine countries in the Americas, Europe, and Asia. We
+  build, we invest, and we operate."
+- **Stats row relabeled:** "5 · Global hubs" → "9 · Countries"; "2018 · Spun
+  out of Adobe" → "2018 · Founded".
+- **Team titles:** Kamil Krupa → "Web3 Lead, Europe"; Kevin Wang → "General
+  Partner, 57b Capital".
+- **Values — Reliable card:** removed the leading Chinese phrase; the copy now
+  opens "Words and actions align. …".
+- **Global-presence map, small screens:** at ≤640px the city labels and country
+  names are hidden, leaving only the glowing dots + links (avoids the crowded
+  overlap); at ≤1100px the pin labels drop 12px→11px.
+
+### Work (`work.html`)
+- Replaced three partner logos — Lightspeed, Foothill Ventures, Swift Ventures
+  (alt text updated to match).
+
+### Engineering subscription (`engineering-subscription.html`)
+- Each plan's scope ("one senior engineer" / "a small team") is now a small
+  pill tag on the line **below** "Fixed monthly fee", keeping both plan cards
+  the same width.
+
+### Financial Services — hero illustration (`financial-services.html`)
+- Replaced the money-rail hero art with a **layered financial stack**: a
+  "Financial product" glass card on top, connected by a flowing link into four
+  frosted-glass infrastructure layers — Wallet (Custody & balances), Payments
+  (In & out rails), Settlement (Clearing & reconciliation), Compliance
+  (KYC · AML · audit), the last accented green. Each layer has an icon, label,
+  descriptor, and an animated rail.
+- On narrow screens (≤768px) the layer text is forced left-aligned.
+- (Three alternate illustrations — Apple-Wallet card stack, isometric labeled
+  glass slabs, and a full product-dashboard+layers+compliance composition —
+  were explored behind a temporary switcher; the switcher was removed and the
+  Layered version kept as the shipped default. The alternates remain in source,
+  hidden.)
+
+### Scroll-reveal (`assets/site-v2.js`)
+- Reveal-on-scroll elements (`.rv`) that are already within the initial viewport
+  on load are now shown immediately instead of waiting for a scroll — fixes tall
+  near-the-fold blocks (e.g. the first Work case grid) appearing blank until the
+  user scrolls. Below-fold elements still animate in on scroll.
+
+### Note
+- Changes were mirrored into the `package/` site snapshot.
+
+---
+
+## Round 6 — About page story/values & Work Brale card
 
 ### About (`about.html`)
 - **Map section reworked:** heading changed to "One team, nine countries." on a

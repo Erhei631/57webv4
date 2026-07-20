@@ -370,10 +370,23 @@
 <script>
 (function(){
   var wrap=document.querySelector('.svc-tabs'); if(!wrap)return;
+  var list=wrap.querySelector('.svc-list');
+  var cardsWrap=wrap.querySelector('.svc-cards');
   var rows=[].slice.call(wrap.querySelectorAll('.svc-row'));
   var cards=[].slice.call(wrap.querySelectorAll('.svc-card'));
   function act(i){rows.forEach(function(r,j){r.classList.toggle('is-active',j===i);});cards.forEach(function(c,j){c.classList.toggle('is-active',j===i);});}
-  rows.forEach(function(r,i){['mouseenter','click','focus'].forEach(function(ev){r.addEventListener(ev,function(){act(i);});});});
+  var mq=matchMedia('(max-width:768px)');
+  function layout(){
+    if(mq.matches){rows.forEach(function(r,i){if(cards[i].parentNode!==list||r.nextElementSibling!==cards[i]){r.insertAdjacentElement('afterend',cards[i]);}});}
+    else{cards.forEach(function(c){cardsWrap.appendChild(c);});}
+  }
+  layout();
+  if(mq.addEventListener)mq.addEventListener('change',layout);else mq.addListener(layout);
+  rows.forEach(function(r,i){
+    r.addEventListener('mouseenter',function(){if(!mq.matches)act(i);});
+    r.addEventListener('focus',function(){if(!mq.matches)act(i);});
+    r.addEventListener('click',function(){act(i);});
+  });
 })();
 </script>
 </body>

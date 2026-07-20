@@ -44,12 +44,15 @@
 .work-grid .case{justify-content:flex-start;align-items:flex-start;gap:0;padding:30px;min-height:236px}
 .work-grid .case .ctag{margin-bottom:24px}
 .work-grid .case .cname-logo{height:48px;margin:0 0 18px}
-@media(max-width:768px){.work-grid .case{min-height:188px;padding:22px}.work-grid .case .cname-logo{height:44px;margin-bottom:14px}.work-grid .case .ctag{margin-bottom:16px}.work-grid .cdesc{min-height:0}}
+@media(max-width:768px){.work-grid .case{min-height:225px;padding:22px}.work-grid .case .cname-logo{height:44px;margin-bottom:14px}.work-grid .case .ctag{margin-bottom:16px}.work-grid .cdesc{min-height:0}}
 .work-grid .case .cdesc{max-width:none;min-height:0;font-size:16px;line-height:1.55;color:var(--ink-soft)}
 .work-grid .case .go{margin-top:auto;padding-top:22px;color:var(--accent);font-weight:600}
 .work-grid .case .cname-logo,.work-grid .case .cdesc,.work-grid .case .go{transition:opacity .35s var(--ease),color .35s var(--ease)}
 .work-grid .case.has-cover:hover .cname-logo,.work-grid .case.has-cover:hover .cdesc{opacity:0}
 .work-grid .case.has-cover .go{position:relative;z-index:3}
+/* no-detail cards (rendered as div, not a): no hover lift, default cursor */
+div.case{cursor:default}
+div.case:hover{transform:none;border-color:rgba(255,255,255,.66)}
 .work-grid .case.has-cover:hover .go{color:#fff}
 /* ---- editorial left-aligned hero (matches blog) ---- */
 .work-hero{padding:128px 0 64px;position:relative}
